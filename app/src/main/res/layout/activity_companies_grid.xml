@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="CompaniesViewModel"
+            type="dp.com.amarapp.viewmodel.CompaniesGridViewModel"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/text_color">
+        <GridView
+            android:id="@+id/gv_companies"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            android:layout_marginTop="@dimen/dp14h"
+            android:layout_marginStart="@dimen/dp13h"
+            android:layout_marginEnd="@dimen/dp13h"
+            bind:gridcompanies="@{CompaniesViewModel.companies}"
+            bind:gridListener="@{CompaniesViewModel.onScrollListener}"
+            android:horizontalSpacing="@dimen/dp26w"
+            android:verticalSpacing="@dimen/dp15h" />
+    </LinearLayout>
+</layout>

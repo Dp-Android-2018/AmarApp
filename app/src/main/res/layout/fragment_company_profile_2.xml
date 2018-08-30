@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="ProfileViewModel2"
+            type="dp.com.amarapp.viewmodel.CompanyProfileViewModel_2"/>
+    </data>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp68h"
+        android:layout_height="@dimen/dp68h"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp14w"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_home"
+            android:background="@drawable/circle_background"
+            android:padding="@dimen/dp7h"
+            bind:imageUrl="@{ProfileViewModel2.image}"
+            bind:bitmap="@{ProfileViewModel2.picBitmap}"
+            android:onClick="@{ProfileViewModel2::uploadImage}"/>
+
+        <ImageView
+            android:layout_width="@dimen/dp19w"
+            android:layout_height="@dimen/dp19w"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@mipmap/add_photo"
+            android:onClick="@{ProfileViewModel2::uploadImage}"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp8_5"
+        android:textColor="@color/home_text_color"
+        android:gravity="center_horizontal"
+        android:text="@string/add_photo_company"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp7w"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="@dimen/sp8_5"
+        android:textColor="@color/home_text_color"
+        android:gravity="center_horizontal"
+        android:text="@string/add_photo_company_2"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp1h"/>
+    <TextView
+        android:layout_width="@dimen/dp225h"
+        android:layout_height="@dimen/dp27w"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textSize="@dimen/sp10"
+        android:textStyle="bold"
+        android:paddingEnd="@dimen/dp14h"
+        android:paddingStart="@dimen/dp14h"
+
+        android:background="@drawable/edit_text_shape"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp10h"
+        android:hint="@string/phone_no"
+        android:text="@{ProfileViewModel2.phone}"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        />
+    <EditText
+        android:layout_width="@dimen/dp225h"
+        android:layout_height="@dimen/dp27w"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textSize="@dimen/sp10"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp10h"
+        android:paddingEnd="@dimen/dp14h"
+        android:paddingStart="@dimen/dp14h"
+
+
+        android:background="@drawable/edit_text_shape"
+        android:layout_gravity="center"
+
+        android:hint="@string/website_address"
+        android:text="@={ProfileViewModel2.website}"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        />
+    <TextView
+        android:layout_width="@dimen/dp225h"
+        android:layout_height="@dimen/dp27w"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textSize="@dimen/sp10"
+        android:textStyle="bold"
+        android:paddingEnd="@dimen/dp14h"
+        android:paddingStart="@dimen/dp14h"
+        android:background="@drawable/edit_text_shape"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="@dimen/dp10h"
+        android:hint="@string/type"
+        android:text="@{ProfileViewModel2.type}"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        />
+    <EditText
+
+        android:layout_width="@dimen/dp225h"
+        android:layout_height="@dimen/dp27w"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textSize="@dimen/sp10"
+        android:textStyle="bold"
+        android:paddingEnd="@dimen/dp14h"
+        android:paddingStart="@dimen/dp14h"
+        android:layout_marginTop="@dimen/dp10h"
+
+        android:background="@drawable/edit_text_shape"
+        android:layout_gravity="center"
+
+        android:hint="@string/spicalization"
+        android:text="@={ProfileViewModel2.specialization}"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+
+        />
+    <EditText
+        android:layout_width="@dimen/dp225h"
+        android:layout_height="@dimen/dp82h"
+        android:gravity="end"
+        android:paddingTop="@dimen/dp10h"
+        android:textDirection="locale"
+        android:textSize="@dimen/sp10"
+        android:textStyle="bold"
+        android:paddingEnd="@dimen/dp14h"
+        android:paddingStart="@dimen/dp14h"
+        android:background="@drawable/edit_text_shape"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp10h"
+        android:hint="@string/description"
+        android:text="@={ProfileViewModel2.description}"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+      />
+    <Button
+        android:layout_width="@dimen/dp150h"
+        android:layout_height="@dimen/dp36h"
+        android:layout_gravity="center"
+        android:background="@drawable/button_shape"
+        android:layout_marginTop="@dimen/dp9h"
+        android:textSize="@dimen/sp15"
+        android:textColor="@color/text_color"
+        android:text="@string/save"
+        android:textStyle="bold"
+        android:onClick="@{ProfileViewModel2::save}"/>
+</LinearLayout>
+    </ScrollView>
+</layout>

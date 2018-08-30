@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="DetailedAdvert"
+            type="dp.com.amarapp.viewmodel.DetailedAdvertViewModel"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_layout"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp150h"
+            android:scaleType="centerCrop"
+            bind:imageUrl="@{DetailedAdvert.image}"
+            android:layout_marginTop="@dimen/dp10h"
+            android:layout_marginStart="@dimen/dp5h"
+            android:layout_marginEnd="@dimen/dp5h"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp9h"
+            android:textSize="@dimen/sp15"
+            android:textStyle="bold"
+            android:textColor="@color/text_color_gray"
+            android:text="@{DetailedAdvert.tittle}"
+            android:layout_marginStart="@dimen/dp5h"
+            android:layout_marginEnd="@dimen/dp5h"/>
+
+            <TextView
+                android:id="@+id/tv_adv_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_black"
+                    android:text="@{DetailedAdvert.content}"
+                 android:layout_marginTop="@dimen/dp14h"
+                    android:scrollbars="vertical"
+                android:textSize="@dimen/sp9"
+                android:layout_marginBottom="@dimen/dp10h"
+                android:layout_marginStart="@dimen/dp5h"
+                android:layout_marginEnd="@dimen/dp5h"/>
+
+    </LinearLayout>
+</layout>

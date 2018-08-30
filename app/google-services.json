@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "885201653526",
+    "firebase_url": "https://amar-a64bf.firebaseio.com",
+    "project_id": "amar-a64bf",
+    "storage_bucket": "amar-a64bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885201653526:android:85fd9efe4df53513",
+        "android_client_info": {
+          "package_name": "dp.com.amarapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885201653526-p8eimnje787tpseikgfsusr994n341d7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dp.com.amarapp",
+            "certificate_hash": "07096b2ff29e75ba5ecceacb8d4b7b363b24ce16"
+          }
+        },
+        {
+          "client_id": "885201653526-g4vcn933l0b1lketob110oamepqa94gr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2je5IP5rK-yicCX5q7jQ2fiTBf2GdpYw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885201653526-g4vcn933l0b1lketob110oamepqa94gr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "885201653526-0bkjvrk69ibvsl605jcuma07hqa3b9bq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dp-itc.Amar"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

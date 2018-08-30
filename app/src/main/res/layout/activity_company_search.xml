@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="CompanySearchViewModel"
+            type="dp.com.amarapp.viewmodel.CompanySearchViewModel"/>
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_companies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:recyclerListener="@{CompanySearchViewModel.onScrollListener}"
+        bind:companyInfo="@{CompanySearchViewModel.searchResponse}"
+        tools:listitem="@layout/company_search_list_item"/>
+</LinearLayout>
+</layout>

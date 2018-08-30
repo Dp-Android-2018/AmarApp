@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+
+<resources>
+
+    <string name="app_name">AmarTest</string>
+
+    <string name="version">النسخة رقم ٠٠.١</string>
+
+    <string name="social_media">مواقع التواصل الاجتماعى تساعد  في وصول العميل</string>
+
+    <string name="social_media_2">اليك بسهوله</string>
+
+    <string name="country">البلد</string>
+
+    <string name="advert_duration">مدة الاعلان</string>
+
+    <string name="search">البحث</string>
+
+    <string name="client">عميلنا العزيز</string>
+
+    <string name="client_name">اسم العميل</string>
+
+    <string name="go_to_mail">برجاء الذهاب للبريد الالكترونى الخاص بك</string>
+
+    <string name="go_to_mail_2"> لتفعيل حسابك على تطبيق عمار</string>
+
+    <string name="send_new_mail">ارسال ميل جديد</string>
+
+    <string name="active_with_phone">تفعيل برقم الهاتف</string>
+
+    <string name="skip_register">تخطى استكمال التسجيل</string>
+
+    <string name="complete_data">من فضلك قم بأستكمال بياناتك للظهور فى نتائج البحث</string>
+
+    <string name="complete_data_2"> بصفه دائمة</string>
+
+    <string name="company_info">من بيانات شركتك</string>
+
+    <string name="type">الفئه</string>
+
+    <string name="city">المدينه</string>
+
+    <string name="company_information">معلومات عن الشركة</string>
+
+    <string name="compamy_projects">مشروعات الشركة</string>
+
+    <string name="add_liciences_photo">من فضلك قم بإدراج صورة تراخيص لشركتك</string>
+
+    <string name="to_be_ensure">لضمان وتأكيد معلومات الشركة</string>
+
+    <string name="next">التالى</string>
+
+    <string name="main">الرئيسيه</string>
+
+    <string name="who_we_are">من نحن</string>
+
+    <string name="rate">تقييم عمار</string>
+
+    <string name="share">شارك التطبيق</string>
+
+    <string name="mail_address">البريد الالكترونى</string>
+
+    <string name="send">ارسال</string>
+
+    <string name="spicalization">التخصص</string>
+
+    <string name="search_1">ابحث</string>
+
+    <string name="new_company">الاعلانات الحديثة</string>
+
+    <string name="add_photo_company">من فضلك قم بإدراج صورة للشركة لتساعدك فى </string>
+
+    <string name="add_photo_company_2">الظهور فى نتائج البحث بصورة جيدة</string>
+
+    <string name="phone_no">رقم الجوال</string>
+
+    <string name="website_address">الموقع الالكترونى</string>
+
+    <string name="title_test">لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات . ديواس أيوتي أريري دولار إن ريبريهينديرأيت فوليوبتاتي فيلايت أيسسي كايلليوم دولار أيو فيجايت نيولا باراياتيور.</string>
+
+    <string name="password">كلمه المرور</string>
+
+    <string name="log_in">تسجيل الدخول</string>
+
+    <string name="new_user">تسجيل مشترك جديد</string>
+
+    <string name="forget_password"><u>نسيت كلمةالمرور!</u></string>
+
+    <string name="skip_login">تخطي التسجيل</string>
+
+    <string name="choce_membership">من فضلك اختر نوع العضويه</string>
+
+    <string name="choce_membership_2">للاشتراك فى عمار</string>
+
+    <string name="company_membership">عضويه للشركات</string>
+
+    <string name="client_membership">عضويه للعملاء</string>
+
+    <string name="register">تسجيل</string>
+
+    <string name="user_name">الاسم</string>
+    <string name="enter_full_name">ادخل الاسم كاملا</string>
+
+    <string name="log_out">تسجيل الخروج</string>
+
+    <string name="developed_by">تمت البرمجة بواسطه</string>
+
+    <string name="facebook">الفيسبوك</string>
+
+    <string name="twietter">تويتر</string>
+
+    <string name="instgram">انستغرام</string>
+
+    <string name="sign_up_company_membership">تسجيل عضوية للشركات</string>
+
+
+    <string name="pass_confirmation">تاكيد كلمه المرور</string>
+
+    <string name="register_membership">تسجيل عضويه</string>
+
+    <string name="sign_up_membership_user">تسجيل عضوية للعملاء</string>
+
+    <string name="comment">تعليق</string>
+
+    <string name="views">مشاهده</string>
+    <string name="msg_fill_data">املأ جميع البيانات</string>
+    <string name="msg_invaled_mail">صيغه البريد الالكنرونى غير صحيحه</string>
+    <string name="msg_invaled_phone">رقم الجوال غير صحيح</string>
+    <string name="msg_invaled_password">كلمة المرور اقل من 8 احرف/ارقام</string>
+    <string name="confirm_password">كلمة المرور و تأكيدها يجب ان يكونوا متطابقين</string>
+    <string name="exist_mail">البريد الألكترونى مسجل من قبل</string>
+    <string name="no_internet_connection">انقطع الأتصال بالانترنت</string>
+    <string name="exist_phone">الهاتف مستخدم من قبل</string>
+    <string name="incorrect_mail_or_password">البريد الالكترونى او كلمه المرور غير صحيح</string>
+    <string name="website">الموقع الألكترونى</string>
+    <string name="description">الوصف</string>
+    <string name="invaled_data">بيانات غير صحيحه</string>
+    <string name="server_error">من فضلك حاول لاحقا</string>
+    <string name="not_url">عنوان الموقع الألكترونى غير صحيح</string>
+    <string name="change_password_text">لتجديد كلمة المرور برجاء ادخال الاتى</string>
+    <string name="current_password">كلمه المرور الحاليه</string>
+    <string name="new_password">كلمه المرور الجديده</string>
+    <string name="company_name">اسم الشركه</string>
+    <string name="cancel">الغاء</string>
+    <string name="address">العنوان</string>
+    <string name="advert_description">وصف الاعلان</string>
+    <string name="time_duration">مدة الوقت</string>
+    <string name="publish">انشر الاعلان</string>
+    <string name="change_password_successed">تم تغيير كلمة المرور بنجاح</string>
+    <string name="invaled_password">كلمة المرور غير صحيحة</string>
+    <string name="write_new_pass">أدخل كلمه مرور جديدة</string>
+    <string name="time_tabel">مواعيد العمل</string>
+    <string name="wait_accept">تم بنجاح.انتظر التفعيل</string>
+    <string name="save">حفظ</string>
+    <string name="send_to">إرسل إلى...</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="select_country">إختر البلد اولاً</string>
+    <string name="select_category">إختر الفئة اولاً</string>
+    <string name="add_project_text1">عند إدراجك لبعض صور مشاريع الشركة</string>
+    <string name="add_project_text2">سيساعدك فى الظهور فى نتائج البحث أسرع</string>
+    <string name="enter_phone_number">برجاء إدخال رقم الهاتف لإرسال كود التفعيل</string>
+    <string name="please_complete_your_profile">من فضلك قم بأستكمال بياناتك للظهور فى نتائج البحث بصفه دائمة</string>
+    <string name="active">تفعيل</string>
+    <string name="enter_activation_code">برجاء إدخال كود التفعيل</string>
+    <string name="send_activation_mail">تم إرسال بريد التفعيل</string>
+    <string name="activate_successfully">تم التفعيل بنجاح</string>
+    <string name="invaled_activation_code">كود التفعيل غير صحيح</string>
+    <string name="activation_code_digits">كود التفعيل 4 أرقام</string>
+    <string name="this_phone_is_activated">هذا الهاتف مُفعل من قبل</string>
+    <string name="activation_code_send">تم إرسال كود التفعيل</string>
+    <string name="your_comment">اكتب تعليق</string>
+    <string name="more_comments_illagel">غير مسموح بعمل أكثر من تعليق</string>
+</resources>

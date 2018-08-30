@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="ImageListItemViewModel"
+            type="dp.com.amarapp.viewmodel.ImageListItemViewModel"/>
+    </data>
+    <RelativeLayout
+        android:id="@+id/rl_parent"
+        android:layout_width="@dimen/dp39h"
+        android:layout_height="@dimen/dp39h"
+        android:layout_marginStart="@dimen/dp6h"
+        android:layout_marginTop="@dimen/dp6h"
+        android:layout_marginBottom="@dimen/dp6h">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            bind:imageUrl="@{ImageListItemViewModel.imageLink}"/>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="AddAdvertViewModel"
+            type="dp.com.amarapp.viewmodel.AddAdvertViewModel"/>
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/ll_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/bg_copy">
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp68h"
+            android:layout_height="@dimen/dp68h"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp21h"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_home"
+                android:background="@drawable/circle_background"
+                android:padding="@dimen/dp7h"
+                bind:bitmap="@{AddAdvertViewModel.picBitmap}"
+                android:onClick="@{AddAdvertViewModel::uploadImage}"
+               />
+
+            <ImageView
+                android:layout_width="@dimen/dp19w"
+                android:layout_height="@dimen/dp19w"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:src="@mipmap/add_photo"
+                android:onClick="@{AddAdvertViewModel::uploadImage}"/>
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27h"
+            android:layout_marginStart="@dimen/dp47h"
+            android:layout_marginEnd="@dimen/dp47h"
+            android:gravity="center_vertical|end"
+            android:textDirection="locale"
+            android:paddingEnd="@dimen/dp12h"
+            android:paddingStart="@dimen/dp12h"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp10"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/edit_text_shape"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/text_color"
+            android:layout_marginTop="@dimen/dp13h"
+            android:inputType="text"
+            android:hint="@string/address"
+            android:text="@={AddAdvertViewModel.address}"
+            />
+
+
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp81w"
+            android:layout_marginStart="@dimen/dp47h"
+            android:layout_marginEnd="@dimen/dp47h"
+            android:gravity="end"
+            android:paddingTop="@dimen/dp9h"
+            android:textDirection="locale"
+            android:paddingEnd="@dimen/dp12h"
+            android:paddingStart="@dimen/dp12h"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp10"
+
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/edit_text_shape"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/text_color"
+            android:layout_marginTop="@dimen/dp15h"
+            android:hint="@string/advert_description"
+            android:text="@={AddAdvertViewModel.description}"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27h"
+            android:layout_marginStart="@dimen/dp47h"
+            android:layout_marginEnd="@dimen/dp47h"
+            android:gravity="end"
+            android:textDirection="locale"
+            android:layout_marginTop="@dimen/dp15h"
+            android:paddingEnd="@dimen/dp12h"
+            android:paddingStart="@dimen/dp12h"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_text_shape"
+            android:textSize="@dimen/sp13"
+            android:paddingTop="@dimen/dp3h"
+            android:textStyle="bold"
+            android:hint="@string/country"
+            android:textColorHint="@color/text_color"
+            android:id="@+id/country"
+            android:text="@{AddAdvertViewModel.countryName}"
+            android:onClick="@{AddAdvertViewModel::getCountries}"
+           />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27h"
+            android:layout_marginStart="@dimen/dp47h"
+            android:layout_marginEnd="@dimen/dp47h"
+            android:gravity="end"
+            android:textDirection="locale"
+            android:layout_marginTop="@dimen/dp15h"
+            android:paddingEnd="@dimen/dp12h"
+            android:paddingStart="@dimen/dp12h"
+            android:textSize="@dimen/sp13"
+            android:paddingTop="@dimen/dp3h"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:background="@drawable/edit_text_shape"
+            android:hint="@string/city"
+
+            android:textColorHint="@color/text_color"
+            android:textColor="@color/text_color"
+            android:id="@+id/city"
+            android:text="@{AddAdvertViewModel.cityName}"
+            android:onClick="@{AddAdvertViewModel::getCities}"/>
+
+
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27h"
+            android:layout_marginStart="@dimen/dp47h"
+            android:layout_marginEnd="@dimen/dp47h"
+            android:gravity="center_vertical|end"
+            android:textDirection="locale"
+            android:paddingEnd="@dimen/dp12h"
+            android:paddingStart="@dimen/dp12h"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp10"
+            android:layout_marginTop="@dimen/dp15h"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/edit_text_shape"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/text_color"
+            android:hint="@string/time_duration"
+            android:focusable="false"
+            android:editable="false"
+            android:text="@{AddAdvertViewModel.duration}"
+            android:onClick="@{AddAdvertViewModel::dialog}"
+            />
+
+        <Button
+            android:layout_width="@dimen/dp150h"
+            android:layout_height="@dimen/dp36h"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_shape"
+            android:textStyle="bold"
+            android:textSize="@dimen/dp15h"
+            android:layout_marginTop="@dimen/dp15h"
+            android:layout_marginBottom="@dimen/dp15h"
+            android:textColor="@color/text_color"
+            android:text="@string/publish"
+            android:onClick="@{AddAdvertViewModel::publishAction}"/>
+
+
+    </LinearLayout>
+</layout>

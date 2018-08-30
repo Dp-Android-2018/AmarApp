@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="DetailedProjectViewModel"
+            type="dp.com.amarapp.viewmodel.DetailedProjectViewModel"/>
+    </data>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v4.widget.SlidingPaneLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".2">
+    </android.support.v4.widget.SlidingPaneLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05"
+        android:textColor="@color/text_color_black"
+        android:text="@{DetailedProjectViewModel.name}"
+        android:gravity="center_vertical"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:hint="@string/company_name"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05"
+        android:textColor="#626262"
+        android:text="@{DetailedProjectViewModel.address}"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:hint="@string/company_name"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".7">
+        <TextView
+            android:hint="@string/description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:text="@{DetailedProjectViewModel.description}"/>
+    </ScrollView>
+
+</LinearLayout>
+</layout>

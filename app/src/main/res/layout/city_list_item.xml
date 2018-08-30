@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="ItemCityViewModel"
+            type="dp.com.amarapp.viewmodel.ItemCityViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_parent"
+        android:onClick="@{ItemCityViewModel::onItemClick}">
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{ItemCityViewModel.name}"
+            android:textSize="@dimen/sp12"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/dp21w"
+            android:layout_marginEnd="@dimen/dp21w"
+            android:textColor="@color/country_item_color"/>
+        <View
+            android:layout_below="@+id/tv_city"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1h"
+            android:background="@color/divider"
+            android:layout_marginTop="@dimen/dp4h"/>
+    </RelativeLayout>
+</layout>

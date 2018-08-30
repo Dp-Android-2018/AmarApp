@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/text_color"
+    android:orientation="vertical"
+    android:layout_marginEnd="60dp"
+    android:layout_marginStart="60dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="فلتر"
+        android:gravity="center"
+        android:textSize="16.7dp"
+        android:textColor="@color/pics_color"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/filter_divider"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="أعلى تقييم"
+        android:gravity="center"
+        android:textSize="13.3dp"
+        android:textColor="@color/text_color_black"
+        android:textStyle="bold"
+        android:id="@+id/tv_high_rate"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/filter_divider"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="أقل تقييم"
+        android:gravity="center"
+        android:textSize="13.3dp"
+        android:textColor="@color/text_color_black"
+        android:textStyle="bold"
+        android:id="@+id/tv_low_rate"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/filter_divider"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="شركات جديدة"
+        android:gravity="center"
+        android:textSize="13.3dp"
+        android:textColor="@color/text_color_black"
+        android:textStyle="bold"
+        android:id="@+id/tv_new_company"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/filter_divider"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="شركات قديمة"
+        android:gravity="center"
+        android:textSize="13.3dp"
+        android:textColor="@color/text_color_black"
+        android:textStyle="bold"
+        android:id="@+id/tv_old_company"/>
+
+</LinearLayout>

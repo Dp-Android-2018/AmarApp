@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    app:ignore="NamespaceTypo">
+    <data>
+        <variable
+            name="ProfileViewModel6"
+            type="dp.com.amarapp.viewmodel.CompanyProfileViewModel_6"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:numColumns="2"
+            android:layout_marginStart="@dimen/dp9h"
+            android:layout_marginEnd="@dimen/dp9h"
+            android:layout_marginTop="@dimen/dp7h"
+            android:verticalSpacing="@dimen/dp12h"
+            android:horizontalSpacing="@dimen/dp30h"
+            bind:projectsinfo="@{ProfileViewModel6.projectList}"/>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="@dimen/dp42w"
+                android:layout_height="@dimen/dp42w"
+                android:layout_margin="@dimen/dp18h"
+                app:backgroundTint="@color/pics_color"
+                android:onClick="@{ProfileViewModel6::addProject}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="@dimen/dp15h"
+                android:text="+"
+                android:textSize="@dimen/sp24"
+                android:textColor="@color/text_color"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </FrameLayout>
+    </RelativeLayout>
+</layout>

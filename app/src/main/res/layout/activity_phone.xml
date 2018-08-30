@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="PhoneViewModel"
+            type="dp.com.amarapp.viewmodel.PhoneViewModel"/>
+    </data>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_parent">
+    <ImageView
+        android:layout_width="86dp"
+        android:layout_height="76dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:src="@mipmap/logo"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/enter_phone_number"
+        android:textSize="14dp"
+        android:textColor="@color/text_color_black" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_text_shape"
+        android:layout_marginTop="55dp"
+        android:hint="@string/phone_number"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:inputType="phone"
+        android:text="@={PhoneViewModel.phone}"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_shape"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/text_color"
+        android:text="@string/send"
+        android:textSize="17dp"
+        android:onClick="@{PhoneViewModel::checkEmptyData}"/>
+
+</LinearLayout>
+</layout>

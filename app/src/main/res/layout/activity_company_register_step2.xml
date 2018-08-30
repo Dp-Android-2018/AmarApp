@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="CompanyRegisterViewModelStep2"
+            type="dp.com.amarapp.viewmodel.CompanyRegisterViewModelStep2"/>
+    </data>
+
+
+<LinearLayout
+    android:id="@+id/ll_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg_copy">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"
+        />
+    <RelativeLayout
+        android:layout_width="@dimen/dp68h"
+        android:layout_height="@dimen/dp68h"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp21h"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_home"
+            android:background="@drawable/circle_background"
+            android:padding="@dimen/dp7h"
+            bind:bitmap="@{CompanyRegisterViewModelStep2.picBitmap}"/>
+
+        <ImageView
+            android:layout_width="@dimen/dp19w"
+            android:layout_height="@dimen/dp19w"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@mipmap/add_photo"
+            android:onClick="@{CompanyRegisterViewModelStep2::uploadImage}"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:textStyle="bold"
+        android:textSize="@dimen/sp8_5"
+        android:layout_marginTop="@dimen/dp7h"
+        android:textColor="@color/home_text_color"
+        android:text="@string/add_photo_company"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp8_5"
+        android:layout_marginTop="@dimen/dp1h"
+        android:textColor="@color/home_text_color"
+        android:text="@string/add_photo_company_2"
+        android:layout_gravity="center_horizontal"/>
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_text_shape"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:hint="@string/phone_no"
+        android:layout_marginTop="@dimen/dp13h"
+
+        android:inputType="phone"
+        android:text="@={CompanyRegisterViewModelStep2.phoneNumber}"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:layout_marginTop="@dimen/dp15h"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_text_shape"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:hint="@string/website"
+        android:inputType="textUri"
+        android:text="@={CompanyRegisterViewModelStep2.webSite}"
+        />
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:layout_marginTop="@dimen/dp15h"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_text_shape"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:hint="@string/type"
+        android:focusable="false"
+        android:editable="false"
+        android:text="@{CompanyRegisterViewModelStep2.categoryName}"
+        android:onClick="@{CompanyRegisterViewModelStep2::getCategories}"/>
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:layout_marginTop="@dimen/dp15h"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_text_shape"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:hint="@string/spicalization"
+        android:focusable="false"
+        android:editable="false"
+        android:text="@{CompanyRegisterViewModelStep2.specializationName}"
+        android:onClick="@{CompanyRegisterViewModelStep2::getSpecialization}"
+       />
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp81w"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="end"
+        android:paddingTop="@dimen/dp9h"
+        android:textDirection="locale"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_text_shape"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:hint="@string/description"
+        android:layout_marginTop="@dimen/dp15h"
+        android:text="@={CompanyRegisterViewModelStep2.description}"/>
+    <Button
+        android:layout_width="@dimen/dp150h"
+        android:layout_height="@dimen/dp36h"
+
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_shape"
+        android:text="@string/register"
+        android:textStyle="bold"
+        android:textSize="@dimen/dp15h"
+        android:layout_marginTop="@dimen/dp15h"
+        android:layout_marginBottom="@dimen/dp15h"
+        android:textColor="@color/text_color"
+        android:onClick="@{CompanyRegisterViewModelStep2::registerAction}"/>
+
+
+</LinearLayout>
+</layout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+
+<color name="colorPrimary">#3F51B5</color>
+
+<color name="colorPrimaryDark">#303F9F</color>
+
+<color name="colorAccent">#FF4081</color>
+
+<color name="bg_text">#8c000000</color>
+
+<color name="action_bar_background">#bf7a20</color>
+
+<color name="text_color">#ffffff</color>
+
+<color name="text_color_black">#000000</color>
+<color name="country_item_color">#4c4c4c</color>
+<color name="text_color_orange">#c07b21</color>
+
+<color name="text_color_green">#27ae60</color>
+
+<color name="back_ground_gray">#757575</color>
+
+<color name="pics_color">#e59124</color>
+
+<color name="text_color_gray">#4c4c4c</color>
+
+<color name="divider">#c83131</color>
+<color name="brownColor">#804f10</color>
+<color name="text_color_city">#ca7200</color>
+
+<color name="text_color_small">#80000000</color>
+
+<color name="home_back_color">#d7d7d7</color>
+
+<color name="home_text_color">#4d4d4d</color>
+
+<color name="advert_background">#d2d2d2</color>
+
+<color name="new_user_text_color">#2a2825</color>
+
+<color name="forget_pass_text">#010101</color>
+
+<color name="social_text_color">#cc000000</color>
+
+<color name="back_ground_item">#1A000000</color>
+    <color name="back_ground_day">#d8d8d8</color>
+    <color name="filter_divider">#96000000</color>
+    <color name="project_title_background">#591f2733</color>
+    <color name="adv_background">#66e6e6e6</color>
+    <color name="image_recycler_background">#c5c5c5</color>
+
+</resources>

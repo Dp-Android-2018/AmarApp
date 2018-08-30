@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/g0"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/main"
+            android:checked="true"
+            android:title="@string/main" />
+    </group>
+
+    <group android:id="@+id/g2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/rate"
+            android:checked="true"
+            android:title="@string/rate" />
+    </group>
+    <group android:id="@+id/g3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/share"
+            android:checked="true"
+            android:title="@string/share"/>
+    </group>
+    <group android:id="@+id/g4"
+        android:checkableBehavior="single">
+    <item
+        android:id="@+id/who_we_are"
+        android:checked="true"
+        android:title="@string/who_we_are" />
+    </group>
+
+</menu>

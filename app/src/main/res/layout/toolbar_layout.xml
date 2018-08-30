@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="dp.com.amarapp.viewmodel.ToolbarViewModel"/>
+    </data>
+
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    app:contentInsetEnd="0dp"
+    app:contentInsetStart="0dp"
+    android:background="@color/action_bar_background">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/amar"/>
+    <ImageView
+        android:layout_width="@dimen/dp12w"
+        android:layout_height="@dimen/dp16h"
+        android:src="@mipmap/back"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp17w"
+        android:id="@+id/back_arrow"
+        android:visibility="@{viewmodel.backimageVisibility}"
+        android:onClick="@{viewmodel::handleBackAction}"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_filter"
+        android:src="@mipmap/filter_results_button"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp17w"
+       android:visibility="gone"/>
+</RelativeLayout>
+</android.support.v7.widget.Toolbar>
+</layout>

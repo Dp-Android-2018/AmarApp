@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="CompanyRegisterViewModelStep1"
+            type="dp.com.amarapp.viewmodel.CompanyRegisterViewModelStep1"/>
+    </data>
+<LinearLayout
+    android:id="@+id/ll_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg_copy">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15h"
+        android:textSize="@dimen/sp12_5"
+        android:textStyle="bold"
+
+        android:textColor="@color/text_color_black"
+        android:layout_gravity="center"
+        android:text="@string/sign_up_company_membership" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="end"
+        android:textDirection="locale"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+
+        android:inputType="text"
+        android:layout_marginTop="@dimen/dp40h"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:hint="@string/company_name"
+
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:id="@+id/name"
+        android:text="@={CompanyRegisterViewModelStep1.name}"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="end"
+        android:textDirection="locale"
+        android:layout_marginTop="@dimen/dp15h"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:inputType="textEmailAddress"
+
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:hint="@string/mail_address"
+
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:id="@+id/mail"
+        android:text="@={CompanyRegisterViewModelStep1.email}"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="end"
+        android:textDirection="locale"
+        android:layout_marginTop="@dimen/dp15h"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:hint="@string/password"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:id="@+id/password"
+        android:text="@={CompanyRegisterViewModelStep1.password}"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="end"
+        android:textDirection="locale"
+        android:layout_marginTop="@dimen/dp15h"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:layout_below="@id/country"
+        android:hint="@string/pass_confirmation"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:id="@+id/password_confrim"
+        android:text="@={CompanyRegisterViewModelStep1.confirm_password}"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="end"
+        android:textDirection="locale"
+        android:layout_marginTop="@dimen/dp15h"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:textColor="@color/text_color"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/edit_text_shape"
+        android:textSize="@dimen/sp13"
+        android:paddingTop="@dimen/dp3h"
+        android:textStyle="bold"
+        android:hint="@string/country"
+        android:textColorHint="@color/text_color"
+        android:id="@+id/country"
+        android:onClick="@{CompanyRegisterViewModelStep1::getCountries}"
+        android:text="@{CompanyRegisterViewModelStep1.countryName}"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="end"
+        android:textDirection="locale"
+        android:layout_marginTop="@dimen/dp15h"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:textSize="@dimen/sp13"
+        android:paddingTop="@dimen/dp3h"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:background="@drawable/edit_text_shape"
+        android:hint="@string/city"
+
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:id="@+id/city"
+        android:onClick="@{CompanyRegisterViewModelStep1::getCities}"
+        android:text="@{CompanyRegisterViewModelStep1.cityName}"/>
+
+
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="@dimen/dp150h"
+        android:layout_height="@dimen/dp36h"
+
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dp14h"
+        android:layout_marginTop="@dimen/dp18h"
+        android:background="@drawable/button_shape"
+        android:text="@string/next"
+        android:textColor="@color/text_color"
+        android:textSize="16.7dp"
+        android:onClick="@{CompanyRegisterViewModelStep1::nextAction}"/>
+
+</LinearLayout>
+</layout>

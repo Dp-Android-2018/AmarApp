@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="LoginViewModel"
+            type="dp.com.amarapp.viewmodel.LoginViewModel"/>
+    </data>
+
+<RelativeLayout
+    android:id="@+id/rl_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_copy">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/dp74w"
+        android:layout_height="@dimen/dp64w"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp74h"
+        android:src="@mipmap/logo" />
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="@dimen/dp230h"
+        android:layout_height="@dimen/dp36w"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="@dimen/dp47h"
+        android:background="@drawable/edit_text_shape"
+        android:hint="@string/mail_address"
+        android:paddingEnd="@dimen/dp12w"
+        android:paddingStart="@dimen/dp12w"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:inputType="textEmailAddress"
+        android:textDirection="locale"
+        android:gravity="end"
+        android:text="@={LoginViewModel.email}"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="@dimen/dp230h"
+        android:layout_height="@dimen/dp36w"
+        android:layout_below="@id/mail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp33w"
+        android:background="@drawable/edit_text_shape"
+        android:hint="@string/password"
+        android:paddingEnd="@dimen/dp12w"
+        android:paddingStart="@dimen/dp12w"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:inputType="textPassword"
+        android:textDirection="locale"
+        android:gravity="end"
+        android:text="@={LoginViewModel.password}"/>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="@dimen/dp150h"
+        android:layout_height="@dimen/dp36w"
+        android:layout_below="@id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_shape"
+        android:text="@string/log_in"
+        android:textColor="@color/text_color"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp15"
+        android:onClick="@{LoginViewModel::loginAction}"/>
+
+    <TextView
+        android:id="@+id/tv_new_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp8w"
+        android:text="@string/new_user"
+        android:textColor="@color/new_user_text_color"
+        android:textSize="@dimen/sp10"
+        android:onClick="@{LoginViewModel::newUser}"/>
+
+    <TextView
+        android:id="@+id/tv_forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_new_user"
+        android:layout_marginTop="@dimen/dp11w"
+        android:text="@string/forget_password"
+        android:textColor="@color/forget_pass_text"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:onClick="@{LoginViewModel::fogetPassword}"/>
+    <TextView
+        android:id="@+id/tv_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skip_login"
+        android:textStyle="bold"
+        android:textColor="@color/text_color_black"
+        android:textSize="@dimen/sp10"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp9h"
+        android:onClick="@{LoginViewModel::skipRegister}"/>
+
+</RelativeLayout>
+</layout>

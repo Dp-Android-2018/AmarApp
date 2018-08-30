@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="ItemSpecializationViewModel"
+            type="dp.com.amarapp.viewmodel.ItemSpecializationViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_parent"
+        android:background="@color/back_ground_day"
+        android:onClick="@{ItemSpecializationViewModel::onItemClick}">
+        <TextView
+            android:id="@+id/tv_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{ItemSpecializationViewModel.name}"
+            android:textSize="@dimen/sp12"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/dp21w"
+            android:layout_marginEnd="@dimen/dp21w"
+            android:textColor="@color/country_item_color"/>
+
+        <View
+            android:layout_below="@+id/tv_country"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1h"
+            android:background="@color/divider"
+            android:layout_marginTop="@dimen/dp4h"/>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="243dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@color/text_color">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13.3sp"
+        android:textColor="@color/text_color_black"
+        android:lineSpacingExtra="6.7sp"
+        android:layout_gravity="center"
+        android:text="من فضلك قم بتسجيل الدخول"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginStart="37dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13.3sp"
+        android:textColor="@color/text_color_black"
+        android:lineSpacingExtra="6.7sp"
+        android:layout_gravity="center"
+        android:text="لتتمكن من المتابعه"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:orientation="horizontal"
+        android:layout_gravity="fill_horizontal">
+        <Button
+            android:id="@+id/bt_cancel"
+            android:layout_width="0dp"
+            android:layout_weight=".48"
+            android:layout_height="wrap_content"
+            android:background="@color/action_bar_background"
+            android:textSize="13.3sp"
+            android:textColor="@color/text_color"
+            android:lineSpacingExtra="6.7sp"
+            android:gravity="center"
+            android:text="@string/cancel"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".01"
+            android:background="@color/text_color"/>
+
+        <Button
+            android:id="@+id/bt_register"
+            android:layout_width="0dp"
+            android:layout_weight=".48"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:background="@color/action_bar_background"
+            android:textSize="13.3sp"
+            android:textColor="@color/text_color"
+            android:lineSpacingExtra="6.7sp"
+            android:gravity="center"
+            android:text="@string/register"/>
+    </LinearLayout>
+</LinearLayout>

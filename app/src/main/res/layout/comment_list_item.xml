@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="CommentViewModel"
+            type="dp.com.amarapp.viewmodel.CommentItemViewModel"/>
+    </data>
+
+<RelativeLayout
+    android:id="@+id/rl_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/text_color"
+    android:layout_margin="5dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{CommentViewModel.client}"
+        android:textSize="8.3dp"
+        android:textColor="@color/text_color_black"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/name"/>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/name"
+        android:scaleX=".3"
+        android:scaleY=".3"
+        android:rating="@{CommentViewModel.rate}"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:textSize="5.3dp"
+        android:textColor="@color/text_color_black"
+        android:layout_marginTop="5dp"
+        android:text="@{CommentViewModel.comment}"/>
+
+</RelativeLayout>
+</layout>

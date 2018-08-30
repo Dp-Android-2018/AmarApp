@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dp.com.amarapp">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".Application.MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.activity.ActivationActivity" />
+
+        <activity android:name=".view.activity.PhoneActivity" />
+
+        <activity android:name=".view.activity.ActivationCodeActivity" />
+
+        <activity android:name=".view.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".view.activity.ClientRegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.ForgetPasswordActivity" />
+
+        <activity android:name=".view.activity.MembershipActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.CompanyRegisterActivityStep1"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".view.activity.CompanyRegisterActivityStep2"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.ChangePasswordActivity"/>
+
+        <activity android:name=".view.activity.CompanyDetailedActivity" />
+
+        <activity android:name=".view.activity.CompanyInformationActivity" />
+
+        <activity android:name=".view.activity.CompanyProjectsActivity" />
+
+        <activity android:name=".view.activity.DetailedProjectActivity"/>
+
+        <activity android:name=".view.activity.AdvertDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.ContainerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.CountryActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.CityActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.CategoriesActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.SpecializationActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".view.activity.AddProjectActivity"/>
+        <activity android:name=".view.activity.CompanyWorkDaysActivity"/>
+    </application>
+
+</manifest>

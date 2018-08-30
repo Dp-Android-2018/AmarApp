@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="ClientRegisterViewModel"
+            type="dp.com.amarapp.viewmodel.ClientRegisterViewModel">
+        </variable>
+    </data>
+
+<LinearLayout
+    android:id="@+id/ll_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_copy"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp16w"
+        android:textSize="@dimen/sp12_5"
+        android:textStyle="bold"
+        android:textColor="@color/text_color_black"
+        android:layout_gravity="center"
+        android:text="@string/sign_up_membership_user"/>
+    <EditText
+        android:id="@+id/et_register_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:inputType="text"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:layout_marginTop="@dimen/dp13h"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/edit_text_shape"
+        android:hint="@string/enter_full_name"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:text="@={ClientRegisterViewModel.name}"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:layout_marginTop="@dimen/dp18h"
+        android:id="@+id/et_register_mail"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:layout_below="@id/et_register_name"
+        android:hint="@string/mail_address"
+        android:textColor="@color/text_color"
+       
+        android:textColorHint="@color/text_color"
+        android:text="@={ClientRegisterViewModel.email}"
+        android:inputType="textEmailAddress"/>
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:layout_marginTop="@dimen/dp18h"
+        android:id="@+id/et_register_phone"
+        android:inputType="phone"
+        android:textColor="@color/text_color"
+
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:layout_below="@id/et_register_mail"
+        android:hint="@string/phone_no"
+        android:textColorHint="@color/text_color"
+        android:text="@={ClientRegisterViewModel.phone}"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:layout_marginTop="@dimen/dp18h"
+        android:id="@+id/et_register_country"
+        android:inputType="text"
+        android:textColor="@color/text_color"
+
+        android:layout_gravity="center"
+        android:onClick="@{ClientRegisterViewModel::getCountries}"
+        android:background="@drawable/edit_text_shape"
+        android:layout_below="@id/et_register_phone"
+        android:hint="@string/country"
+
+        android:textColorHint="@color/text_color"
+        android:text="@{ClientRegisterViewModel.countryName}"/>
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:layout_marginTop="@dimen/dp18h"
+        android:id="@+id/et_register_city"
+        android:inputType="text"
+        android:textColor="@color/text_color"
+
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:layout_below="@id/et_register_country"
+        android:hint="@string/city"
+
+        android:onClick="@{ClientRegisterViewModel::getCities}"
+        android:textColorHint="@color/text_color"
+        android:text="@{ClientRegisterViewModel.cityName}"/>
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:layout_marginTop="@dimen/dp18h"
+        android:id="@+id/et_register_password"
+        android:inputType="textPassword"
+        android:textColor="@color/text_color"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:layout_below="@id/et_register_city"
+        android:hint="@string/password"
+        android:textColorHint="@color/text_color"
+        android:text="@={ClientRegisterViewModel.password}"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp27h"
+        android:layout_marginStart="@dimen/dp47h"
+        android:layout_marginEnd="@dimen/dp47h"
+        android:gravity="center_vertical|end"
+        android:textDirection="locale"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"
+        android:paddingEnd="@dimen/dp12h"
+        android:paddingStart="@dimen/dp12h"
+        android:layout_marginTop="@dimen/dp18h"
+        android:id="@+id/et_register_password_confirm"
+        android:inputType="textPassword"
+        android:textColor="@color/text_color"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:layout_below="@id/et_register_password"
+        android:hint="@string/pass_confirmation"
+
+        android:textColorHint="@color/text_color"
+        android:text="@={ClientRegisterViewModel.confirm_password}"/>
+
+    <Button
+        android:layout_width="@dimen/dp150h"
+        android:layout_height="@dimen/dp36h"
+
+        android:layout_below="@id/et_register_password_confirm"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp18h"
+        android:layout_marginBottom="@dimen/dp13h"
+        android:textStyle="bold"
+        android:background="@drawable/button_shape"
+        android:text="@string/register_membership"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp15"
+        android:id="@+id/signup"
+        android:onClick="@{ClientRegisterViewModel::registerAction}"/>
+
+</LinearLayout>
+</layout>

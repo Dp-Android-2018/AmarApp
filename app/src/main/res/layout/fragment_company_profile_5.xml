@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="ProfileViewModel5"
+            type="dp.com.amarapp.viewmodel.CompanyProfileViewModel_5"/>
+    </data>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp8_5"
+        android:textColor="@color/home_text_color"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/social_media"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp8_5"
+        android:textColor="@color/home_text_color"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/social_media_2"
+        android:layout_marginTop="@dimen/dp4w"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp23h">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tv_facebook"
+            android:textSize="@dimen/sp9"
+            android:textColor="@color/social_text_color"
+            android:text="@string/facebook"/>
+        <EditText
+            android:layout_below="@+id/tv_facebook"
+            android:layout_width="@dimen/dp210h"
+            android:layout_height="@dimen/dp32w"
+            android:background="@drawable/edit_text_shape"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp9"
+            android:layout_marginTop="@dimen/dp3h"
+            android:hint="facebook"
+            android:textDirection="locale"
+            android:text="@={ProfileViewModel5.facebook}"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/text_color"
+            android:paddingStart="@dimen/sp12"
+            android:paddingEnd="@dimen/sp12"
+            android:id="@+id/et_face" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp7w">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp9"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tv_twitter"
+            android:textColor="@color/social_text_color"
+            android:text="@string/twietter" />
+        <EditText
+            android:layout_below="@+id/tv_twitter"
+            android:layout_width="@dimen/dp210h"
+            android:layout_height="@dimen/dp32w"
+            android:background="@drawable/edit_text_shape"
+            android:paddingStart="@dimen/sp12"
+
+            android:paddingEnd="@dimen/sp12"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp9"
+            android:layout_marginTop="@dimen/dp3h"
+            android:hint="twitter"
+            android:text="@={ProfileViewModel5.twitter}"
+            android:textColorHint="@color/text_color"
+            android:textColor="@color/text_color"
+
+            android:id="@+id/et_twitter" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp7w">
+        <TextView
+            android:id="@+id/tv_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp9"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/social_text_color"
+            android:text="@string/instgram"
+            />
+        <EditText
+            android:layout_below="@+id/tv_instagram"
+            android:layout_width="@dimen/dp210h"
+            android:layout_height="@dimen/dp32w"
+            android:background="@drawable/edit_text_shape"
+            android:layout_gravity="center"
+            android:hint="instgrame"
+            android:paddingStart="@dimen/sp12"
+
+            android:paddingEnd="@dimen/sp12"
+            android:layout_marginTop="@dimen/dp3h"
+            android:text="@={ProfileViewModel5.instgram}"
+            android:textColorHint="@color/text_color"
+            android:textSize="@dimen/sp9"
+            android:textColor="@color/text_color"
+            android:id="@+id/et_insta"
+            />
+    </RelativeLayout>
+    <Button
+        android:layout_width="@dimen/dp150h"
+        android:layout_height="@dimen/dp36h"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_shape"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp48h"
+        android:textSize="@dimen/sp15"
+        android:textColor="@color/text_color"
+        android:text="@string/save"
+        android:onClick="@{ProfileViewModel5::save}"/>
+</LinearLayout>
+    </layout>
