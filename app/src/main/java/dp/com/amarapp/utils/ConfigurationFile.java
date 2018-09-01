@@ -40,6 +40,7 @@ public class ConfigurationFile {
         public static final String CREATE_COMMENT_URL="/api/clients/comments";
         public static final String SEND_ACTIVATION_MAIL_URL="/api/activate/email/send";
         public static final String SEND_ACTIVATION_CODE_URL="/api/activate/phone/send";
+        public static final String FORGET_PASSWORD_URL="/api/forget";
     }
 
     public static class Constants{

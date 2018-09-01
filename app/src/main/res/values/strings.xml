@@ -171,4 +171,6 @@
     <string name="activation_code_send">تم إرسال كود التفعيل</string>
     <string name="your_comment">اكتب تعليق</string>
     <string name="more_comments_illagel">غير مسموح بعمل أكثر من تعليق</string>
+    <string name="please_enter_your_mail">برجاء ادخال بريدك الإلكتلاونى لتجديد كلمة المرور</string>
+    <string name="this_mail_not_exist">هذا البريد غير مسجل من قبل</string>
 </resources>

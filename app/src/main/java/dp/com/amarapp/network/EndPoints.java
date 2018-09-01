@@ -11,6 +11,7 @@ import dp.com.amarapp.model.request.CodeRequest;
 import dp.com.amarapp.model.request.CommentRequest;
 import dp.com.amarapp.model.request.CompanyRegisterRequest;
 import dp.com.amarapp.model.request.CreateAdvertRequest;
+import dp.com.amarapp.model.request.ForgetPasswordRequest;
 import dp.com.amarapp.model.request.LoginRequest;
 import dp.com.amarapp.model.request.UpdateMetaDataRequest;
 import dp.com.amarapp.model.response.AdvertResponse;
@@ -113,4 +114,9 @@ public interface EndPoints {
     //create comment
     @POST(ConfigurationFile.UrlConstants.CREATE_COMMENT_URL)
     Observable<Response<DefaultResponse>>createComment(@Header("x-api-key") String key, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Header("Authorization") String token,@Body CommentRequest request);
+
+    //forget password
+    @POST(ConfigurationFile.UrlConstants.FORGET_PASSWORD_URL)
+    Observable<Response<DefaultResponse>>forgetPassword(@Header("x-api-key") String key, @Header("Content-Type") String contentType, @Header("Accept") String accept,@Body ForgetPasswordRequest request);
+
 }
