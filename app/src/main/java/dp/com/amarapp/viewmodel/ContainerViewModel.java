@@ -1,12 +1,7 @@
 package dp.com.amarapp.viewmodel;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
-import android.view.MenuItem;
-import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.utils.ConfigurationFile;
@@ -47,8 +42,15 @@ public class ContainerViewModel {
 
                     break;
                 }
+                case R.id.logout:
+                {
+                    CustomUtils.getInstance().clearSharedPref(context);
+                    callback.updateUi(ConfigurationFile.Constants.LOGOUT);
+                    break;
+                }
             }
             return true;
         };
     }
+
 }

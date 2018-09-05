@@ -1,15 +1,19 @@
 package dp.com.amarapp.viewmodel;
 
 import android.content.Context;
+import android.databinding.ObservableInt;
+import android.opengl.Visibility;
 import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.utils.ConfigurationFile;
+import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.view.callback.BaseInterface;
 
 public class BottomBarViewModel{
     private Context context;
     private BaseInterface callback;
+
     public BottomBarViewModel(Context context,BaseInterface callback){
         this.context = context;
         this.callback=callback;
@@ -44,5 +48,4 @@ public class BottomBarViewModel{
 
         }
     }
-
 }

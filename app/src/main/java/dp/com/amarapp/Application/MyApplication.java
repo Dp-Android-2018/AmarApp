@@ -7,8 +7,10 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.City;
 import dp.com.amarapp.model.pojo.Specialization;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MyApplication extends Application {
 
@@ -33,5 +35,15 @@ public class MyApplication extends Application {
 
     public static void setSpecializations(List<Specialization> specializations) {
         MyApplication.specializations = specializations;
+    }
+
+    public void onCreate(){
+        super.onCreate();
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("font/Arabic_Font.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
+
     }
 }

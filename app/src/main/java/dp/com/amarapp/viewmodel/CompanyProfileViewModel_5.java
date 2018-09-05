@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dp.com.amarapp.R;
+import dp.com.amarapp.model.pojo.SocialNetwork;
 import dp.com.amarapp.model.request.UpdateMetaDataRequest;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
 import dp.com.amarapp.utils.ConfigurationFile;
@@ -22,7 +23,7 @@ public class CompanyProfileViewModel_5 {
     public ObservableField<String> facebook;
     public ObservableField<String> twitter;
     public ObservableField<String> instgram;
-    private List<String> social;
+    private SocialNetwork social;
     UpdateMetaDataRequest request;
 
     public CompanyProfileViewModel_5(Activity activity) {
@@ -33,13 +34,13 @@ public class CompanyProfileViewModel_5 {
 
     public void initVariables(){
         request=new UpdateMetaDataRequest();
-        social=new ArrayList<>();
+        social=company.getMetaData().getSocial();
         facebook=new ObservableField<>();
-        facebook.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().get(0):"");
+        facebook.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().getFacebook():"");
         twitter=new ObservableField<>();
-        twitter.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().get(1):"");
+        twitter.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().getTwitter():"");
         instgram=new ObservableField<>();
-        instgram.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().get(2):"");
+        instgram.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().getInstagram():"");
     }
 
     public void setRequest(){
@@ -50,9 +51,9 @@ public class CompanyProfileViewModel_5 {
         if (ValidationUtils.isEmpty(instgram.get()))
             instgram.set("");
 
-        social.add(facebook.get());
-        social.add(twitter.get());
-        social.add(instgram.get());
+        social.setFacebook(facebook.get());
+        social.setTwitter(twitter.get());
+        social.setInstagram(instgram.get());
         request.setSocial(social);
         request.setSpecializationId(company.getSpecialization().getId());
         request.setCountryId(company.getCountry().getId());

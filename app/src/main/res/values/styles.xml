@@ -21,5 +21,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="AppTheme.RatingBar">
+        <item name="colorControlNormal">@color/text_color</item>
+        <item name="colorControlActivated">@color/pics_color</item>
+    </style>
+
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 </resources>

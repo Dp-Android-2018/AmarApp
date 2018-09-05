@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityMembershipBinding;
@@ -37,6 +37,7 @@ public class MembershipActivity extends BaseActivity implements BaseInterface {
 
     public void setUpActionBar(){
         setSupportActionBar( membershipBinding.toolbar.toolbar);
+        membershipBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         membershipBinding.toolbar.setViewmodel(new ToolbarViewModel(MembershipActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));}
     @Override
     public void updateUi(int code) {

@@ -11,7 +11,6 @@ import dp.com.amarapp.model.response.CompanyLoginResponse;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.view.activity.CompanyDetailedActivity;
-import dp.com.amarapp.view.callback.BaseInterface;
 
 public class ItemCompanyViewModel extends Observable {
 
@@ -37,6 +36,9 @@ public class ItemCompanyViewModel extends Observable {
         if (companyItem.getCategory().getName()!=null) {
             return companyItem.getCategory().getName();
         }else return "";
+    }
+    public String getImage(){
+        return companyItem.getMetaData().getLogo();
     }
     public String getCity(){
         if (companyItem.getCity()!=null) {

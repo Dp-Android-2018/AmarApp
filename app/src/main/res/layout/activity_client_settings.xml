@@ -11,169 +11,199 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/dp1h"
         android:background="@color/back_ground_gray"
-        android:layout_marginTop="13dp"/>
+        android:layout_marginTop="@dimen/dp12h"/>
     <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textSize="11.7sp"
+    android:textSize="@dimen/sp10_5"
     android:textColor="@color/text_color_black"
-    android:lineSpacingExtra="-5.7sp"
-    android:text="@string/user_name"
-    android:paddingEnd="5dp"/>
+    android:paddingEnd="@dimen/dp9w"
+    android:textStyle="bold"
+    android:layout_marginTop="@dimen/dp7h"
+    android:text="@string/user_name" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@={ClientSettingsViewModel.name}" />
+        android:paddingEnd="@dimen/dp9w"
+        android:textSize="@dimen/sp9_5"
+        android:textColor="@color/text_color_black"
+        android:layout_marginTop="@dimen/dp9h"
+        android:text="@={ClientSettingsViewModel.name}"
+        android:textDirection="locale"
+        android:gravity="end"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/dp1h"
         android:background="@color/back_ground_gray"
-        android:layout_marginTop="13dp"/>
+        android:layout_marginTop="@dimen/dp7h"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="11.7sp"
-        android:textColor="@color/text_color_black"
-        android:lineSpacingExtra="-5.7sp"
         android:text="@string/mail_address"
-        android:paddingEnd="5dp"/>
+        android:textSize="@dimen/sp10_5"
+        android:textColor="@color/text_color_black"
+        android:paddingEnd="@dimen/dp9w"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp7h"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/dp9w"
+        android:textSize="@dimen/sp9_5"
+        android:gravity="end"
+        android:textColor="@color/text_color_black"
+        android:layout_marginTop="@dimen/dp9h"
         android:text="@={ClientSettingsViewModel.mail}"
-        android:gravity="right"
         />
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/dp1h"
         android:background="@color/back_ground_gray"
-        android:layout_marginTop="13dp"/>
+        android:layout_marginTop="@dimen/dp7h"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="11.7sp"
-        android:textColor="@color/text_color_black"
-        android:lineSpacingExtra="-5.7sp"
         android:text="@string/phone_no"
-        android:paddingEnd="5dp"/>
+        android:textSize="@dimen/sp10_5"
+        android:textColor="@color/text_color_black"
+        android:paddingEnd="@dimen/dp9w"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp7h"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@={ClientSettingsViewModel.phone}"
-        android:gravity="right"
-        />
+        android:paddingEnd="@dimen/dp9w"
+        android:textSize="@dimen/sp9_5"
+        android:textDirection="locale"
+        android:gravity="end"
+        android:layout_marginTop="@dimen/dp9h"
+        android:text="@={ClientSettingsViewModel.phone}" />
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/dp1h"
         android:background="@color/back_ground_gray"
-        android:layout_marginTop="13dp"/>
+        android:layout_marginTop="@dimen/dp7h"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="11.7sp"
+        android:textSize="@dimen/sp10_5"
         android:textColor="@color/text_color_black"
-        android:lineSpacingExtra="-5.7sp"
-        android:text="@string/country"
-        android:paddingEnd="5dp"/>
+        android:paddingEnd="@dimen/dp9w"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp7h"
+        android:text="@string/country"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="السعوديه"
-        android:gravity="right"
-        />
+        android:paddingEnd="@dimen/dp9w"
+        android:textSize="@dimen/sp9_5"
+        android:textDirection="locale"
+        android:layout_marginTop="@dimen/dp9h"
+        android:gravity="end"
+        android:text="@{ClientSettingsViewModel.countryName}"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/dp1h"
         android:background="@color/back_ground_gray"
-        android:layout_marginTop="13dp"/>
+        android:layout_marginTop="@dimen/dp7h"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="11.7sp"
-        android:textColor="@color/text_color_black"
         android:lineSpacingExtra="-5.7sp"
         android:text="@string/city"
-        android:paddingEnd="5dp"/>
+        android:textSize="@dimen/sp10_5"
+        android:textColor="@color/text_color_black"
+        android:paddingEnd="@dimen/dp9w"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp7h"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="الرياض"
-        android:gravity="right"
-        />
+        android:gravity="end"
+        android:paddingEnd="@dimen/dp9w"
+        android:textSize="@dimen/sp9_5"
+        android:textDirection="locale"
+        android:layout_marginTop="@dimen/dp9h"
+        android:text="@{ClientSettingsViewModel.cityName}"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/dp1h"
         android:background="@color/back_ground_gray"
-        android:layout_marginTop="13dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="11.7sp"
-        android:textColor="@color/text_color_black"
-        android:lineSpacingExtra="-5.7sp"
-        android:text="@string/password"
-        android:paddingEnd="5dp"/>
+        android:layout_marginTop="@dimen/dp7h"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@={ClientSettingsViewModel.password}"
-        android:gravity="right"
-        android:inputType="textPassword"/>
+        android:layout_height="@dimen/dp43w"
+        android:onClick="@{ClientSettingsViewModel::changePassword}">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_black"
+            android:lineSpacingExtra="-5.7sp"
+            android:text="@string/password"
+            android:textSize="@dimen/sp10_5"
+            android:paddingEnd="@dimen/dp9w"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp7h" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/arrow_down_sign_to_navigate"
             android:layout_marginLeft="10dp"
-            android:onClick="@{ClientSettingsViewModel::changePassword}"/>
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/back_ground_gray"
-        android:layout_marginTop="13dp"/>
+        android:layout_height="@dimen/dp1h"
+        android:background="@color/back_ground_gray"/>
     <Button
-        android:layout_width="255dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dp202w"
+        android:layout_height="@dimen/dp30h"
         android:layout_gravity="center"
-        android:background="@drawable/button_shape"
+        android:background="@drawable/sign_out_shape"
         android:text="@string/log_out"
-        android:layout_marginTop="58dp"
-        android:backgroundTint="@color/text_color"
-        android:onClick="@{ClientSettingsViewModel::logOut}"
-        />
-    <TextView
+        android:textColor="@color/text_color_black"
+        android:textSize="@dimen/sp10_5"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp45h"
+        android:onClick="@{ClientSettingsViewModel::logOut}" />
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="7.2sp"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom"
+        android:layout_marginTop="@dimen/dp19h">
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/sp6_5"
     android:textColor="@color/text_color_black"
-    android:lineSpacingExtra="1.2sp"
+    android:textStyle="bold"
     android:gravity="center_horizontal"
     android:text= "@string/version"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+    android:layout_gravity="center_horizontal" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/developed_by"
-        android:textSize="7.2sp"
+        android:textSize="@dimen/sp6_5"
         android:textColor="@color/text_color_black"
-        android:lineSpacingExtra="1.2sp"
-        android:layout_gravity="center"
-        />
+        android:layout_gravity="center_horizontal"/>
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dp36w"
+        android:layout_height="@dimen/dp10h"
         android:src="@mipmap/logoform"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"/>
-
+    </LinearLayout>
 
 </LinearLayout>
 </layout>

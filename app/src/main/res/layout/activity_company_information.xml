@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="CompanyInformation"
             type="dp.com.amarapp.viewmodel.CompanyInformationViewModel"/>
     </data>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".45"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp286h"
+        android:layout_gravity="end"
         android:text="@{CompanyInformation.describtion}"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#757575"/>
+        android:background="@color/back_ground_gray"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1">
+        android:layout_height="@dimen/dp26h"
+        android:layout_marginEnd="@dimen/dp10w">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/call_answer"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="10dp"
             android:id="@+id/phone"
+            android:layout_marginStart="@dimen/dp12w"
             android:onClick="@{CompanyInformation::call}"/>
         <TextView
             android:layout_width="wrap_content"
@@ -40,27 +42,24 @@
             android:layout_centerVertical="true"
             android:text="@{CompanyInformation.phone}"
             android:textColor="@color/text_color_black" />
-
-
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#757575"/>
+        android:background="@color/back_ground_gray"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1">
+        android:layout_height="@dimen/dp26h"
+        android:layout_marginEnd="@dimen/dp10w">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/close_envelope"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="10dp"
             android:id="@+id/maile"
+            android:layout_marginStart="@dimen/dp12w"
             android:onClick="@{CompanyInformation::mail}"/>
         <TextView
             android:layout_width="wrap_content"
@@ -75,20 +74,19 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#757575"/>
+        android:background="@color/back_ground_gray"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1">
+        android:layout_height="@dimen/dp26h"
+        android:layout_marginEnd="@dimen/dp10w">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/grid_world"
-            android:layout_alignParentRight="true"
+            android:layout_marginStart="@dimen/dp12w"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="10dp"
             android:id="@+id/website"
             android:onClick="@{CompanyInformation::website}"/>
         <TextView
@@ -97,47 +95,39 @@
             android:layout_toStartOf="@id/website"
             android:layout_centerVertical="true"
             android:text="@{CompanyInformation.website}"
-            android:textColor="@color/text_color_black"
-            />
-
+            android:textColor="@color/text_color_black"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#757575"/>
+        android:background="@color/back_ground_gray"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".1">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp24w"
+            android:layout_height="@dimen/dp24h"
             android:src="@mipmap/instagram_logo"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:id="@+id/insta"/>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp24w"
+            android:layout_height="@dimen/dp24h"
             android:src="@mipmap/facebook_logo_button"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/insta"
-            />
+            android:layout_toEndOf="@id/insta" />
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp24w"
+            android:layout_height="@dimen/dp24h"
             android:src="@mipmap/twitter_logo_button"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@id/insta"
             />
-
     </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".15"/>
 </LinearLayout>
 </layout>

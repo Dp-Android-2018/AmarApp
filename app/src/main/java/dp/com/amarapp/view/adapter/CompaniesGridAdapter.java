@@ -1,6 +1,5 @@
 package dp.com.amarapp.view.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableList;
@@ -11,9 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
@@ -58,7 +54,7 @@ public class CompaniesGridAdapter extends BaseAdapter {
         TextView description=view.findViewById(R.id.description_company);
         TextView rate=view.findViewById(R.id.rate_value);
         if(companies.get(position).getMetaData().getImages()!=null) {
-            Picasso.with(context).load(companies.get(position).getMetaData().getImages().get(0))
+            Picasso.with(context).load(companies.get(position).getMetaData().getLogo())
                     .placeholder(R.drawable.ic_launcher_background).into(imageView);
         }
         if(companies.get(position).getName()!=null) {

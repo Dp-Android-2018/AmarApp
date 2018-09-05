@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import dp.com.amarapp.model.pojo.SocialNetwork;
+
 public class UpdateMetaDataRequest {
     @SerializedName("website")
     private String website;
@@ -18,7 +20,7 @@ public class UpdateMetaDataRequest {
     private String logoUrl;
 
     @SerializedName("social_networks")
-    private List<String> social;
+    private SocialNetwork social;
 
     @SerializedName("name")
     private String name;
@@ -51,7 +53,7 @@ public class UpdateMetaDataRequest {
         this.logoUrl = logoUrl;
     }
 
-    public void setSocial(List<String> social) {
+    public void setSocial(SocialNetwork social) {
         this.social = social;
     }
 
@@ -92,7 +94,7 @@ public class UpdateMetaDataRequest {
         return logoUrl;
     }
 
-    public List<String> getSocial() {
+    public SocialNetwork getSocial() {
         return social;
     }
 

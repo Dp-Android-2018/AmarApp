@@ -2,7 +2,6 @@ package dp.com.amarapp.viewmodel;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.ObservableField;
 import android.view.View;
 
@@ -10,7 +9,6 @@ import java.util.Observable;
 
 import dp.com.amarapp.model.pojo.LoginResponseContent;
 import dp.com.amarapp.model.request.LoginRequest;
-import dp.com.amarapp.model.response.LoginResponse;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
 import dp.com.amarapp.utils.ConfigurationFile;
@@ -18,14 +16,9 @@ import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
 import dp.com.amarapp.utils.SharedPrefrenceUtils;
 import dp.com.amarapp.utils.ValidationUtils;
-import dp.com.amarapp.view.activity.ClientRegisterActivity;
-import dp.com.amarapp.view.activity.ContainerActivity;
-import dp.com.amarapp.view.activity.LoginActivity;
 import dp.com.amarapp.view.callback.BaseInterface;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 /**
  * Created by DELL on 22/07/2018.
@@ -87,6 +80,7 @@ public class LoginViewModel extends Observable {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(loginResponseResponse -> {
                         CustomUtils.getInstance().cancelDialog();
+                        System.out.println("COde in log in is :"+loginResponseResponse.code());
                         switch (loginResponseResponse.code()){
                             case (ConfigurationFile.Constants.SUCCESS_CODE_second):
                             {

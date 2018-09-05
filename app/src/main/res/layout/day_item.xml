@@ -31,17 +31,18 @@
             android:layout_marginEnd="17dp"
             android:text="من"
             android:gravity="center"
-            android:id="@+id/from"/>
+            android:id="@+id/mfrom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/time"
-            android:layout_toStartOf="@id/from"
+            android:layout_toStartOf="@id/mfrom"
             android:textSize="6dp"
             android:textColor="@color/text_color_black"
             android:layout_marginEnd="21dp"
             android:text="إلى"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:id="@+id/mto"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -68,17 +69,18 @@
             android:layout_marginEnd="17dp"
             android:text="من"
             android:gravity="center"
-            android:id="@+id/from1"/>
+            android:id="@+id/nfrom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/time"
-            android:layout_toStartOf="@id/from1"
+            android:layout_toStartOf="@id/nfrom"
             android:textSize="6dp"
             android:textColor="@color/text_color_black"
             android:layout_marginEnd="21dp"
             android:text="إلى"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:id="@+id/nto"/>
     </RelativeLayout>
 
 </LinearLayout>

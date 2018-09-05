@@ -9,7 +9,6 @@
             name="ProfileViewModel6"
             type="dp.com.amarapp.viewmodel.CompanyProfileViewModel_6"/>
     </data>
-
     <RelativeLayout
         android:id="@+id/rl_parent"
         android:layout_width="match_parent"
@@ -36,8 +35,8 @@
                 android:layout_width="@dimen/dp42w"
                 android:layout_height="@dimen/dp42w"
                 android:layout_margin="@dimen/dp18h"
-                app:backgroundTint="@color/pics_color"
-                android:onClick="@{ProfileViewModel6::addProject}"/>
+                android:onClick="@{ProfileViewModel6::addProject}"
+                bind:backgroundTint="@color/pics_color" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

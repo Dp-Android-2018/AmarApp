@@ -2,7 +2,6 @@ package dp.com.amarapp.view.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,4 +26,5 @@ public class CompanyProfileFragment_7 extends Fragment {
         View v=profile7Binding.getRoot();
         return v;
     }
+
 }

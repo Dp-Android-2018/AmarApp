@@ -173,4 +173,7 @@
     <string name="more_comments_illagel">غير مسموح بعمل أكثر من تعليق</string>
     <string name="please_enter_your_mail">برجاء ادخال بريدك الإلكتلاونى لتجديد كلمة المرور</string>
     <string name="this_mail_not_exist">هذا البريد غير مسجل من قبل</string>
+    <string name="please_register">من فضلك قم بتسجيل الدخول</string>
+    <string name="can_follow">لتتمكن من المتابعه</string>
+    <string name="activation_code">كود التفعيل</string>
 </resources>

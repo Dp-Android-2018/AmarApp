@@ -1,15 +1,11 @@
 package dp.com.amarapp.viewmodel;
 
 import android.app.Activity;
-import android.databinding.Bindable;
-import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.view.View;
 
 import java.util.Observable;
-
-import dp.com.amarapp.R;
 
 public class CompanyProfileViewModel_7 extends Observable {
     public ObservableInt sunVisibility;

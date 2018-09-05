@@ -1,20 +1,20 @@
 package dp.com.amarapp.view.activity;
 
-import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityCompanyDetailedBinding;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.view.callback.BaseInterface;
 import dp.com.amarapp.viewmodel.CompanyDetailedViewModel;
+import dp.com.amarapp.viewmodel.ToolbarViewModel;
 
-public class CompanyDetailedActivity extends AppCompatActivity implements BaseInterface {
+public class CompanyDetailedActivity extends BaseActivity implements BaseInterface {
     private CompanyDetailedViewModel detailedViewModel;
     private ActivityCompanyDetailedBinding detailedBinding;
 
@@ -22,6 +22,7 @@ public class CompanyDetailedActivity extends AppCompatActivity implements BaseIn
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initBinding();
+        setUpActionBar();
     }
 
     public void initBinding(){
@@ -29,7 +30,14 @@ public class CompanyDetailedActivity extends AppCompatActivity implements BaseIn
         detailedBinding= DataBindingUtil.setContentView(CompanyDetailedActivity.this, R.layout.activity_company_detailed);
         detailedBinding.setCompanyDetailedViewModel(detailedViewModel);
         detailedBinding.rvComments.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
+        detailedBinding.rvImages.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
     }
+    public void setUpActionBar(){
+        setSupportActionBar( detailedBinding.toolbar.toolbar);
+        detailedBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        detailedBinding.toolbar.setViewmodel(new ToolbarViewModel(CompanyDetailedActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));
+    }
+
 
     @Override
     public void updateUi(int code) {

@@ -20,7 +20,7 @@
 
 <color name="text_color_green">#27ae60</color>
 
-<color name="back_ground_gray">#757575</color>
+<color name="back_ground_gray">#cc757575</color>
 
 <color name="pics_color">#e59124</color>
 
@@ -31,6 +31,7 @@
 <color name="text_color_city">#ca7200</color>
 
 <color name="text_color_small">#80000000</color>
+    <color name="back_ground_comment_color">#f5f5f5</color>
 
 <color name="home_back_color">#d7d7d7</color>
 
@@ -50,5 +51,7 @@
     <color name="project_title_background">#591f2733</color>
     <color name="adv_background">#66e6e6e6</color>
     <color name="image_recycler_background">#c5c5c5</color>
+    <color name="vertical_line_dialog">#511f2733</color>
+    <color name="text_project_name_color">#626262</color>
 
 </resources>

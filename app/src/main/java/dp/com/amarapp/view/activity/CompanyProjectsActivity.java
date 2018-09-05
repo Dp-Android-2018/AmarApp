@@ -4,18 +4,16 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.widget.GridLayout;
-import android.widget.GridView;
+import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityCompanyProjectsBinding;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.view.callback.BaseInterface;
 import dp.com.amarapp.viewmodel.CompanyProjectsViewModel;
+import dp.com.amarapp.viewmodel.ToolbarViewModel;
 
-public class CompanyProjectsActivity extends AppCompatActivity implements BaseInterface {
+public class CompanyProjectsActivity extends BaseActivity implements BaseInterface {
     private CompanyProjectsViewModel projectsViewModel;
     private ActivityCompanyProjectsBinding projectsBinding;
 
@@ -45,5 +43,12 @@ public class CompanyProjectsActivity extends AppCompatActivity implements BaseIn
         projectsViewModel=new CompanyProjectsViewModel(CompanyProjectsActivity.this,this);
         projectsBinding= DataBindingUtil.setContentView(CompanyProjectsActivity.this,R.layout.activity_company_projects);
         projectsBinding.setProjectsViewModel(projectsViewModel);
+        setUpActionBar();
+    }
+
+    public void setUpActionBar(){
+        setSupportActionBar( projectsBinding.toolbar.toolbar);
+        projectsBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        projectsBinding.toolbar.setViewmodel(new ToolbarViewModel(CompanyProjectsActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));
     }
 }

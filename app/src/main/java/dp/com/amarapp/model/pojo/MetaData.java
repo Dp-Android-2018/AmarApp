@@ -21,7 +21,7 @@ public class MetaData implements Serializable{
     private List<String> images;
 
     @SerializedName("social_networks")
-    private List<String> social;
+    private SocialNetwork social;
 
     @SerializedName("logo")
     private String logo;
@@ -41,7 +41,7 @@ public class MetaData implements Serializable{
         this.images = images;
     }
 
-    public void setSocial(List<String> social) {
+    public void setSocial(SocialNetwork social) {
         this.social = social;
     }
 
@@ -65,7 +65,7 @@ public class MetaData implements Serializable{
         return images;
     }
 
-    public List<String> getSocial() {
+    public SocialNetwork getSocial() {
         return social;
     }
 

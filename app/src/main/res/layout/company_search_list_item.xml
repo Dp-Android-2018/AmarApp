@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -29,8 +29,8 @@
                     android:layout_marginTop="@dimen/dp8w"
                     android:layout_marginBottom="@dimen/dp8w"
                     android:src="@mipmap/logo"
-                    android:id="@+id/company_img"
-                   />
+                    bind:imageUrl="@{ItemCompanyViewModel.image}"
+                    android:id="@+id/company_img" />
                 <View
                     android:layout_width="@dimen/dp1h"
                     android:layout_height="match_parent"

@@ -7,9 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityCompanyProfileBinding;
 import dp.com.amarapp.utils.ConfigurationFile;
@@ -28,6 +32,9 @@ public class CompanyProfileFragment extends Fragment implements BaseInterface{
         profileBinding.setProfileViewModel(profileViewModel);
         view=profileBinding.getRoot();
         updateUi(ConfigurationFile.FragmentID.FRAGMENT1);
+        Toolbar toolbar=((AppCompatActivity)getActivity()).findViewById(R.id.toolbar);
+        ImageView ivFilter=toolbar.findViewById(R.id.iv_filter);
+        ivFilter.setVisibility(View.GONE);
         return view;
     }
 

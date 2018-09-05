@@ -2,7 +2,6 @@ package dp.com.amarapp.utils;
 
 
 import android.databinding.BindingAdapter;
-import android.databinding.ObservableField;
 import android.databinding.ObservableList;
 import android.graphics.Bitmap;
 import android.support.design.widget.NavigationView;
@@ -12,23 +11,18 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
 import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.AdvertContent;
-import dp.com.amarapp.model.pojo.City;
 import dp.com.amarapp.model.pojo.CompanyComments;
 import dp.com.amarapp.model.pojo.CompanyProject;
-import dp.com.amarapp.model.request.AddProjectRequest;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
-import dp.com.amarapp.model.response.Country;
 import dp.com.amarapp.view.adapter.AddProjectAdapter;
 import dp.com.amarapp.view.adapter.AdvertsAdapter;
-import dp.com.amarapp.view.adapter.CityAdapter;
 import dp.com.amarapp.view.adapter.CommentsAdapter;
 import dp.com.amarapp.view.adapter.CompaniesGridAdapter;
 import dp.com.amarapp.view.adapter.ProjectGridViewAdabter;
 import dp.com.amarapp.view.adapter.SearchCompanyAdapter;
+import dp.com.amarapp.view.adapter.SliderAdapter;
 
 
 /**
@@ -85,7 +79,7 @@ public class CustomBinder {
     @BindingAdapter("bind:imageUrl")
     public static void setImageUrl(ImageView imageView, String url){
         if (url!=null && !url.equals(""))
-        Picasso.with(imageView.getContext()).load(url).placeholder(R.drawable.ic_launcher_background).into(imageView);
+        Picasso.with(imageView.getContext()).load(url).placeholder(R.mipmap.logo).into(imageView);
     }
 
     @BindingAdapter("bind:bitmap")
@@ -96,6 +90,16 @@ public class CustomBinder {
     @BindingAdapter("bind:addprojectrecycler")
     public static void setAddprojectAdapter(RecyclerView view,ObservableList<String>imageLinks) {
         AddProjectAdapter adapter=new AddProjectAdapter(imageLinks);
+        if (imageLinks!=null)
+            System.out.println("size of list in custom binder"+imageLinks.size());
+        else
+            System.out.println("project is null in custom binder :(");
+        view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("bind:slider")
+    public static void setSliderAdapter(RecyclerView view,ObservableList<String>imageLinks) {
+        SliderAdapter adapter=new SliderAdapter(imageLinks);
         if (imageLinks!=null)
             System.out.println("size of list in custom binder"+imageLinks.size());
         else

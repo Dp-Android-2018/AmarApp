@@ -5,17 +5,14 @@ import android.content.Intent;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 import android.databinding.ObservableList;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import java.util.ArrayList;
 import java.util.Observable;
 
 import dp.com.amarapp.model.pojo.AdvertContent;
 import dp.com.amarapp.model.pojo.CategoriesContent;
 import dp.com.amarapp.model.pojo.City;
 import dp.com.amarapp.model.pojo.Specialization;
-import dp.com.amarapp.model.response.AdvertResponse;
 import dp.com.amarapp.model.response.Country;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
@@ -24,10 +21,7 @@ import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
 import dp.com.amarapp.view.callback.BaseInterface;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
-import retrofit2.http.PUT;
 
 /**
  * Created by DELL on 22/07/2018.
@@ -75,7 +69,13 @@ public class HomeViewModel extends Observable {
                     .subscribe(advertResponseResponse -> {
                         CustomUtils.getInstance().cancelDialog();
                         System.out.println("code home advert" + advertResponseResponse.code());
-                        homeAdverts.addAll(advertResponseResponse.body().getAdvertContent());
+                        if(advertResponseResponse.body().getAdvertContent().size()<=4) {
+                            homeAdverts.addAll(advertResponseResponse.body().getAdvertContent());
+                        }else{
+                            for(int i=0;i<4;i++){
+                                homeAdverts.add(advertResponseResponse.body().getAdvertContent().get(i));
+                            }
+                        }
                     }, throwable -> {
                         CustomUtils.getInstance().cancelDialog();
                         System.out.println("ERROR in home adver :" + throwable.getMessage());

@@ -1,6 +1,5 @@
 package dp.com.amarapp.view.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -18,11 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import dp.com.amarapp.Application.MyApplication;
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityHomeBinding;
-import dp.com.amarapp.model.pojo.City;
-import dp.com.amarapp.model.pojo.Specialization;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.view.activity.CategoriesActivity;
 import dp.com.amarapp.view.activity.CityActivity;
@@ -43,6 +39,9 @@ public class HomeFragment extends Fragment implements BaseInterface{
         homeBinding.setHomeViewModel(homeViewModel);
         homeBinding.rvAdverts.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         View view=homeBinding.getRoot();
+        Toolbar toolbar=((AppCompatActivity)getActivity()).findViewById(R.id.toolbar);
+        ImageView ivFilter=toolbar.findViewById(R.id.iv_filter);
+        ivFilter.setVisibility(View.GONE);
         return view;
     }
 

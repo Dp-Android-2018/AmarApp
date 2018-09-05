@@ -11,37 +11,40 @@
     android:id="@+id/ll_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"/>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".05"
-        android:textSize="10dp"
-        android:textColor="@color/home_text_color"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp8_5"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp10h"
+        android:textColor="@color/text_color_black"
         android:text="@string/add_project_text1"
         android:layout_gravity="center_horizontal"/>
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".05"
-        android:textSize="10dp"
-        android:textColor="@color/home_text_color"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp8_5"
+        android:textStyle="bold"
+        android:textColor="@color/text_color_black"
         android:gravity="center_horizontal"
         android:text="@string/add_project_text2"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"/>
+        android:layout_gravity="center_horizontal"/>
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".3"
+        android:layout_width="@dimen/dp87w"
+        android:layout_height="@dimen/dp88h"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="@dimen/dp13h">
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circle_background"
+            android:padding="@dimen/dp12w"
+            android:src="@mipmap/ic_home"
             bind:bitmap="@{AddProjectViewModel.picBitmap}"
             android:id="@+id/image"/>
         <de.hdodenhof.circleimageview.CircleImageView
@@ -54,46 +57,44 @@
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_images"
-        android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_height="0dp"
-        android:layout_weight=".2"
-        android:background="@color/text_color_small"
-        android:layout_marginTop="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp54h"
+        android:background="@color/image_recycler_background"
+        android:layout_marginTop="@dimen/dp23h"
         tools:listitem="@layout/image_list_item"
         bind:addprojectrecycler="@{AddProjectViewModel.images}"/>
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".1"
+        android:layout_width="@dimen/dp237w"
+        android:layout_height="@dimen/dp24h"
         android:background="@drawable/edit_text_shape"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="@dimen/dp31h"
         android:textColor="@color/text_color"
         android:hint="@string/address"
         android:text="@={AddProjectViewModel.title}"
         android:textColorHint="@color/text_color"
-        android:paddingEnd="5dp"/>
+        android:paddingEnd="@dimen/dp14h"
+        android:paddingStart="@dimen/dp14h"/>
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".2"
+        android:layout_width="@dimen/dp237w"
+        android:layout_height="@dimen/dp98h"
         android:background="@drawable/edit_text_shape"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dp8h"
         android:textColor="@color/text_color"
         android:textColorHint="@color/text_color"
         android:hint="@string/description"
         android:text="@={AddProjectViewModel.description}"
-        android:paddingEnd="5dp"/>
+        android:paddingEnd="@dimen/dp14h"
+        android:paddingStart="@dimen/dp14h"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".1"
+        android:layout_width="@dimen/dp149w"
+        android:layout_height="@dimen/dp36h"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp82h"
         android:background="@drawable/button_shape"
-        android:textSize="17dp"
-        android:layout_marginTop="30dp"
+        android:textSize="@dimen/sp15_5"
         android:textColor="@color/text_color"
         android:text="@string/save"
         android:onClick="@{AddProjectViewModel::save}"/>

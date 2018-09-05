@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+<layout
+    >
     <data>
         <import type="android.view.View"/>
         <variable
@@ -10,12 +11,16 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_layout"/>
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -30,7 +35,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="19dp"
+                            android:textSize="19sp"
                             android:textColor="@color/text_color_gray"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"

@@ -211,6 +211,7 @@ public class CustomUtils {
         register.setOnClickListener(v12 -> {
             Intent i=new Intent(context, MembershipActivity.class);
             context.startActivity(i);
+            ((Activity)context).finishAffinity();
         });
         cancel.setOnClickListener(v1 -> {
      //       ((Dialog)v).dismiss();

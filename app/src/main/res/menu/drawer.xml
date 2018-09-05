@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:id="@+id/g0"
@@ -30,6 +30,13 @@
         android:id="@+id/who_we_are"
         android:checked="true"
         android:title="@string/who_we_are" />
+    </group>
+    <group android:id="@+id/g5"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/logout"
+            android:checked="true"
+            android:title="@string/log_out" />
     </group>
 
 </menu>

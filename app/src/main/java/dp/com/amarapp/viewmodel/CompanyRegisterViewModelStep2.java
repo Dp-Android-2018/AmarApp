@@ -17,7 +17,6 @@ import com.google.firebase.storage.StorageReference;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Observable;
 
 import dp.com.amarapp.BR;
 import dp.com.amarapp.model.pojo.CategoriesContent;
@@ -25,7 +24,6 @@ import dp.com.amarapp.model.pojo.LoginResponseContent;
 import dp.com.amarapp.model.pojo.Specialization;
 import dp.com.amarapp.model.request.CheckPhoneRequest;
 import dp.com.amarapp.model.request.CompanyRegisterRequest;
-import dp.com.amarapp.model.response.CompanyRegisterResponse;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
 import dp.com.amarapp.utils.ConfigurationFile;
@@ -33,17 +31,11 @@ import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
 import dp.com.amarapp.utils.SharedPrefrenceUtils;
 import dp.com.amarapp.utils.ValidationUtils;
-import dp.com.amarapp.view.activity.ActivationActivity;
 import dp.com.amarapp.view.activity.ContainerActivity;
 import dp.com.amarapp.view.callback.BaseInterface;
 import dp.com.amarapp.view.callback.TaskMonitor;
-import dp.com.amarapp.view.fragment.CompanyProfileFragment;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by DELL on 24/07/2018.
@@ -219,8 +211,8 @@ public class CompanyRegisterViewModelStep2 extends BaseObservable implements Tas
                             case (ConfigurationFile.Constants.SUCCESS_CODE):
                             {
                                 saveDataToPrefs(companyRegisterResponseResponse.body().getCompanyRegisterResponseContent());
-                                Intent intent=new Intent(context,ActivationActivity.class);
-                                intent.putExtra(companyRegisterRequest.getName(),ConfigurationFile.IntentConstants.USER_NAME);
+                                Intent intent=new Intent(context,ContainerActivity.class);
+                                //intent.putExtra(companyRegisterRequest.getName(),ConfigurationFile.IntentConstants.USER_NAME);
                                 (context).startActivity(intent);
                                 ((Activity)context).finishAffinity();
                                 break;

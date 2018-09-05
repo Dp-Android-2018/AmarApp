@@ -12,6 +12,7 @@
         android:layout_width="@dimen/dp39h"
         android:layout_height="@dimen/dp39h"
         android:layout_marginStart="@dimen/dp6h"
+        android:layout_marginEnd="@dimen/dp6h"
         android:layout_marginTop="@dimen/dp6h"
         android:layout_marginBottom="@dimen/dp6h">
         <ImageView

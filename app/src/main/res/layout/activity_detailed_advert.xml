@@ -24,10 +24,11 @@
             android:layout_marginStart="@dimen/dp5h"
             android:layout_marginEnd="@dimen/dp5h"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp9h"
             android:textSize="@dimen/sp15"
+            android:layout_gravity="end"
             android:textStyle="bold"
             android:textColor="@color/text_color_gray"
             android:text="@{DetailedAdvert.tittle}"
@@ -36,16 +37,16 @@
 
             <TextView
                 android:id="@+id/tv_adv_desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_color_black"
-                    android:text="@{DetailedAdvert.content}"
-                 android:layout_marginTop="@dimen/dp14h"
-                    android:scrollbars="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color_black"
+                android:text="@{DetailedAdvert.content}"
+                android:layout_marginTop="@dimen/dp14h"
+                android:scrollbars="vertical"
                 android:textSize="@dimen/sp9"
+                android:layout_gravity="end"
                 android:layout_marginBottom="@dimen/dp10h"
                 android:layout_marginStart="@dimen/dp5h"
                 android:layout_marginEnd="@dimen/dp5h"/>
-
     </LinearLayout>
 </layout>

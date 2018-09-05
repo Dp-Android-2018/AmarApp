@@ -9,31 +9,41 @@
             type="dp.com.amarapp.viewmodel.CompanyDetailedViewModel"/>
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/back_ground_gray"
+        android:background="@color/text_color"
         android:orientation="vertical"
         android:id="@+id/ll_parent">
-        <!-- <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".3"
-        android:layout_margin="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#591f2733">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_layout"/>
+        <RelativeLayout
+            android:layout_width="@dimen/dp311w"
+            android:layout_height="@dimen/dp149h"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp9h"
+            android:id="@+id/slider"
+            android:layout_below="@id/toolbar">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/slider_image_item"
+                bind:slider="@{CompanyDetailedViewModel.images}"
+                android:id="@+id/rv_images"/>
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp15h"
             android:background="@color/pics_color">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{CompanyDetailedViewModel.rate}"
-                android:textSize="12dp"
-                android:textColor="#ffffff"
-                android:lineSpacingExtra="-6sp"
-                android:padding="2dp"
+                android:textSize="@dimen/sp11"
+                android:textColor="@color/text_color"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingStart="3dp"
                 android:id="@+id/rate_value"/>
             <ImageView
                 android:layout_width="wrap_content"
@@ -41,147 +51,146 @@
                 android:src="@mipmap/star"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/rate_value"
-                android:padding="3dp"/>
+                android:paddingStart="5dp"
+                android:paddingEnd="3dp"/>
         </RelativeLayout>
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp32w"
+            android:layout_height="@dimen/dp15h"
             android:background="@color/pics_color"
             android:layout_alignParentBottom="true">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5"
-                android:textSize="12dp"
+                android:text="@{CompanyDetailedViewModel.pics}"
+                android:textSize="@dimen/sp11"
                 android:textColor="@color/text_color"
-                android:lineSpacingExtra="-6sp"
-                android:padding="2dp"
+                android:paddingStart="3dp"
+                android:layout_centerVertical="true"
                 android:id="@+id/img_no_value" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/photo_camera"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/img_no_value"
-                android:padding="3dp"
-                />
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"/>
         </RelativeLayout>
-       < <RelativeLayout
+    </RelativeLayout>
+        <TextView
+            android:id="@+id/company_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        <ss.com.bannerslider.views.BannerSlider
-            android:id="@+id/banner_slider1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:interval="5000"
-            app:loopSlides="true"
-            app:defaultIndicators="circle"
-            app:defaultBanner="1"
-            app:animateIndicators="true"
-            app:indicatorSize="8dp"
-            />
-        </RelativeLayout>
-    </RelativeLayout>-->
+            android:layout_height="wrap_content"
+            android:layout_below="@id/slider"
+            android:layout_alignParentEnd="true"
+            android:textStyle="bold"
+            android:layout_marginEnd="@dimen/dp10w"
+            android:layout_marginTop="@dimen/dp9h"
+            android:text="@{CompanyDetailedViewModel.title}"
+            android:textColor="@color/text_color_black"
+            android:textSize="@dimen/sp15"/>
         <RelativeLayout
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".1"
-            android:background="@color/text_color"
-            android:padding="3dp">
-
-            <TextView
-                android:id="@+id/company_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:lineSpacingExtra="-7.5sp"
-                android:padding="5dp"
-                android:text="@{CompanyDetailedViewModel.title}"
-                android:textColor="@color/text_color_gray"
-                android:textSize="13.5sp" />
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/company_title"
+            android:id="@+id/cit_type">
             <TextView
                 android:id="@+id/type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/company_title"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp10w"
                 android:text="@string/type"
                 android:textColor="@color/text_color_city"
-                android:textSize="9dp"
-                android:textStyle="bold" />
-
+                android:textSize="@dimen/sp10"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"/>
             <TextView
                 android:id="@+id/company_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/company_title"
+                android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/type"
-                android:gravity="center"
-                android:padding="2dp"
                 android:text="@{CompanyDetailedViewModel.type}"
-                android:textSize="6dp" />
-
+                android:textSize="@dimen/sp7"
+                android:paddingEnd="5dp"
+                android:textColor="@color/text_color_gray"
+                android:paddingStart="7dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_toStartOf="@id/company_type"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp10"
+            android:textStyle="bold"
+            android:id="@+id/dash"/>
             <TextView
                 android:id="@+id/city_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/company_title"
-                android:layout_marginRight="5dp"
-                android:layout_toStartOf="@id/company_type"
                 android:text="@string/city"
+                android:layout_toStartOf="@id/dash"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
                 android:textColor="@color/text_color_city"
-                android:textSize="9dp"
+                android:textSize="@dimen/sp10"
                 android:textStyle="bold" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/company_title"
                 android:layout_toStartOf="@id/city_tv"
-                android:gravity="center"
-                android:padding="2dp"
-                android:text="@{CompanyDetailedViewModel.city}"
-                android:textSize="6dp" />
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp7"
+                android:paddingStart="5dp"
+                android:text="@{CompanyDetailedViewModel.city}" />
         </RelativeLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp2h"
+            android:layout_below="@id/cit_type"
+            android:layout_marginTop="7dp"
+            android:background="@color/back_ground_gray"
+            android:id="@+id/view"/>
         <RelativeLayout
             android:id="@+id/info"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight=".05"
-            android:background="@android:color/white">
-
+            android:layout_height="@dimen/dp35h"
+            android:layout_below="@id/view"
+            android:layout_marginEnd="@dimen/dp10w"
+            android:onClick="@{CompanyDetailedViewModel::companyInformation}">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:gravity="end"
-                android:lineSpacingExtra="5.2sp"
                 android:text="@string/company_information"
                 android:textColor="@color/text_color_small"
-                android:textSize="9.8sp" />
+                android:textSize="@dimen/sp9"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:onClick="@{CompanyDetailedViewModel::companyInformation}"
+                android:layout_marginStart="16dp"
                 android:src="@mipmap/arrow_down_sign_to_navigate" />
         </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp2h"
+            android:layout_below="@id/info"
+            android:background="@color/back_ground_gray"
+            android:id="@+id/view2"/>
 
         <RelativeLayout
             android:id="@+id/projects"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight=".05"
-            android:background="@android:color/white">
+            android:layout_height="@dimen/dp35h"
+            android:layout_below="@id/view2"
+            android:layout_marginEnd="@dimen/dp10w"
+            android:onClick="@{CompanyDetailedViewModel::companyProjects}">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -189,11 +198,10 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:gravity="end"
-                android:lineSpacingExtra="5.2sp"
+                android:textSize="@dimen/sp9"
                 android:text="@string/compamy_projects"
-                android:textColor="@color/text_color_small"
-                android:textSize="9.8dp" />
-
+                android:textStyle="bold"
+                android:textColor="@color/text_color_small"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -203,25 +211,30 @@
                 android:onClick="@{CompanyDetailedViewModel::companyProjects}"
                 android:src="@mipmap/arrow_down_sign_to_navigate" />
         </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp2h"
+            android:layout_below="@id/projects"
+            android:background="@color/back_ground_gray"
+            android:id="@+id/view3"/>
 
         <RelativeLayout
             android:id="@+id/timetable"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight=".05"
-            android:background="@android:color/white">
+            android:layout_height="@dimen/dp35h"
+            android:layout_below="@id/view3"
+            android:layout_marginEnd="@dimen/dp10w"
+            android:onClick="@{CompanyDetailedViewModel::companyWorkDays}">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:gravity="end"
-                android:lineSpacingExtra="5.2sp"
                 android:text="@string/time_tabel"
                 android:textColor="@color/text_color_small"
-                android:textSize="9.8dp" />
+                android:textSize="@dimen/sp9"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -229,89 +242,101 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"
-                android:src="@mipmap/arrow_down_sign_to_navigate"
-                android:onClick="@{CompanyDetailedViewModel::companyWorkDays}"/>
+                android:src="@mipmap/arrow_down_sign_to_navigate" />
         </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_comments"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_below="@id/city_tv"
-            android:layout_weight=".02"
-            android:background="@color/text_color"
-            android:gravity="end"
-            android:layout_marginTop="3dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_comment"
+            android:layout_height="@dimen/dp2h"
+            android:layout_below="@id/timetable"
+            android:background="@color/back_ground_gray"
+            android:id="@+id/view4"/>
+        <RelativeLayout
+            android:id="@+id/rl_comments"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp21h"
+            android:layout_below="@id/view4"
+            android:background="@color/back_ground_comment_color">
+            <ImageView
+                android:id="@+id/iv_watchs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/comment"
-                android:textColor="@color/text_color_gray"
-                android:textSize="9dp" />
-
+                android:layout_marginEnd="@dimen/dp10w"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:src="@mipmap/view"/>
+            <TextView
+                android:id="@+id/tv_no_watch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/iv_watchs"
+                android:layout_centerVertical="true"
+                android:paddingEnd="@dimen/dp10w"
+                android:text="@{CompanyDetailedViewModel.watchs}"
+                android:textColor="@color/country_item_color"
+                android:textSize="@dimen/sp7"
+                android:textStyle="bold"
+                android:hint="113"/>
+            <TextView
+                android:id="@+id/tv_watch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/tv_no_watch"
+                android:layout_centerVertical="true"
+                android:text="@string/views"
+                android:textColor="@color/country_item_color"
+                android:textSize="@dimen/sp7"
+                android:textStyle="bold"/>
+            <ImageView
+                android:id="@+id/iv_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/tv_watch"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp15w"
+                android:src="@mipmap/comment" />
             <TextView
                 android:id="@+id/tv_no_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@id/iv_comment"
-                android:padding="2dp"
-                android:text="@{CompanyDetailedViewModel.comments}"
-                android:textColor="@color/text_color_gray"
-                android:textSize="9dp" />
-
-            <ImageView
-                android:id="@+id/iv_comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/comment" />
-
+                android:paddingEnd="@dimen/dp10w"
+                android:layout_centerVertical="true"
+                android:textColor="@color/country_item_color"
+                android:textSize="@dimen/sp7"
+                android:textStyle="bold"
+                android:text="@{CompanyDetailedViewModel.comments}"/>
             <TextView
-                android:id="@+id/tv_watch"
+                android:id="@+id/tv_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/views"
-                android:textColor="@color/text_color_gray"
-                android:textSize="9dp" />
-
-            <TextView
-                android:id="@+id/tv_no_watch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="@{CompanyDetailedViewModel.watchs}"
-                android:textColor="@color/back_ground_gray"
-                android:textSize="9dp" />
-
-            <ImageView
-                android:id="@+id/iv_watchs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/view" />
-        </LinearLayout>
+                android:text="@string/comment"
+                android:layout_toStartOf="@id/tv_no_comment"
+                android:layout_centerVertical="true"
+                android:textColor="@color/country_item_color"
+                android:textSize="@dimen/sp7"
+                android:textStyle="bold"/>
+        </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="5dp"
             android:id="@+id/rv_comments"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".38"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_comments"
+            android:background="@color/back_ground_comment_color"
             tools:listitem="@layout/comment_list_item"
             bind:comments="@{CompanyDetailedViewModel.commentsList}"/>
-
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp19h"
             android:layout_gravity="center_vertical"
             android:background="@drawable/button_shape"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
             android:text="@string/your_comment"
+            android:visibility="@{CompanyDetailedViewModel.visability}"
             android:textColor="@color/text_color"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
             android:onClick="@{CompanyDetailedViewModel::writeComment}"/>
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

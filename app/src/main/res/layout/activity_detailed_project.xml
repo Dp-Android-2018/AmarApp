@@ -1,51 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="DetailedProjectViewModel"
             type="dp.com.amarapp.viewmodel.DetailedProjectViewModel"/>
     </data>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <android.support.v4.widget.SlidingPaneLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".2">
-    </android.support.v4.widget.SlidingPaneLayout>
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/slider"
+        android:layout_below="@id/toolbar"
+        android:layout_width="@dimen/dp311w"
+        android:layout_height="@dimen/dp150h"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp10w"
+        tools:listitem="@layout/slider_image_item"
+        bind:slider="@{DetailedProjectViewModel.images}"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/slider"
+        android:layout_alignParentEnd="true"
         android:textColor="@color/text_color_black"
         android:text="@{DetailedProjectViewModel.name}"
-        android:gravity="center_vertical"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
-        android:hint="@string/company_name"/>
+        android:layout_marginEnd="@dimen/dp10w"
+        android:layout_marginTop="@dimen/dp8h"
+        android:textSize="@dimen/sp15"
+        android:textStyle="bold"
+        android:id="@+id/company_name"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".05"
-        android:textColor="#626262"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_project_name_color"
         android:text="@{DetailedProjectViewModel.address}"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
-        android:hint="@string/company_name"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".7">
+        android:layout_marginEnd="@dimen/dp10w"
+        android:layout_marginTop="@dimen/dp11h"
+        android:textSize="@dimen/sp10_5"
+        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/company_name"
+        android:id="@+id/project_name"/>
         <TextView
-            android:hint="@string/description"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp10w"
+            android:textSize="@dimen/sp8_5"
+            android:layout_marginTop="@dimen/dp15h"
+            android:layout_alignParentEnd="true"
+            android:scrollbars="vertical"
+            android:layout_below="@id/project_name"
             android:text="@{DetailedProjectViewModel.description}"/>
-    </ScrollView>
-
-</LinearLayout>
+</RelativeLayout>
 </layout>

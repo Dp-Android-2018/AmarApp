@@ -29,7 +29,8 @@
         android:layout_height="@dimen/dp16h"
         android:src="@mipmap/back"
         android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/dp17w"
+        android:layout_marginEnd="@dimen/dp17w"
+        android:layout_alignParentEnd="true"
         android:id="@+id/back_arrow"
         android:visibility="@{viewmodel.backimageVisibility}"
         android:onClick="@{viewmodel::handleBackAction}"/>
@@ -38,9 +39,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/iv_filter"
         android:src="@mipmap/filter_results_button"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/dp17w"
+        android:layout_marginEnd="@dimen/dp17w"
        android:visibility="gone"/>
 </RelativeLayout>
 </android.support.v7.widget.Toolbar>

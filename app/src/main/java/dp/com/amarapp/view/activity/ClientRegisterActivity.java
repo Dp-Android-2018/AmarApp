@@ -1,12 +1,11 @@
 package dp.com.amarapp.view.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityClientRegisterBinding;
@@ -34,6 +33,7 @@ public class ClientRegisterActivity extends BaseActivity implements BaseInterfac
 
     public void setUpActionBar(){
         setSupportActionBar( clientRegisterBinding.toolbar.toolbar);
+        clientRegisterBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         clientRegisterBinding.toolbar.setViewmodel(new ToolbarViewModel(ClientRegisterActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));}
 
     @Override

@@ -5,7 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityCompanyRegisterStep1Binding;
@@ -32,6 +32,7 @@ public class CompanyRegisterActivityStep1 extends BaseActivity implements BaseIn
 
     public void setUpActionBar(){
         setSupportActionBar( registerStep1Binding.toolbar.toolbar);
+        registerStep1Binding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         registerStep1Binding.toolbar.setViewmodel(new ToolbarViewModel(CompanyRegisterActivityStep1.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));}
 
     @Override

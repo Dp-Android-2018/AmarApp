@@ -12,23 +12,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg_copy">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/client"
-        android:textSize="14dp"
+        android:textSize="@dimen/sp12_5"
         android:textColor="@color/text_color_black"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/dp135h"
         android:paddingEnd="5dp"
         android:paddingStart="5dp"
-        android:id="@+id/text1"
-        />
+        android:id="@+id/text1" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@{ActivationViewModel.name}"
         android:layout_centerHorizontal="true"
+        android:textSize="@dimen/sp12_5"
+        android:textStyle="bold"
+        android:textColor="@color/text_color_black"
         android:layout_below="@id/text1"
         android:id="@+id/name"/>
 
@@ -39,8 +44,8 @@
         android:padding="5dp"
         android:text="@string/go_to_mail"
         android:layout_below="@id/name"
-        android:textColor="#000000"
-        android:textSize="14dp"
+        android:textColor="@color/text_color_black"
+        android:textSize="@dimen/sp12_5"
         android:id="@+id/text2"/>
     <TextView
         android:layout_width="wrap_content"
@@ -49,15 +54,17 @@
         android:padding="5dp"
         android:text="@string/go_to_mail_2"
         android:layout_below="@id/text2"
-        android:textColor="#000000"
-        android:textSize="14dp"
+        android:textColor="@color/text_color_black"
+        android:textSize="@dimen/sp12_5"
         android:id="@+id/text3"/>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true"
+        android:layout_width="@dimen/dp56h"
+        android:layout_height="@dimen/dp55w"
+        android:layout_below="@id/text3"
+        android:layout_marginTop="@dimen/dp31h"
         app:lottie_autoPlay="true"
+        android:layout_centerHorizontal="true"
         app:lottie_fileName="activation.json"
         app:lottie_loop="true"
         android:id="@+id/lottie"/>
@@ -67,7 +74,7 @@
         android:layout_height="@dimen/dp36h"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/lottie"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/dp52h"
         android:text="@string/send_new_mail"
         android:textSize="@dimen/sp15"
         android:textColor="@color/text_color"
@@ -79,7 +86,7 @@
         android:layout_height="@dimen/dp36h"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/send_new_mail"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/dp19h"
         android:textSize="@dimen/sp15"
         android:textColor="@color/text_color"
         android:text="@string/active_with_phone"

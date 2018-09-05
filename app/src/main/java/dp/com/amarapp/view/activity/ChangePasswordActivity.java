@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.WindowManager;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityChangePasswordBinding;
@@ -20,6 +21,8 @@ public class ChangePasswordActivity extends AppCompatActivity implements BaseInt
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initBinding();
     }
 

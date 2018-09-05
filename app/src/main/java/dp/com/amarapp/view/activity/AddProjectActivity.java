@@ -5,16 +5,17 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityAddProjectBinding;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.view.callback.BaseInterface;
 import dp.com.amarapp.viewmodel.AddProjectViewModel;
+import dp.com.amarapp.viewmodel.ToolbarViewModel;
 
-public class AddProjectActivity extends AppCompatActivity implements BaseInterface{
+public class AddProjectActivity extends BaseActivity implements BaseInterface{
     private AddProjectViewModel projectViewModel;
     private ActivityAddProjectBinding projectBinding;
 
@@ -22,6 +23,7 @@ public class AddProjectActivity extends AppCompatActivity implements BaseInterfa
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initBinding();
+        setUpActionBar();
     }
 
     @Override
@@ -53,7 +55,7 @@ public class AddProjectActivity extends AppCompatActivity implements BaseInterfa
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     pickPhoto.setType("image/*"); //allows any image file type. Change * to specific extension to limit it
-                    pickPhoto.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                   // pickPhoto.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                     startActivityForResult(pickPhoto , ConfigurationFile.Constants.PICK_IMAGE_REQUEST);
                     break;
             }
@@ -66,4 +68,10 @@ public class AddProjectActivity extends AppCompatActivity implements BaseInterfa
 
     }
 
+    public void setUpActionBar(){
+        setSupportActionBar( projectBinding.toolbar.toolbar);
+        projectBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        projectBinding.toolbar.setViewmodel(new ToolbarViewModel(AddProjectActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));
+    }
 }
+

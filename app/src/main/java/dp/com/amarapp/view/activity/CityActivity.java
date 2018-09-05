@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import dp.com.amarapp.Application.MyApplication;
 import dp.com.amarapp.R;
@@ -13,7 +13,6 @@ import dp.com.amarapp.databinding.ActivityCitiesBinding;
 import dp.com.amarapp.model.pojo.City;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.view.adapter.CityAdapter;
-import dp.com.amarapp.view.adapter.CountriesAdapter;
 import dp.com.amarapp.view.callback.BaseInterface;
 import dp.com.amarapp.view.callback.CityCallback;
 import dp.com.amarapp.viewmodel.CityViewModel;
@@ -27,6 +26,7 @@ public class CityActivity extends BaseActivity implements BaseInterface,CityCall
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initVariables();
+        setUpActionBar();
     }
 
     public void initVariables(){
@@ -39,6 +39,7 @@ public class CityActivity extends BaseActivity implements BaseInterface,CityCall
     }
     public void setUpActionBar(){
         setSupportActionBar( binding.toolbar.toolbar);
+        binding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         binding.toolbar.setViewmodel(new ToolbarViewModel(CityActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));}
     @Override
     public void updateUi(int code) {

@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityClientSettingsBinding;
@@ -27,6 +30,9 @@ public class ClientSettingFragment extends Fragment implements BaseInterface{
         clientSettingsBinding= DataBindingUtil.inflate(inflater,R.layout.activity_client_settings,container,false);
         clientSettingsBinding.setClientSettingsViewModel(clientSettingsViewModel);
         View view=clientSettingsBinding.getRoot();
+        Toolbar toolbar=((AppCompatActivity)getActivity()).findViewById(R.id.toolbar);
+        ImageView ivFilter=toolbar.findViewById(R.id.iv_filter);
+        ivFilter.setVisibility(View.GONE);
         return view;
     }
 

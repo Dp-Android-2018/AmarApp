@@ -3,7 +3,6 @@ package dp.com.amarapp.view.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 
@@ -33,5 +32,6 @@ public class AdvertDetailActivity extends BaseActivity {
 
     public void setUpActionBar(){
         setSupportActionBar( advertDetailBinding.toolbar.toolbar);
+        advertDetailBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         advertDetailBinding.toolbar.setViewmodel(new ToolbarViewModel(AdvertDetailActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));}
 }

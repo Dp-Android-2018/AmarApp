@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableInt;
 import android.databinding.ObservableList;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -41,6 +42,8 @@ public class CompanyDetailedViewModel extends Observable{
     private String token="Bearer ";
     public ObservableList<CompanyComments> commentsList;
     private BaseInterface callback;
+    public ObservableInt visability;
+    public ObservableList<String> images;
     AlertDialog dialog;
     public CompanyDetailedViewModel(Context context,BaseInterface callback) {
         this.context = context;
@@ -49,7 +52,11 @@ public class CompanyDetailedViewModel extends Observable{
         token+= CustomUtils.getInstance().getSaveUserObject(context).getToken();
         getCommentsContent();
         commentsList=new ObservableArrayList<>();
-        //images=new ObservableList<>();
+        visability=new ObservableInt();
+        if(CustomUtils.getInstance().getSaveUserObject(context).getRole().equals("company"))
+            visability.set(View.GONE);
+        images=new ObservableArrayList<>();
+        setImages();
     }
 
     public String getTitle(){
@@ -87,11 +94,12 @@ public class CompanyDetailedViewModel extends Observable{
 
         return String.valueOf(companyInfo.getRate());
     }
-    public ArrayList<String>getImages(){
-        if(companyInfo.getMetaData().getImages()!=null)
-            return (ArrayList<String>) companyInfo.getMetaData().getImages();
-        else
-            return null;
+    public String  getPics(){
+        return String.valueOf(companyInfo.getMetaData().getImages()!=null?companyInfo.getMetaData().getImages().size():0);
+    }
+    public void setImages() {
+        if (companyInfo.getMetaData().getImages() != null)
+             images.addAll(companyInfo.getMetaData().getImages());
     }
 
 

@@ -1,11 +1,10 @@
 package dp.com.amarapp.view.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityCountryBinding;
@@ -38,6 +37,7 @@ public class CountryActivity extends BaseActivity implements CountryCallback,Bas
 
     public void setUpActionBar(){
         setSupportActionBar( countryBinding.toolbar.toolbar);
+        countryBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         countryBinding.toolbar.setViewmodel(new ToolbarViewModel(CountryActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));}
 
     @Override

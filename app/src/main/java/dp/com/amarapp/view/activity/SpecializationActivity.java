@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import dp.com.amarapp.Application.MyApplication;
 import dp.com.amarapp.R;
@@ -13,7 +13,6 @@ import dp.com.amarapp.databinding.ActivitySpecializationBinding;
 import dp.com.amarapp.model.pojo.Specialization;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.view.adapter.SpecializationAdapter;
-import dp.com.amarapp.view.callback.BaseInterface;
 import dp.com.amarapp.view.callback.SpecializationCallback;
 import dp.com.amarapp.viewmodel.SpecializationViewModel;
 import dp.com.amarapp.viewmodel.ToolbarViewModel;
@@ -48,5 +47,6 @@ public class SpecializationActivity extends BaseActivity implements Specializati
 
     public void setUpActionBar(){
         setSupportActionBar( specializationBinding.toolbar.toolbar);
+        specializationBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         specializationBinding.toolbar.setViewmodel(new ToolbarViewModel(SpecializationActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));}
 }
