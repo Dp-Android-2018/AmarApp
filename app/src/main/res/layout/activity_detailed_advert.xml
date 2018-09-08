@@ -33,7 +33,7 @@
             android:textColor="@color/text_color_gray"
             android:text="@{DetailedAdvert.tittle}"
             android:layout_marginStart="@dimen/dp5h"
-            android:layout_marginEnd="@dimen/dp5h"/>
+            android:layout_marginEnd="@dimen/dp7h"/>
 
             <TextView
                 android:id="@+id/tv_adv_desc"
@@ -47,6 +47,6 @@
                 android:layout_gravity="end"
                 android:layout_marginBottom="@dimen/dp10h"
                 android:layout_marginStart="@dimen/dp5h"
-                android:layout_marginEnd="@dimen/dp5h"/>
+                android:layout_marginEnd="@dimen/dp7h"/>
     </LinearLayout>
 </layout>

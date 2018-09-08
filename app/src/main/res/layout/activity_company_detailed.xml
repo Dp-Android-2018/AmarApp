@@ -112,7 +112,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/type"
                 android:text="@{CompanyDetailedViewModel.type}"
-                android:textSize="@dimen/sp7"
+                android:textSize="@dimen/sp9"
                 android:paddingEnd="5dp"
                 android:textColor="@color/text_color_gray"
                 android:paddingStart="7dp" />
@@ -141,8 +141,9 @@
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@id/city_tv"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/sp7"
-                android:paddingStart="5dp"
+                android:textSize="@dimen/sp9"
+                android:textColor="@color/text_color_gray"
+                android:paddingEnd="7dp"
                 android:text="@{CompanyDetailedViewModel.city}" />
         </RelativeLayout>
         <View
@@ -166,7 +167,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/company_information"
                 android:textColor="@color/text_color_small"
-                android:textSize="@dimen/sp9"
+                android:textSize="@dimen/sp10_5"
                 android:textStyle="bold"/>
 
             <ImageView
@@ -198,7 +199,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:gravity="end"
-                android:textSize="@dimen/sp9"
+                android:textSize="@dimen/sp10_5"
                 android:text="@string/compamy_projects"
                 android:textStyle="bold"
                 android:textColor="@color/text_color_small"/>
@@ -233,7 +234,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/time_tabel"
                 android:textColor="@color/text_color_small"
-                android:textSize="@dimen/sp9"
+                android:textSize="@dimen/sp10_5"
                 android:textStyle="bold"/>
 
             <ImageView
