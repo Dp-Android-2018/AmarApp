@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import dp.com.amarapp.R;
@@ -13,7 +12,6 @@ import dp.com.amarapp.databinding.ActivityLoginBinding;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.view.callback.BaseInterface;
-import dp.com.amarapp.viewmodel.ClientRegisterViewModel;
 import dp.com.amarapp.viewmodel.LoginViewModel;
 
 /**
@@ -45,7 +43,7 @@ public class LoginActivity extends BaseActivity implements BaseInterface {
         switch (code){
             case (ConfigurationFile.Constants.SUCCESS_CODE_second):
             {
-                CustomUtils.getInstance().moveTOHome(this);
+               // if(CustomUtils.getInstance().getSaveUserObject())
                 finish();
                 break;
             }
