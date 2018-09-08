@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <tab
+        id="@+id/add_advert"
+        icon="@drawable/add_advert_selector"
+        title="أضف إعلان" />
+    <tab
+        id="@+id/adverts"
+        icon="@drawable/adverts_selector"
+        title="الإعلانات" />
+    <tab
+        id="@+id/search"
+        icon="@drawable/search_selector"
+        title="البحث" />
+    <tab
+        id="@+id/companies"
+        icon="@drawable/companies_selector"
+        title="الشركات"/>
+
+    <tab
+        id="@+id/settings"
+        icon="@drawable/setting_selectior"
+        title="الإعدادات"/>
+
+</tabs>
