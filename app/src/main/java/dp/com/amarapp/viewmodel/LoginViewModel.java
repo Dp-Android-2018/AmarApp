@@ -32,7 +32,7 @@ public class LoginViewModel extends Observable {
     private BaseInterface callback;
     private LoginRequest loginRequest;
     private SharedPrefrenceUtils pref;
-
+    private String  deviceToken=null;
     public LoginViewModel(Context context,BaseInterface callback) {
         this.context=context;
         this.callback=callback;
@@ -44,7 +44,8 @@ public class LoginViewModel extends Observable {
             if(!checkMail()) {
                 callback.updateUi(ConfigurationFile.Constants.INVALED_EMAIL);
             }else{
-                loginRequest=new LoginRequest(email.get(),password.get());
+                loginRequest=new LoginRequest(email.get(),password.get(),deviceToken);
+
                 login();
             }
         }else{
@@ -66,6 +67,8 @@ public class LoginViewModel extends Observable {
 
 
     public void initializeVariables() {
+        deviceToken=CustomUtils.getInstance().getFirebaseToken(context);
+        System.out.println("Token Token :"+deviceToken);
         email = new ObservableField<>();
         password = new ObservableField<>();
     }
@@ -86,7 +89,6 @@ public class LoginViewModel extends Observable {
                             {
                                 saveDataToPrefs(loginResponseResponse.body().getLoginResponseContent());
                                 System.out.println("data saved to pref is : "+CustomUtils.getInstance().getSaveUserObject(context));
-
                                 callback.updateUi(ConfigurationFile.Constants.SUCCESS_CODE_second);
                                 break;
                             }

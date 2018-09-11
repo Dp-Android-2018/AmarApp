@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.view.View;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityActivationBinding;
@@ -32,6 +33,7 @@ public class ActivationActivity extends BaseActivity implements BaseInterface {
 
     public void setUpActionBar(){
         setSupportActionBar( activationBinding.toolbar.toolbar);
+        activationBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         activationBinding.toolbar.setViewmodel(new ToolbarViewModel(ActivationActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));
     }
 

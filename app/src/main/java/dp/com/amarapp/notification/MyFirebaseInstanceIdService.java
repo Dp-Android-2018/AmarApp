@@ -15,5 +15,6 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         TOKEN=refreshedToken;
+        System.out.println("device Token : "+TOKEN);
     }
 }

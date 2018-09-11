@@ -7,7 +7,21 @@
             name="WorkDaysViewModel"
             type="dp.com.amarapp.viewmodel.CompanyWorkDaysViewModel"/>
     </data>
+
     <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_layout"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"/>
+    </RelativeLayout>
+    <!--RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
@@ -296,5 +310,5 @@
                     android:layout_gravity="center_horizontal"/>
             </LinearLayout>
         </ScrollView>
-    </RelativeLayout>
+    </RelativeLayout-->
 </layout>

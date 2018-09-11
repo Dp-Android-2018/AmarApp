@@ -2,7 +2,9 @@ package dp.com.amarapp.model.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SocialNetwork {
+import java.io.Serializable;
+
+public class SocialNetwork implements Serializable {
 
     @SerializedName("facebook")
     private String facebook;

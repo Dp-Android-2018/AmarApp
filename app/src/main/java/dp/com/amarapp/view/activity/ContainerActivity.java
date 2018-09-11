@@ -35,7 +35,7 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
     ContainerViewModel containerViewModel;
     ActivityContainerBinding containerBinding;
     boolean doubleBackToExitPressedOnce = false;
-
+    Fragment home=new HomeFragment();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +58,7 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
                 containerBinding.drawer.closeDrawers();
             }
             case ConfigurationFile.FragmentID.FRAGMENT1: {
+                navigationFragments(home);
                 containerBinding.bottomBar.setDefaultTab(R.id.search);
                 break;
             }
@@ -115,7 +116,6 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
     }
 
 
-
     public void bottombar(){
         containerBinding.bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -133,6 +133,9 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
                                 setting = new CompanyProfileFragment();
                                 navigationFragments(setting);
                             }
+                        }else{
+                            Snackbar.make(containerBinding.drawer, "انت غير مسجل", Snackbar.LENGTH_LONG).show();
+
                         }
                         break;
                     }
@@ -142,7 +145,6 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
                         break;
                     }
                     case R.id.search:{
-                        Fragment home=new HomeFragment();
                         navigationFragments(home);
                         break;
                     }
@@ -157,6 +159,8 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
                                 CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getStatus().equals("true")) {
                             Fragment addAdvert = new AddAdvertFragment();
                             navigationFragments(addAdvert);
+                        }else{
+                            Snackbar.make(containerBinding.drawer, "إضافة إعلان غير متاحه لك", Snackbar.LENGTH_LONG).show();
                         }
                         break;
                     }

@@ -225,7 +225,7 @@
             android:layout_height="@dimen/dp35h"
             android:layout_below="@id/view3"
             android:layout_marginEnd="@dimen/dp10w"
-            android:onClick="@{CompanyDetailedViewModel::companyWorkDays}">
+            android:onClick="@{CompanyDetailedViewModel::companyWorkDaysAction}">
 
             <TextView
                 android:layout_width="wrap_content"

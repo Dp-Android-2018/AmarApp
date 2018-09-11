@@ -8,10 +8,11 @@ import android.view.View;
 import dp.com.amarapp.R;
 import dp.com.amarapp.databinding.ActivityCompanyInformationBinding;
 import dp.com.amarapp.utils.ConfigurationFile;
+import dp.com.amarapp.view.callback.BaseInterface;
 import dp.com.amarapp.viewmodel.CompanyInformationViewModel;
 import dp.com.amarapp.viewmodel.ToolbarViewModel;
 
-public class CompanyInformationActivity extends BaseActivity {
+public class CompanyInformationActivity extends BaseActivity implements BaseInterface {
     private CompanyInformationViewModel informationViewModel;
     private ActivityCompanyInformationBinding informationBinding;
 
@@ -22,7 +23,7 @@ public class CompanyInformationActivity extends BaseActivity {
     }
 
     public void initBinding(){
-        informationViewModel=new CompanyInformationViewModel(CompanyInformationActivity.this);
+        informationViewModel=new CompanyInformationViewModel(CompanyInformationActivity.this,this);
         informationBinding= DataBindingUtil.setContentView(CompanyInformationActivity.this, R.layout.activity_company_information);
         informationBinding.setCompanyInformation(informationViewModel);
         setUpActionBar();
@@ -31,5 +32,12 @@ public class CompanyInformationActivity extends BaseActivity {
         setSupportActionBar( informationBinding.toolbar.toolbar);
         informationBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         informationBinding.toolbar.setViewmodel(new ToolbarViewModel(CompanyInformationActivity.this, ConfigurationFile.Constants.BACK_IMAGE_VISIBILITY_CODE));
+    }
+
+    @Override
+    public void updateUi(int code) {
+        switch (code){
+        }
+
     }
 }

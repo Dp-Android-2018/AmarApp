@@ -103,31 +103,40 @@
         android:layout_height="1dp"
         android:background="@color/back_ground_gray"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
         <ImageView
+            android:visibility="@{CompanyInformation.instaClick}"
             android:layout_width="@dimen/dp24w"
             android:layout_height="@dimen/dp24h"
             android:src="@mipmap/instagram_logo"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:id="@+id/insta"/>
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/iv_insta"
+            android:onClick="@{CompanyInformation::instagram}"/>
         <ImageView
+            android:id="@+id/iv_twitter"
+            android:visibility="@{CompanyInformation.twitterClick}"
             android:layout_width="@dimen/dp24w"
             android:layout_height="@dimen/dp24h"
-            android:src="@mipmap/facebook_logo_button"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/insta" />
-        <ImageView
-            android:layout_width="@dimen/dp24w"
-            android:layout_height="@dimen/dp24h"
+            android:scaleType="centerCrop"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
             android:src="@mipmap/twitter_logo_button"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/insta"
-            />
-    </RelativeLayout>
+            android:onClick="@{CompanyInformation::twitter}"/>
+        <ImageView
+            android:id="@+id/iv_facebook"
+            android:layout_width="@dimen/dp24w"
+            android:layout_height="@dimen/dp24h"
+            android:scaleType="centerCrop"
+            android:visibility="@{CompanyInformation.facClick}"
+            android:onClick="@{CompanyInformation::faceBook}"
+            android:src="@mipmap/facebook_logo_button" />
+    </LinearLayout>
 </LinearLayout>
 </layout>

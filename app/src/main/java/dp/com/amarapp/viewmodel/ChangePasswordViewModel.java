@@ -5,31 +5,22 @@ import android.content.Context;
 import android.databinding.ObservableField;
 import android.view.View;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-
 import java.util.Observable;
 
 import dp.com.amarapp.model.request.ChangePasswordRequest;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
 import dp.com.amarapp.utils.ConfigurationFile;
-import dp.com.amarapp.utils.CustomBinder;
 import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
 import dp.com.amarapp.utils.ValidationUtils;
 import dp.com.amarapp.view.callback.BaseInterface;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.internal.operators.observable.ObservableSerialized;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class ChangePasswordViewModel extends Observable {
 
     public ObservableField<String> oldPassword;
-
     public ObservableField<String> newPassword;
     public ObservableField<String> confNewPassword;
     private ChangePasswordRequest changePasswordRequest;
@@ -61,7 +52,10 @@ public class ChangePasswordViewModel extends Observable {
                 else if(oldPassword.get().equals(newPassword.get())){
                     callback.updateUi(ConfigurationFile.Constants.NEW_PASS_EQUAL_OLD_PASS);
                 }
-                changePasswordRequest=new ChangePasswordRequest(oldPassword.get().trim(),newPassword.get().trim(),confNewPassword.get().trim());
+                changePasswordRequest=new ChangePasswordRequest(oldPassword.get(),newPassword.get(),confNewPassword.get());
+                System.out.println("old : "+oldPassword.get());
+                System.out.println("new : "+newPassword.get());
+                System.out.println("new conf : "+confNewPassword.get());
                 confirm();
             }
         }
@@ -80,7 +74,7 @@ public class ChangePasswordViewModel extends Observable {
             System.out.println("token1 is : "+token);
             CustomUtils.getInstance().showProgressDialog((Activity)context);
             ApiClient.getClient().create(EndPoints.class).changePassword(ConfigurationFile.Constants.API_KEY,
-                    ConfigurationFile.Constants.CONTENT_TYPE,ConfigurationFile.Constants.CONTENT_TYPE,"Bearer B32JCEsYOMDdwDGRVpTkFrZkWhVwPZvngzl3tlgpoVnY6O1qr0zCiMuvZHUL",changePasswordRequest)
+                    ConfigurationFile.Constants.CONTENT_TYPE,ConfigurationFile.Constants.CONTENT_TYPE,token,changePasswordRequest)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(stringResponse -> {

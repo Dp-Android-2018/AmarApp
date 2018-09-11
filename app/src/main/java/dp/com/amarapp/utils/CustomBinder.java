@@ -11,10 +11,13 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.AdvertContent;
 import dp.com.amarapp.model.pojo.CompanyComments;
 import dp.com.amarapp.model.pojo.CompanyProject;
+import dp.com.amarapp.model.pojo.ParentDay;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
 import dp.com.amarapp.view.adapter.AddProjectAdapter;
 import dp.com.amarapp.view.adapter.AdvertsAdapter;
@@ -23,6 +26,7 @@ import dp.com.amarapp.view.adapter.CompaniesGridAdapter;
 import dp.com.amarapp.view.adapter.ProjectGridViewAdabter;
 import dp.com.amarapp.view.adapter.SearchCompanyAdapter;
 import dp.com.amarapp.view.adapter.SliderAdapter;
+import dp.com.amarapp.view.adapter.WorkingDayAdapter;
 
 
 /**
@@ -31,20 +35,20 @@ import dp.com.amarapp.view.adapter.SliderAdapter;
 
 public class CustomBinder {
 
-    @BindingAdapter("bind:companyInfo")
+    @BindingAdapter({"bind:companyInfo"})
     public static void setRecyclerCompanies(RecyclerView view, ObservableList<CompanyLoginResponse> searchResponse) {
 
         SearchCompanyAdapter adapter=new SearchCompanyAdapter(searchResponse);
         view.setAdapter(adapter);
     }
-    @BindingAdapter("bind:gridcompanies")
+    @BindingAdapter({"bind:gridcompanies"})
     public static void setGridCompanies(GridView view, ObservableList<CompanyLoginResponse> companies){
 
         CompaniesGridAdapter adapter=new CompaniesGridAdapter(companies);
         view.setAdapter(adapter);
         System.out.println("Companies grid Size binder: "+companies.size());
     }
-    @BindingAdapter("bind:projectsinfo")
+    @BindingAdapter({"bind:projectsinfo"})
     public static void setGridProjects(GridView view, ObservableList<CompanyProject> projects) {
 
         ProjectGridViewAdabter adapter=new ProjectGridViewAdabter(projects);
@@ -54,7 +58,7 @@ public class CustomBinder {
             System.out.println("project is null in custom binder :(");
         view.setAdapter(adapter);
     }
-    @BindingAdapter("bind:advertinfo")
+    @BindingAdapter({"bind:advertinfo"})
     public static void setRecyclerAdverts(RecyclerView view,ObservableList<AdvertContent> adverts) {
 
         AdvertsAdapter adapter=new AdvertsAdapter(adverts);
@@ -65,7 +69,7 @@ public class CustomBinder {
         view.setAdapter(adapter);
     }
 
-    @BindingAdapter("bind:comments")
+    @BindingAdapter({"bind:comments"})
     public static void setRecyclerComments(RecyclerView view,ObservableList<CompanyComments> comments) {
 
         CommentsAdapter adapter=new CommentsAdapter(comments);
@@ -76,18 +80,18 @@ public class CustomBinder {
         view.setAdapter(adapter);
     }
 
-    @BindingAdapter("bind:imageUrl")
+    @BindingAdapter({"bind:imageUrl"})
     public static void setImageUrl(ImageView imageView, String url){
         if (url!=null && !url.equals(""))
         Picasso.with(imageView.getContext()).load(url).placeholder(R.mipmap.logo).into(imageView);
     }
 
-    @BindingAdapter("bind:bitmap")
+    @BindingAdapter({"bind:bitmap"})
     public static void setbitmap(ImageView imageView, Bitmap bitmap){
         if (bitmap!=null)
             imageView.setImageBitmap(bitmap);
     }
-    @BindingAdapter("bind:addprojectrecycler")
+    @BindingAdapter({"bind:addprojectrecycler"})
     public static void setAddprojectAdapter(RecyclerView view,ObservableList<String>imageLinks) {
         AddProjectAdapter adapter=new AddProjectAdapter(imageLinks);
         if (imageLinks!=null)
@@ -97,7 +101,7 @@ public class CustomBinder {
         view.setAdapter(adapter);
     }
 
-    @BindingAdapter("bind:slider")
+    @BindingAdapter({"bind:slider"})
     public static void setSliderAdapter(RecyclerView view,ObservableList<String>imageLinks) {
         SliderAdapter adapter=new SliderAdapter(imageLinks);
         if (imageLinks!=null)
@@ -107,18 +111,24 @@ public class CustomBinder {
         view.setAdapter(adapter);
     }
 
+    @BindingAdapter({"bind:workday"})
+    public static void workDayAdapter(RecyclerView view, ArrayList<ParentDay> parentDays) {
+        WorkingDayAdapter adapter=new WorkingDayAdapter(parentDays);
+        view.setAdapter(adapter);
+    }
 
-    @BindingAdapter("bind:navigationItem")
+
+    @BindingAdapter({"bind:navigationItem"})
     public static void navigationEvent(NavigationView navigationView, NavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener) {
         navigationView.setNavigationItemSelectedListener(onNavigationItemSelectedListener);
     }
 
-    @BindingAdapter("bind:gridListener")
+    @BindingAdapter({"bind:gridListener"})
     public static void ongridListener(GridView view,GridView.OnScrollListener listener){
         view.setOnScrollListener(listener);
     }
 
-    @BindingAdapter("bind:recyclerListener")
+    @BindingAdapter({"bind:recyclerListener"})
     public static void onrecyclerListener(RecyclerView view,RecyclerView.OnScrollListener listener){
         view.addOnScrollListener(listener);
     }

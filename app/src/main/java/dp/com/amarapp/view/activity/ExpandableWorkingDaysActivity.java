@@ -1,69 +1,77 @@
-package dp.com.amarapp.viewmodel;
+package dp.com.amarapp.view.activity;
 
-import android.app.Activity;
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableList;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Observable;
+import java.util.List;
 
+import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.ParentDay;
 import dp.com.amarapp.model.pojo.WorkDay;
-import dp.com.amarapp.model.response.CompanyWorkDaysResponse;
-import dp.com.amarapp.network.ApiClient;
-import dp.com.amarapp.network.EndPoints;
 import dp.com.amarapp.utils.ConfigurationFile;
-import dp.com.amarapp.utils.CustomUtils;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
+import dp.com.amarapp.view.adapter.WorkingDayAdapter;
 
-public class CompanyProfileViewModel_7 extends Observable {
-    Activity activity;
-    private ObservableList<WorkDay>workDays;
-    private String token="Bearer ";
-    private int id;
+public class ExpandableWorkingDaysActivity extends BaseActivity {
+    WorkingDayAdapter adapter;
+    //private int id;
+    //private String token="Bearer ";
+    List<WorkDay> workDays;
+    Toolbar toolbar;
+    public ExpandableWorkingDaysActivity() {
+        workDays=new ArrayList<>();
+    }
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       // token+= CustomUtils.getInstance().getSaveUserObject(ExpandableWorkingDaysActivity.this).getToken();
+        workDays=(List<WorkDay>)getIntent().getSerializableExtra(ConfigurationFile.IntentConstants.COMPANY_WORK_DAYS);
 
+        // getWorkDays();
+        setContentView(R.layout.activity_expandable_workdays_layout);
+        toolbar=findViewById(R.id.toolbar);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
+        if (animator instanceof DefaultItemAnimator) {
+            ((DefaultItemAnimator) animator).setSupportsChangeAnimations(false);
+        }
+        setUpActionBar();
+        adapter = new WorkingDayAdapter(handleDays());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+    public void setUpActionBar(){
+        setSupportActionBar(toolbar);
+        toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        toolbar.findViewById(R.id.back_arrow).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        adapter.onSaveInstanceState(outState);
+    }
 
-    public CompanyProfileViewModel_7(Activity activity) {
-        this.activity = activity;
-        workDays=new ObservableArrayList<>();
-        token += CustomUtils.getInstance().getSaveUserObject(activity).getToken();
-        id=CustomUtils.getInstance().getSaveUserObject(activity).getId();
-        getWorkDays();
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        adapter.onRestoreInstanceState(savedInstanceState);
     }
 
 
-    public void getWorkDays(){
-        CustomUtils.getInstance().showProgressDialog(activity);
-        ApiClient.getClient().create(EndPoints.class).companyWorkDays(ConfigurationFile.Constants.API_KEY,
-                ConfigurationFile.Constants.CONTENT_TYPE,ConfigurationFile.Constants.CONTENT_TYPE,token,id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<CompanyWorkDaysResponse>>() {
-                    @Override
-                    public void accept(Response<CompanyWorkDaysResponse> companyWorkDaysResponseResponse) throws Exception {
-                        CustomUtils.getInstance().cancelDialog();
-                        System.out.println("Code Work Days :"+companyWorkDaysResponseResponse.code());
-                        System.out.println("token is : "+token);
-                        if(companyWorkDaysResponseResponse.code()==ConfigurationFile.Constants.SUCCESS_CODE_second){
-                            workDays.addAll(companyWorkDaysResponseResponse.body().getWorkDays());
-                            System.out.println("work days size :"+workDays.size());
-                        }
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        System.out.println("ERRor +"+throwable.getMessage());
-
-                    }
-                });
-    }
-
-    public ArrayList<ParentDay> getHandleDays(){
+    public ArrayList<ParentDay> handleDays(){
         ArrayList<ParentDay>list=new ArrayList<>();
         list.add(saturday());
         list.add(sunday());
@@ -98,10 +106,10 @@ public class CompanyProfileViewModel_7 extends Observable {
         }
         System.out.println("flag is :"+flag+" m is :"+m+" n is : "+n);
         if (flag==0){
-            return new ParentDay("السبت", Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
+        return new ParentDay("السبت",Arrays.asList(
+                new WorkDay(1,"","00:00","00:00","دوام صباحى"),
+                new WorkDay(2,"","00:00","00:00","دوام مسائى")
+        ));
         }else if(flag==1&&n==-1){
             return new ParentDay("السبت",Arrays.asList(
                     new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
@@ -374,4 +382,14 @@ public class CompanyProfileViewModel_7 extends Observable {
             ));
         }
     }
+
+
+//    public ParentDay secondDay(){
+//        //WorkDay(int id, String day, String from, String to, String shift)
+//        return new ParentDay("Thursday",Arrays.asList(
+//                new WorkDay(3,"Thursday","9:00","12:00","morning"),
+//                new WorkDay(4,"Thursday","5:00","8:00","night")
+//        ));
+//    }
+
 }

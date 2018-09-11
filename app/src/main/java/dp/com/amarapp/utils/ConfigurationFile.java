@@ -1,7 +1,5 @@
 package dp.com.amarapp.utils;
 
-import retrofit2.http.PUT;
-
 public class ConfigurationFile {
 
     public static class UrlConstants{
@@ -23,6 +21,7 @@ public class ConfigurationFile {
         public static final String COMPANIES_SEARCH_URL="api/search";
         public static final String COMPANY_DETAIL_URL="api/company/{id}";
         public static final String COMPANY_PROJECTS_URL="api/company/{id}/projects";
+        public static final String COMPANY_WORK_DAYS_URL="api/company/{id}/work-days";
         public static final String COMPANY_COMMENTS_URL="api/company/{id}/comments";
         public static final String GET_COUNTRIES_URL="api/utilities/countries";
         public static final String GET_CITIES_URL="api/utilities/cities";
@@ -86,6 +85,9 @@ public class ConfigurationFile {
 
         public static final int BACK_IMAGE_VISIBILITY_CODE=27;
         public static final int BACK_IMAGE_UNVISIBILITY_CODE=28;
+        public static final int FACEBOOK=29;
+        public static final int TWITTER=30;
+        public static final int INSTAGRAM=31;
         //--------------------------------------------------------------
 
         public static final int SUCCESS_CODE=201;
@@ -106,6 +108,7 @@ public class ConfigurationFile {
         public static final String COMPANYSEARCHDATA="RESULTS_LIST";
         public static final String COMPANYITEMINFO="COMPANYITEM";
         public static final String COMPANYID="ID";
+        public static final String COMPANY_WORK_DAYS="COMPANYWORKDAYS";
         public static final String COMPANYTOKEN="TOKEN";
         public static final String PROJECTINFO="PROJECTDATA";
         public static final String ADVERTINFO="ADVERTINFO";

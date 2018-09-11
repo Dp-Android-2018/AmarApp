@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         new Handler().postDelayed(() -> {
             if(NetWorkConnection.isConnectingToInternet(getApplicationContext())) {
-
                 if (CustomUtils.getInstance().getSaveUserObject(getApplicationContext()) != null&&
                         (CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getStatus().equals("true")||
                         CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getRole().equals(ConfigurationFile.Constants.COMPANY))) {
@@ -44,5 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make((findViewById(R.id.rl_parent)),R.string.no_internet_connection,Snackbar.LENGTH_LONG).show();
             }
         },3000);
+
+
+        if (getIntent().getExtras()!=null) {
+            Intent i = null;
+
+            for (String key : getIntent().getExtras().keySet()) {
+                System.out.println(("Bundle Debug" + key + "  " + getIntent().getExtras().get(key)));
+            }
+        }
     }
 }

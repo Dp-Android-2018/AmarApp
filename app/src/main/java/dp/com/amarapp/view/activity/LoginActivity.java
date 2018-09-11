@@ -34,7 +34,7 @@ public class LoginActivity extends BaseActivity implements BaseInterface {
 
     public void initBinding(){
         loginViewModel=new LoginViewModel(LoginActivity.this,this);
-        loginBinding= DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
+        loginBinding= DataBindingUtil.setContentView(LoginActivity.this,R.layout.activity_login);
         loginBinding.setLoginViewModel(loginViewModel);
     }
 
@@ -43,8 +43,17 @@ public class LoginActivity extends BaseActivity implements BaseInterface {
         switch (code){
             case (ConfigurationFile.Constants.SUCCESS_CODE_second):
             {
-               // if(CustomUtils.getInstance().getSaveUserObject())
-                finish();
+                System.out.println("status is : "+CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getStatus());
+                if(CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getStatus().equals("true")
+                        ||CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getRole().equals(ConfigurationFile.Constants.COMPANY)){
+                    Intent intent=new Intent(LoginActivity.this, ContainerActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent=new Intent(getApplicationContext(),ActivationActivity.class);
+                    intent.putExtra(CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getName(),ConfigurationFile.IntentConstants.USER_NAME);
+                    startActivity(intent);
+                }
+                finishAffinity();
                 break;
             }
             case (ConfigurationFile.Constants.INVALED_EMAIL_PASSWORD):

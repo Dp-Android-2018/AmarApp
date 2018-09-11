@@ -79,6 +79,7 @@ public class HomeFragment extends Fragment implements BaseInterface{
                         homeViewModel.city!=null?homeViewModel.city.getId():0,
                         homeViewModel.categoriesContent!=null?homeViewModel.categoriesContent.getId():0,
                         homeViewModel.specialization!=null?homeViewModel.specialization.getId():0);
+                System.out.println("ids on home :"+homeViewModel.country);
                 navigationFragments(searchFragment);
                 break;
             }

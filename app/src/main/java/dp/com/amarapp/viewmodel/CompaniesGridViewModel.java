@@ -1,30 +1,21 @@
 package dp.com.amarapp.viewmodel;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import dp.com.amarapp.R;
-import dp.com.amarapp.model.response.CompaniesSearchResponse;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
-import dp.com.amarapp.view.fragment.CompaniesGridFragment;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class CompaniesGridViewModel {
     private Context context;
@@ -41,6 +32,7 @@ public class CompaniesGridViewModel {
     }
 
     public void getCompanies(String _pageID) {
+        System.out.println("page id grid : "+_pageID);
         if (NetWorkConnection.isConnectingToInternet(context)) {
             CustomUtils.getInstance().showProgressDialog(context);
             loading=true;

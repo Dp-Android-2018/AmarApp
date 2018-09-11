@@ -3,13 +3,11 @@ package dp.com.amarapp.model.response;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.List;
 
 import dp.com.amarapp.model.pojo.Category;
 import dp.com.amarapp.model.pojo.LoginResponseContent;
 import dp.com.amarapp.model.pojo.MetaData;
 import dp.com.amarapp.model.pojo.Specialization;
-import dp.com.amarapp.model.pojo.WorkDay;
 
 /**
  * Created by DELL on 25/07/2018.
@@ -46,16 +44,16 @@ public class CompanyLoginResponse extends LoginResponseContent implements Serial
     @SerializedName("views")
     private int views;
 
-    @SerializedName("work_days")
-    private List<WorkDay> workDays;
+//    @SerializedName("work_days")
+//    private List<WorkDay> workDays;
 
-    public List<WorkDay> getWorkDays() {
-        return workDays;
-    }
-
-    public void setWorkDays(List<WorkDay> workDays) {
-        this.workDays = workDays;
-    }
+//    public List<WorkDay> getWorkDays() {
+//        return workDays;
+//    }
+//
+//    public void setWorkDays(List<WorkDay> workDays) {
+//        this.workDays = workDays;
+//    }
 
     public MetaData getMetaData() {
         return metaData;

@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/city"
-
+                android:gravity="center"
                 android:textColor="@color/home_text_color"
                 android:lineSpacingExtra="-11.3sp"
                 android:layout_gravity="end"
@@ -52,7 +52,8 @@
                 android:layout_gravity="end"
                 android:textSize="@dimen/sp10"
                android:layout_marginTop="@dimen/dp8w"
-                android:layout_marginEnd="@dimen/dp12h"/>
+                android:layout_marginEnd="@dimen/dp12h"
+                android:gravity="center"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

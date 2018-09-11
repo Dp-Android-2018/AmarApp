@@ -4,19 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
 import android.view.View;
 
 import java.util.Observable;
-
-import javax.security.auth.callback.Callback;
 
 import dp.com.amarapp.model.pojo.City;
 import dp.com.amarapp.model.pojo.LoginResponseContent;
 import dp.com.amarapp.model.request.CheckMailRequest;
 import dp.com.amarapp.model.request.CheckPhoneRequest;
 import dp.com.amarapp.model.request.ClientRegisterRequest;
-import dp.com.amarapp.model.response.ClientRegisterResponse;
 import dp.com.amarapp.model.response.Country;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
@@ -29,9 +25,7 @@ import dp.com.amarapp.view.activity.ActivationActivity;
 import dp.com.amarapp.view.callback.BaseInterface;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 /**
  * Created by DELL on 21/07/2018.
@@ -91,13 +85,13 @@ public class ClientRegisterViewModel extends Observable{
                 callback.updateUi(ConfigurationFile.Constants.PASSWORD_MATCHES_CODE);
             }else{
                 clientRegisterRequest=new ClientRegisterRequest(name.get(),email.get(),password.get(),confirm_password.get(),
-                        phone.get(),1,1);
+                        phone.get(),city.getId(),country.getId());
+                clientRegisterRequest.setDeviceToken(CustomUtils.getInstance().getFirebaseToken(context));
                 phoneRequest=new CheckPhoneRequest(phone.get());
                 checkMailRequest=new CheckMailRequest(email.get());
                 checkExistMail();
             }
         }
-
     }
     public boolean checkEmptyData() {
         if (ValidationUtils.isEmpty(name.get()) ||

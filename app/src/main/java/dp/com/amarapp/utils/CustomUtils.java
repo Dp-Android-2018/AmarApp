@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -30,10 +31,10 @@ import java.util.regex.Pattern;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
+import dp.com.amarapp.notification.MyFirebaseInstanceIdService;
 import dp.com.amarapp.view.activity.ContainerActivity;
 import dp.com.amarapp.view.activity.MembershipActivity;
 import dp.com.amarapp.view.callback.TaskMonitor;
-import dp.com.amarapp.view.fragment.HomeFragment;
 
 
 /**
@@ -265,6 +266,16 @@ public class CustomUtils {
     public void clearSharedPref(Context context){
         SharedPrefrenceUtils prefrenceUtils=new SharedPrefrenceUtils(context);
         prefrenceUtils.clearToken();
+    }
+
+
+
+    public String getFirebaseToken(Context context){
+        final MyFirebaseInstanceIdService mfs=new MyFirebaseInstanceIdService();
+        FirebaseApp.initializeApp(context);
+      //  zzahn.runOnUiThread(() -> mfs.onTokenRefresh());
+        mfs.onTokenRefresh();
+        return MyFirebaseInstanceIdService.TOKEN;
     }
 
 

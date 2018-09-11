@@ -1,6 +1,5 @@
 package dp.com.amarapp.viewmodel;
 
-import android.app.Activity;
 import android.content.Context;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
@@ -9,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.Observable;
 
-import dp.com.amarapp.model.response.CompaniesSearchResponse;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
@@ -18,9 +16,7 @@ import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
 import dp.com.amarapp.view.callback.BaseInterface;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class CompanySearchViewModel extends Observable {
 
@@ -36,53 +32,16 @@ public class CompanySearchViewModel extends Observable {
     private String pageId="0";
     private boolean loading=false;
 
-    public CompanySearchViewModel(Context context, BaseInterface callback) {
+    public CompanySearchViewModel(Context context, BaseInterface callback,int countryId,int cityId,int categoryId,int specializationId) {
+        setPrams(countryId,cityId,categoryId,specializationId);
         this.context = context;
         this.callback = callback;
         searchResponse=new ObservableArrayList<>();
         search(null,pageId);
     }
 
-    public void search(String sort,String _pageID) {
-        if (NetWorkConnection.isConnectingToInternet(context)) {
-            CustomUtils.getInstance().showProgressDialog((Activity) context);
-            loading=true;
-            ApiClient.getClient().create(EndPoints.class).companySearch(ConfigurationFile.Constants.API_KEY,
-                    ConfigurationFile.Constants.CONTENT_TYPE, ConfigurationFile.Constants.CONTENT_TYPE,
-                    countryId,cityId,specializationId,categoryId,sort,_pageID)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(companiesSearchResponseResponse -> {
-                        CustomUtils.getInstance().cancelDialog();
-                        System.out.println("Code is : "+companiesSearchResponseResponse.code());
-                        System.out.println("id1 :"+categoryId+"  id2 : "+cityId+"  id3 : "+categoryId+"  id4 : "+specializationId+"id5 :"+sort);
-                        if (companiesSearchResponseResponse.code() == ConfigurationFile.Constants.SUCCESS_CODE_second) {
-                            System.out.println(" city name View model :"+companiesSearchResponseResponse.
-                                    body().getSearchResponses().get(0).getCity().getName());
-
-                            callback.updateUi(ConfigurationFile.Constants.SUCCESS_CODE_second);
-                            if(sort!=null) {
-                                searchResponse.clear();
-                            }
-                            next=companiesSearchResponseResponse.body().getLinks().getNext();
-                            if(next!=null){
-                                pageId=next.substring(next.length()-1);
-                            }
-                            searchResponse.addAll(companiesSearchResponseResponse.body().getSearchResponses());
-                            loading=false;
-                        }
-                    }, throwable -> {
-                        CustomUtils.getInstance().cancelDialog();
-                        System.out.println("ERROR 1" + throwable);
-                    });
-
-        } else {
-            callback.updateUi(ConfigurationFile.Constants.NO_INTERNET_CONNECTION_CODE);
-        }
-    }
-
     public void setPrams(int countryId,int cityId,int categoryId,int specializationId){
-        if(categoryId>0)
+        if(countryId>0)
             this.countryId=String.valueOf(countryId);
         else
             this.categoryId=null;
@@ -108,12 +67,55 @@ public class CompanySearchViewModel extends Observable {
                 super.onScrolled(recyclerView, dx, dy);
                 if (((LinearLayoutManager) recyclerView.getLayoutManager()).findLastVisibleItemPosition()==searchResponse.size()-1) {
                     if (next != null && loading == false) {
-                        loading = true;
+                       // loading = true;
                         System.out.println("Load More Data Success ");
                         search(null,pageId);
                     }
                 }
             }
         };
+    }
+
+    public void search(String sort,String _pageID) {
+        System.out.println("page id is : "+pageId);
+        if (NetWorkConnection.isConnectingToInternet(context)) {
+            CustomUtils.getInstance().showProgressDialog(context);
+            loading=true;
+            System.out.println("After Loading : "+loading);
+            ApiClient.getClient().create(EndPoints.class).companySearch(ConfigurationFile.Constants.API_KEY,
+                    ConfigurationFile.Constants.CONTENT_TYPE, ConfigurationFile.Constants.CONTENT_TYPE,
+                    countryId,cityId,specializationId,categoryId,sort,_pageID)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(companiesSearchResponseResponse -> {
+                        CustomUtils.getInstance().cancelDialog();
+                        System.out.println("Country Is :"+countryId);
+                        System.out.println("Code is : "+companiesSearchResponseResponse.code());
+                        System.out.println("ids on company search view Model :"+countryId+"  id2 : "+cityId+"  id3 : "+categoryId+"  id4 : "+specializationId+"id5 :"+sort);
+                        if (companiesSearchResponseResponse.code() == ConfigurationFile.Constants.SUCCESS_CODE_second) {
+                            if(companiesSearchResponseResponse.body().getSearchResponses().size()==0){
+                                callback.updateUi(999);
+                            }
+                            //callback.updateUi(ConfigurationFile.Constants.SUCCESS_CODE_second);
+                            if(sort!=null) {
+                                searchResponse.clear();
+                            }
+                            next=companiesSearchResponseResponse.body().getLinks().getNext();
+                            System.out.println("next is : "+next);
+                            if(next!=null){
+                                pageId=next.substring(next.length()-1);
+                            }
+                            searchResponse.addAll(companiesSearchResponseResponse.body().getSearchResponses());
+                            System.out.println("Size is : "+searchResponse.size());
+                            loading=false;
+                        }
+                    }, throwable -> {
+                        CustomUtils.getInstance().cancelDialog();
+                        System.out.println("ERROR 1" + throwable);
+                    });
+
+        } else {
+            callback.updateUi(ConfigurationFile.Constants.NO_INTERNET_CONNECTION_CODE);
+        }
     }
 }

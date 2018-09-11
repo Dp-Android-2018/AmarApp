@@ -21,6 +21,7 @@ import dp.com.amarapp.model.response.CompaniesSearchResponse;
 import dp.com.amarapp.model.response.CompanyCommentsResponse;
 import dp.com.amarapp.model.response.CompanyProjectResponse;
 import dp.com.amarapp.model.response.CompanyRegisterResponse;
+import dp.com.amarapp.model.response.CompanyWorkDaysResponse;
 import dp.com.amarapp.model.response.CountryResponse;
 import dp.com.amarapp.model.response.CreateAdvertResponse;
 import dp.com.amarapp.model.response.DefaultResponse;
@@ -64,11 +65,15 @@ public interface EndPoints {
 
     //company search
     @GET(ConfigurationFile.UrlConstants.COMPANIES_SEARCH_URL)
-    Observable<Response<CompaniesSearchResponse>>companySearch(@Header("x-api-key") String key, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Query("countryName") String country,@Query("cityName")String city,@Query("specialization") String specialization,@Query("category")String category,@Query("sort")String sort,@Query("page")String pageId);
+    Observable<Response<CompaniesSearchResponse>>companySearch(@Header("x-api-key") String key, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Query("country") String country,@Query("city")String city,@Query("specialization") String specialization,@Query("category")String category,@Query("sort")String sort,@Query("page")String pageId);
 
     //company Projects
     @GET(ConfigurationFile.UrlConstants.COMPANY_PROJECTS_URL)
     Observable<Response<CompanyProjectResponse>>companyProjects(@Header("x-api-key") String key, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Header("Authorization") String token, @Path("id") int id);
+
+    //company work days
+    @GET(ConfigurationFile.UrlConstants.COMPANY_WORK_DAYS_URL)
+    Observable<Response<CompanyWorkDaysResponse>>companyWorkDays(@Header("x-api-key") String key, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Header("Authorization") String token, @Path("id") int id);
 
     //create advert
     @POST(ConfigurationFile.UrlConstants.CREATE_ADS_URL)

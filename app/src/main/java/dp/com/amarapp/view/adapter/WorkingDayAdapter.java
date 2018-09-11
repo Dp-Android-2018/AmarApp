@@ -1,6 +1,5 @@
 package dp.com.amarapp.view.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +17,15 @@ import dp.com.amarapp.view.holder.ParentViewHolder;
 
 public class WorkingDayAdapter extends ExpandableRecyclerViewAdapter<ParentViewHolder,ChildViewHolder> {
 
+    View parentView;
     public WorkingDayAdapter(List<? extends ExpandableGroup> groups) {
         super(groups);
     }
     @Override
     public ParentViewHolder onCreateGroupViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+        parentView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_expandable_parent, parent, false);
-        return new ParentViewHolder(view);
+        return new ParentViewHolder(parentView);
     }
 
     @Override

@@ -22,6 +22,8 @@ public class ClientRegisterRequest {
 
     @SerializedName("phone")
     private String phone;
+    @SerializedName("device_token")
+    private String deviceToken;
 
     @SerializedName("city_id")
     private int cityId;
@@ -37,5 +39,13 @@ public class ClientRegisterRequest {
         this.phone = phone;
         this.cityId = cityId;
         this.countryId = countryId;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 }

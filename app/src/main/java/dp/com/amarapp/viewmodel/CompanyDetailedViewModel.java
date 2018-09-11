@@ -12,15 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 import java.util.Observable;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.CompanyComments;
+import dp.com.amarapp.model.pojo.WorkDay;
 import dp.com.amarapp.model.request.CommentRequest;
-import dp.com.amarapp.model.response.CompanyCommentsResponse;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
+import dp.com.amarapp.model.response.CompanyWorkDaysResponse;
 import dp.com.amarapp.model.response.DefaultResponse;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
@@ -29,7 +29,7 @@ import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
 import dp.com.amarapp.view.activity.CompanyInformationActivity;
 import dp.com.amarapp.view.activity.CompanyProjectsActivity;
-import dp.com.amarapp.view.activity.CompanyWorkDaysActivity;
+import dp.com.amarapp.view.activity.ExpandableWorkingDaysActivity;
 import dp.com.amarapp.view.callback.BaseInterface;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -44,6 +44,7 @@ public class CompanyDetailedViewModel extends Observable{
     private BaseInterface callback;
     public ObservableInt visability;
     public ObservableList<String> images;
+    ObservableList<WorkDay>workDays;
     AlertDialog dialog;
     public CompanyDetailedViewModel(Context context,BaseInterface callback) {
         this.context = context;
@@ -51,12 +52,14 @@ public class CompanyDetailedViewModel extends Observable{
         companyInfo=(CompanyLoginResponse)((Activity)context).getIntent().getSerializableExtra(ConfigurationFile.IntentConstants.COMPANYITEMINFO);
         token+= CustomUtils.getInstance().getSaveUserObject(context).getToken();
         getCommentsContent();
+        workDays=new ObservableArrayList<>();
         commentsList=new ObservableArrayList<>();
         visability=new ObservableInt();
         if(CustomUtils.getInstance().getSaveUserObject(context).getRole().equals("company"))
             visability.set(View.GONE);
         images=new ObservableArrayList<>();
         setImages();
+        getWorkDays();
     }
 
     public String getTitle(){
@@ -115,10 +118,11 @@ public class CompanyDetailedViewModel extends Observable{
         context.startActivity(i);
     }
 
-    public void companyWorkDays(View view){
+    public void companyWorkDaysAction(View view){
         //System.out.println("work days size on detailed view Model :"+companyInfo.getWorkDays().size());
-        Intent i=new Intent(context,CompanyWorkDaysActivity.class);
-        i.putExtra(ConfigurationFile.IntentConstants.COMPANYITEMINFO,companyInfo);
+        Intent i=new Intent(context,ExpandableWorkingDaysActivity.class);
+        System.out.println("size of work : "+workDays.size());
+        i.putExtra(ConfigurationFile.IntentConstants.COMPANY_WORK_DAYS, (Serializable) workDays);
         context.startActivity(i);
     }
 
@@ -210,4 +214,30 @@ public class CompanyDetailedViewModel extends Observable{
         }
     }
 
+    public void getWorkDays(){
+        CustomUtils.getInstance().showProgressDialog(context);
+        ApiClient.getClient().create(EndPoints.class).companyWorkDays(ConfigurationFile.Constants.API_KEY,
+                ConfigurationFile.Constants.CONTENT_TYPE,ConfigurationFile.Constants.CONTENT_TYPE,token,companyInfo.getId())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Response<CompanyWorkDaysResponse>>() {
+                    @Override
+                    public void accept(Response<CompanyWorkDaysResponse> companyWorkDaysResponseResponse) throws Exception {
+                        CustomUtils.getInstance().cancelDialog();
+                        System.out.println("Code Work Days :"+companyWorkDaysResponseResponse.code());
+                        System.out.println("token is : "+token);
+                        System.out.println("ID is : "+companyInfo.getId());
+                        if(companyWorkDaysResponseResponse.code()==ConfigurationFile.Constants.SUCCESS_CODE_second){
+                            workDays.addAll(companyWorkDaysResponseResponse.body().getWorkDays());
+                            System.out.println("work days size :"+workDays.size());
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        System.out.println("ERRor +"+throwable.getMessage());
+
+                    }
+                });
+    }
 }

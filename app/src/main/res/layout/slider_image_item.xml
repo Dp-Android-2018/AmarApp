@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:padding="7dp"
         android:src="@mipmap/logo"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         bind:imageUrl="@{ImageListItemSliderViewModel.imageLink}"/>
 
 </RelativeLayout>
