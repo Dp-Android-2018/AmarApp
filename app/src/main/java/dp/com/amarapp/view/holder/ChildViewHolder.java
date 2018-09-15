@@ -16,14 +16,18 @@ public class ChildViewHolder extends com.thoughtbot.expandablerecyclerview.viewh
     }
 
     public void setData(WorkDay workDay){
-        if (workDay.getId()==1){
-            shift.setText("دوام صباحى");
-            mfrom.setText(workDay.getFrom());
-            mTo.setText(workDay.getTo());
-        }else if(workDay.getId()==2) {
-            shift.setText("دوام مسائى");
-            mfrom.setText(workDay.getFrom());
-            mTo.setText(workDay.getTo());
+
+            if (workDay.getShift().equals("morning")) {
+                shift.setText("دوام صباحى");
+                mfrom.setText(workDay.getFrom());
+                mTo.setText(workDay.getTo());
+            } else if (workDay.getShift().equals("night")) {
+                shift.setText("دوام مسائى");
+                mfrom.setText(workDay.getFrom());
+                mTo.setText(workDay.getTo());
+            }else {
+                mfrom.setText("00:00");
+                mTo.setText("00:00");
         }
     }
 }

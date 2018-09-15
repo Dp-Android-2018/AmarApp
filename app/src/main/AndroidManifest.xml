@@ -55,6 +55,8 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.activity.ExoandableWorkingDaysActivity"/>
+
         <activity android:name=".view.activity.CompanyRegisterActivityStep1"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
