@@ -14,6 +14,7 @@ import dp.com.amarapp.model.request.CreateAdvertRequest;
 import dp.com.amarapp.model.request.ForgetPasswordRequest;
 import dp.com.amarapp.model.request.LoginRequest;
 import dp.com.amarapp.model.request.UpdateMetaDataRequest;
+import dp.com.amarapp.model.request.UpdateWorkDaysRequest;
 import dp.com.amarapp.model.response.AdvertResponse;
 import dp.com.amarapp.model.response.CategoriesResponse;
 import dp.com.amarapp.model.response.ClientRegisterResponse;
@@ -123,5 +124,9 @@ public interface EndPoints {
     //forget password
     @POST(ConfigurationFile.UrlConstants.FORGET_PASSWORD_URL)
     Observable<Response<DefaultResponse>>forgetPassword(@Header("x-api-key") String key, @Header("Content-Type") String contentType, @Header("Accept") String accept,@Body ForgetPasswordRequest request);
+
+    //update workDays
+    @PUT(ConfigurationFile.UrlConstants.UPDATE_WORK_DAYS_URL)
+    Observable<Response<DefaultResponse>>updateWorkDays(@Header("x-api-key") String key, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Header("Authorization") String token, @Body UpdateWorkDaysRequest request);
 
 }

@@ -10,12 +10,13 @@
     </data>
 <RelativeLayout
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:id="@+id/rl_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp376h"
-        bind:workday="@{ProfileViewModel7.handleDays}"/>
+        android:layout_height="@dimen/dp376h"/>
+        <!--bind:workday="@{ProfileViewModel7.handleDays}"/-->
     <Button
         android:id="@+id/bt_save"
         android:layout_width="@dimen/dp149w"
@@ -28,6 +29,6 @@
         android:textColor="@color/text_color"
         android:textSize="@dimen/sp15"
         android:textStyle="bold"
-        android:gravity="center"/>
+        android:gravity="center" />
 </RelativeLayout>
 </layout>

@@ -17,7 +17,7 @@ import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.AdvertContent;
 import dp.com.amarapp.model.pojo.CompanyComments;
 import dp.com.amarapp.model.pojo.CompanyProject;
-import dp.com.amarapp.model.pojo.ParentDay;
+import dp.com.amarapp.model.pojo.BaseObjParentDay;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
 import dp.com.amarapp.view.adapter.AddProjectAdapter;
 import dp.com.amarapp.view.adapter.AdvertsAdapter;
@@ -25,8 +25,8 @@ import dp.com.amarapp.view.adapter.CommentsAdapter;
 import dp.com.amarapp.view.adapter.CompaniesGridAdapter;
 import dp.com.amarapp.view.adapter.ProjectGridViewAdabter;
 import dp.com.amarapp.view.adapter.SearchCompanyAdapter;
+import dp.com.amarapp.view.adapter.SetWorkingDaysAdapter;
 import dp.com.amarapp.view.adapter.SliderAdapter;
-import dp.com.amarapp.view.adapter.WorkingDayAdapter;
 
 
 /**
@@ -112,8 +112,8 @@ public class CustomBinder {
     }
 
     @BindingAdapter({"bind:workday"})
-    public static void workDayAdapter(RecyclerView view, ArrayList<ParentDay> parentDays) {
-        WorkingDayAdapter adapter=new WorkingDayAdapter(parentDays);
+    public static void workDayAdapter(RecyclerView view, ArrayList<BaseObjParentDay> parentDays) {
+        SetWorkingDaysAdapter adapter=new SetWorkingDaysAdapter(parentDays);
         view.setAdapter(adapter);
     }
 

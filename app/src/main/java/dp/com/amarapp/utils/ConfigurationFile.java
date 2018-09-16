@@ -17,7 +17,7 @@ public class ConfigurationFile {
         public static final String CREATE_PROJECTS_URL="/api/companies/projects";
         public static final String UPDATE_DELETE_PROJECTS_URL="/api/companies/projects/{id}";
         public static final String ADD_WORK_DAYS_URL="/api/companies/workdays";
-        public static final String UPDATE_DELETE_WORK_DAYS_URL="/api/companies/workdays/{id}";
+        public static final String UPDATE_WORK_DAYS_URL="/api/companies/workdays";
         public static final String COMPANIES_SEARCH_URL="api/search";
         public static final String COMPANY_DETAIL_URL="api/company/{id}";
         public static final String COMPANY_PROJECTS_URL="api/company/{id}/projects";

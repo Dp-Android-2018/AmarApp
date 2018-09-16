@@ -16,13 +16,16 @@ public class WorkDay implements Parcelable,Serializable{
     private String day;
 
     @SerializedName("from")
-    private String from;
+    private String from="00:00";
 
     @SerializedName("to")
-    private String to;
+    private String to="00:00";
 
     @SerializedName("shift")
     private String shift;
+
+    public WorkDay() {
+    }
 
     public WorkDay(int id, String day, String from, String to, String shift) {
         this.id = id;

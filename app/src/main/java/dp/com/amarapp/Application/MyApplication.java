@@ -10,12 +10,14 @@ import java.util.List;
 import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.City;
 import dp.com.amarapp.model.pojo.Specialization;
+import dp.com.amarapp.model.pojo.WorkDay;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MyApplication extends Application {
 
     private static List<City> cities=new ArrayList<>();
     private static List<Specialization> specializations=new ArrayList<>();
+    private List<WorkDay>workDayList=new ArrayList<>();
     @Override
     public FileOutputStream openFileOutput(String name, int mode) throws FileNotFoundException {
         return super.openFileOutput(name, mode);
@@ -35,6 +37,14 @@ public class MyApplication extends Application {
 
     public static void setSpecializations(List<Specialization> specializations) {
         MyApplication.specializations = specializations;
+    }
+
+    public List<WorkDay> getWorkDayList() {
+        return workDayList;
+    }
+
+    public void setWorkDayList(List<WorkDay> workDayList) {
+        this.workDayList = workDayList;
     }
 
     public void onCreate(){

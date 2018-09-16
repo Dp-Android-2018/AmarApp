@@ -18,6 +18,5 @@
         android:src="@mipmap/logo"
         android:scaleType="fitCenter"
         bind:imageUrl="@{ImageListItemSliderViewModel.imageLink}"/>
-
 </RelativeLayout>
 </layout>

@@ -3,18 +3,22 @@ package dp.com.amarapp.viewmodel;
 import android.app.Activity;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
+import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Observable;
 
-import dp.com.amarapp.model.pojo.ParentDay;
+import dp.com.amarapp.model.pojo.BaseObjParentDay;
+import dp.com.amarapp.model.pojo.FullTimeWorkDay;
 import dp.com.amarapp.model.pojo.WorkDay;
 import dp.com.amarapp.model.response.CompanyWorkDaysResponse;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.utils.CustomUtils;
+import dp.com.amarapp.view.adapter.SetWorkingDaysAdapter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -25,12 +29,13 @@ public class CompanyProfileViewModel_7 extends Observable {
     private ObservableList<WorkDay>workDays;
     private String token="Bearer ";
     private int id;
+    SetWorkingDaysAdapter adapter;
+    RecyclerView view;
 
-
-
-    public CompanyProfileViewModel_7(Activity activity) {
+    public CompanyProfileViewModel_7(Activity activity, RecyclerView view) {
         this.activity = activity;
         workDays=new ObservableArrayList<>();
+        this.view=view;
         token += CustomUtils.getInstance().getSaveUserObject(activity).getToken();
         id=CustomUtils.getInstance().getSaveUserObject(activity).getId();
         getWorkDays();
@@ -52,326 +57,48 @@ public class CompanyProfileViewModel_7 extends Observable {
                         if(companyWorkDaysResponseResponse.code()==ConfigurationFile.Constants.SUCCESS_CODE_second){
                             workDays.addAll(companyWorkDaysResponseResponse.body().getWorkDays());
                             System.out.println("work days size :"+workDays.size());
+                            adapter=new SetWorkingDaysAdapter(getHandleDays());
+                            view.setAdapter(adapter);
                         }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         System.out.println("ERRor +"+throwable.getMessage());
-
                     }
                 });
     }
 
-    public ArrayList<ParentDay> getHandleDays(){
-        ArrayList<ParentDay>list=new ArrayList<>();
-        list.add(saturday());
-        list.add(sunday());
-        list.add(monday());
-        list.add(tuesday());
-        list.add(wednesday());
-        list.add(thursday());
-        list.add(friday());
-
-        //list.add(secondDay());
+    public ArrayList<BaseObjParentDay> getHandleDays(){
+      ArrayList<BaseObjParentDay>list=new ArrayList<>();
+        list.add(new BaseObjParentDay("saturday",getDayItem("saturday")));
+        list.add(new BaseObjParentDay("sunday", getDayItem("sunday")));
+        list.add(new BaseObjParentDay("monday", getDayItem("monday")));
+        list.add(new BaseObjParentDay("tuesday", getDayItem("tuesday")));
+        list.add(new BaseObjParentDay("wednesday", getDayItem("wednesday")));
+        list.add(new BaseObjParentDay("thursday", getDayItem("thursday")));
+        list.add(new BaseObjParentDay("friday", getDayItem("friday")));
         return list;
     }
-
-    public ParentDay saturday(){
-        //getWorkDays();
-        System.out.println("satarday "+workDays.size());
-        //WorkDay(int id, String day, String from, String to, String shift)
-        int m=-1,n=-1,flag=0;
-        if(workDays!=null) {
-            for (int i = 0; i < workDays.size() && flag < 2; i++) {
-                System.out.println("day 1 "+workDays.get(i).getDay()+":"+workDays.get(i).getFrom());
-                if (workDays.get(i).getDay().equals("saturday")) {
-                    if (workDays.get(i).getShift().equals("night")) {
-                        n = i;
-                        flag++;
-                    } else if (workDays.get(i).getShift().equals("morning")) {
-                        m = i;
-                        flag++;
-                    }
+    public List<FullTimeWorkDay>getDayItem(String day){
+        System.out.println("method :"+day);
+        System.out.println("work days size on method :"+workDays.size());
+        FullTimeWorkDay fullTimeWorkDay=new FullTimeWorkDay();
+        for(int i=0;i<workDays.size();i++){
+            System.out.println("day from workdays :"+workDays.get(i).getDay()+"/"+workDays.get(i).getShift()+"/"+workDays.get(i).getFrom()+"/"+workDays.get(i).getTo());
+            if(workDays.get(i).getDay().equals(day)){
+                if(workDays.get(i).getShift().equals("morning")){
+                    fullTimeWorkDay.setMfrom(workDays.get(i).getFrom());
+                    fullTimeWorkDay.setmTo(workDays.get(i).getTo());
+                }else if(workDays.get(i).getShift().equals("night")){
+                    fullTimeWorkDay.setnFrom(workDays.get(i).getFrom());
+                    fullTimeWorkDay.setnTo(workDays.get(i).getTo());
                 }
             }
         }
-        System.out.println("flag is :"+flag+" m is :"+m+" n is : "+n);
-        if (flag==0){
-            return new ParentDay("السبت", Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&n==-1){
-            return new ParentDay("السبت",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&m==-1){
-            return new ParentDay("السبت",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }else {
-            return new ParentDay("السبت",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }
-    }
-    public ParentDay sunday(){
-        //getWorkDays();
-        System.out.println("satarday "+workDays.size());
-        //WorkDay(int id, String day, String from, String to, String shift)
-        int m=-1,n=-1,flag=0;
-        if(workDays!=null) {
-            for (int i = 0; i < workDays.size() && flag < 2; i++) {
-                System.out.println("day 1 "+workDays.get(i).getDay()+":"+workDays.get(i).getFrom());
-                if (workDays.get(i).getDay().equals("sunday")) {
-                    if (workDays.get(i).getShift().equals("night")) {
-                        n = i;
-                        flag++;
-                    } else if (workDays.get(i).getShift().equals("morning")) {
-                        m = i;
-                        flag++;
-                    }
-                }
-            }
-        }
-        System.out.println("flag is :"+flag+" m is :"+m+" n is : "+n);
-        if (flag==0){
-            return new ParentDay("الأحد",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&n==-1){
-            return new ParentDay("الأحد",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&m==-1){
-            return new ParentDay("الأحد",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }else {
-            return new ParentDay("الأحد",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }
+        System.out.println("Day : "+day+":"+fullTimeWorkDay.getMfrom()+"/"+fullTimeWorkDay.getnFrom()+"/"+fullTimeWorkDay.getmTo()+"/"+fullTimeWorkDay.getnTo());
+        return Arrays.asList(fullTimeWorkDay);
     }
 
-    public ParentDay monday(){
-        //getWorkDays();
-        System.out.println("satarday "+workDays.size());
-        //WorkDay(int id, String day, String from, String to, String shift)
-        int m=-1,n=-1,flag=0;
-        if(workDays!=null) {
-            for (int i = 0; i < workDays.size() && flag < 2; i++) {
-                System.out.println("day 1 "+workDays.get(i).getDay()+":"+workDays.get(i).getFrom());
-                if (workDays.get(i).getDay().equals("monday")) {
-                    if (workDays.get(i).getShift().equals("night")) {
-                        n = i;
-                        flag++;
-                    } else if (workDays.get(i).getShift().equals("morning")) {
-                        m = i;
-                        flag++;
-                    }
-                }
-            }
-        }
-        System.out.println("flag is :"+flag+" m is :"+m+" n is : "+n);
-        if (flag==0){
-            return new ParentDay("الإثنين",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&n==-1){
-            return new ParentDay("الإثنين",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&m==-1){
-            return new ParentDay("الإثنين",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }else {
-            return new ParentDay("الإثنين",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }
-    }
-    public ParentDay tuesday(){
-        //getWorkDays();
-        System.out.println("satarday "+workDays.size());
-        //WorkDay(int id, String day, String from, String to, String shift)
-        int m=-1,n=-1,flag=0;
-        if(workDays!=null) {
-            for (int i = 0; i < workDays.size() && flag < 2; i++) {
-                System.out.println("day 1 "+workDays.get(i).getDay()+":"+workDays.get(i).getFrom());
-                if (workDays.get(i).getDay().equals("tuesday")) {
-                    if (workDays.get(i).getShift().equals("night")) {
-                        n = i;
-                        flag++;
-                    } else if (workDays.get(i).getShift().equals("morning")) {
-                        m = i;
-                        flag++;
-                    }
-                }
-            }
-        }
-        System.out.println("flag is :"+flag+" m is :"+m+" n is : "+n);
-        if (flag==0){
-            return new ParentDay("الثلاثاء",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&n==-1){
-            return new ParentDay("الثلاثاء",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&m==-1){
-            return new ParentDay("الثلاثاء",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }else {
-            return new ParentDay("الثلاثاء",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }
-    }
 
-    public ParentDay wednesday(){
-        //getWorkDays();
-        System.out.println("satarday "+workDays.size());
-        //WorkDay(int id, String day, String from, String to, String shift)
-        int m=-1,n=-1,flag=0;
-        if(workDays!=null) {
-            for (int i = 0; i < workDays.size() && flag < 2; i++) {
-                System.out.println("day 1 "+workDays.get(i).getDay()+":"+workDays.get(i).getFrom());
-                if (workDays.get(i).getDay().equals("wednesday")) {
-                    if (workDays.get(i).getShift().equals("night")) {
-                        n = i;
-                        flag++;
-                    } else if (workDays.get(i).getShift().equals("morning")) {
-                        m = i;
-                        flag++;
-                    }
-                }
-            }
-        }
-        System.out.println("flag is :"+flag+" m is :"+m+" n is : "+n);
-        if (flag==0){
-            return new ParentDay("الأربعاء",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&n==-1){
-            return new ParentDay("الأربعاء",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&m==-1){
-            return new ParentDay("الأربعاء",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }else {
-            return new ParentDay("الأربعاء",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }
-    }
-
-    public ParentDay thursday(){
-        //getWorkDays();
-        System.out.println("satarday "+workDays.size());
-        //WorkDay(int id, String day, String from, String to, String shift)
-        int m=-1,n=-1,flag=0;
-        if(workDays!=null) {
-            for (int i = 0; i < workDays.size() && flag < 2; i++) {
-                System.out.println("day 1 "+workDays.get(i).getDay()+":"+workDays.get(i).getFrom());
-                if (workDays.get(i).getDay().equals("thursday")) {
-                    if (workDays.get(i).getShift().equals("night")) {
-                        n = i;
-                        flag++;
-                    } else if (workDays.get(i).getShift().equals("morning")) {
-                        m = i;
-                        flag++;
-                    }
-                }
-            }
-        }
-        System.out.println("flag is :"+flag+" m is :"+m+" n is : "+n);
-        if (flag==0){
-            return new ParentDay("الخميس",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&n==-1){
-            return new ParentDay("الخميس",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&m==-1){
-            return new ParentDay("الخميس",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }else {
-            return new ParentDay("الخميس",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }
-    }
-    public ParentDay friday(){
-        //getWorkDays();
-        System.out.println("satarday "+workDays.size());
-        //WorkDay(int id, String day, String from, String to, String shift)
-        int m=-1,n=-1,flag=0;
-        if(workDays!=null) {
-            for (int i = 0; i < workDays.size() && flag < 2; i++) {
-                System.out.println("day 1 "+workDays.get(i).getDay()+":"+workDays.get(i).getFrom());
-                if (workDays.get(i).getDay().equals("friday")) {
-                    if (workDays.get(i).getShift().equals("night")) {
-                        n = i;
-                        flag++;
-                    } else if (workDays.get(i).getShift().equals("morning")) {
-                        m = i;
-                        flag++;
-                    }
-                }
-            }
-        }
-        System.out.println("flag is :"+flag+" m is :"+m+" n is : "+n);
-        if (flag==0){
-            return new ParentDay("الجمعة",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&n==-1){
-            return new ParentDay("الجمعة",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,"","00:00","00:00","دوام مسائى")
-            ));
-        }else if(flag==1&&m==-1){
-            return new ParentDay("الجمعة",Arrays.asList(
-                    new WorkDay(1,"","00:00","00:00","دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }else {
-            return new ParentDay("الجمعة",Arrays.asList(
-                    new WorkDay(1,workDays.get(m).getDay(),workDays.get(m).getFrom(),workDays.get(m).getTo(),"دوام صباحى"),
-                    new WorkDay(2,workDays.get(n).getDay(),workDays.get(n).getFrom(),workDays.get(n).getTo(),"دوام مسائى")
-            ));
-        }
-    }
 }

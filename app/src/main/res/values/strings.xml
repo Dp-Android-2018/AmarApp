@@ -176,4 +176,5 @@
     <string name="please_register">من فضلك قم بتسجيل الدخول</string>
     <string name="can_follow">لتتمكن من المتابعه</string>
     <string name="activation_code">كود التفعيل</string>
+    <string name="selected_time">حدد الوقت</string>
 </resources>

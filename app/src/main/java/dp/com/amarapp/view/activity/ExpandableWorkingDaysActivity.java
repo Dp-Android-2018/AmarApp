@@ -6,28 +6,19 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
-import java.util.function.Predicate;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.ParentDay;
 import dp.com.amarapp.model.pojo.WorkDay;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.view.adapter.WorkingDayAdapter;
-import io.reactivex.ObservableSource;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 
 public class ExpandableWorkingDaysActivity extends BaseActivity {
     WorkingDayAdapter adapter;
@@ -48,15 +39,21 @@ public class ExpandableWorkingDaysActivity extends BaseActivity {
         setContentView(R.layout.activity_expandable_workdays_layout);
         toolbar=findViewById(R.id.toolbar);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        TextView textView=findViewById(R.id.text);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
         if (animator instanceof DefaultItemAnimator) {
             ((DefaultItemAnimator) animator).setSupportsChangeAnimations(false);
         }
         setUpActionBar();
-        adapter = new WorkingDayAdapter(handleDays());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        if(handleDays().size()>0) {
+            adapter = new WorkingDayAdapter(handleDays());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+        }else{
+            recyclerView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+        }
     }
     public void setUpActionBar(){
         setSupportActionBar(toolbar);

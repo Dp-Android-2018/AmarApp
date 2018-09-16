@@ -60,7 +60,6 @@ public class ItemCompanyViewModel extends Observable {
         }else return "";
     }
     public String getRate(){
-
                 return String.valueOf(companyItem.getRate());
     }
     public void companyDetail(View view){

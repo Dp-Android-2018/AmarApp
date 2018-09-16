@@ -20,6 +20,7 @@ public class ParentViewHolder extends GroupViewHolder {
 
 
     public void setDayTitle(ExpandableGroup genre) {
+        System.out.println("Days Title:"+genre.getTitle());
         switch (genre.getTitle()){
             case "sunday":
                 tvDay.setText("الاحد");

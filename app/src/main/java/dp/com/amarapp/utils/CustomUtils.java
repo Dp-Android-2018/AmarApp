@@ -3,6 +3,7 @@ package dp.com.amarapp.utils;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,6 +20,7 @@ import android.util.Base64;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TimePicker;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.storage.StorageReference;
@@ -26,6 +28,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,6 +38,7 @@ import dp.com.amarapp.notification.MyFirebaseInstanceIdService;
 import dp.com.amarapp.view.activity.ContainerActivity;
 import dp.com.amarapp.view.activity.MembershipActivity;
 import dp.com.amarapp.view.callback.TaskMonitor;
+import dp.com.amarapp.view.callback.UpdateTimeListener;
 
 
 /**
@@ -187,6 +191,23 @@ public class CustomUtils {
         if (!dialog.isShowing())
             dialog.show();
 
+    }
+
+    public void showTimePickerDialog(Context context, UpdateTimeListener listener){
+        Calendar mCuurTime=Calendar.getInstance();
+        int hour=mCuurTime.get(Calendar.HOUR_OF_DAY);
+        int minute=mCuurTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
+        mTimePicker=new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                selectedTime=((hourOfDay<10 ? "0"+hourOfDay: String.valueOf(hourOfDay))+ ":"+
+                        (minute<10 ? "0"+minute:minute));
+                listener.onTimeSet(selectedTime);
+            }
+        }, hour, minute,true);
+        mTimePicker.setTitle(context.getString(R.string.select_category));
+        mTimePicker.show();
     }
 
     @SuppressLint("ResourceType")
