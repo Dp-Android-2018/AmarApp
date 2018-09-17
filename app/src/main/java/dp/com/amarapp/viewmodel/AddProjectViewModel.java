@@ -1,6 +1,5 @@
 package dp.com.amarapp.viewmodel;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
@@ -12,16 +11,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.View;
-import dp.com.amarapp.BR;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
+import dp.com.amarapp.BR;
 import dp.com.amarapp.model.request.AddProjectRequest;
 import dp.com.amarapp.model.response.DefaultResponse;
 import dp.com.amarapp.network.ApiClient;
@@ -126,7 +124,7 @@ public class AddProjectViewModel extends BaseObservable implements TaskMonitor {
                         @Override
                         public void accept(Response<DefaultResponse> defaultResponseResponse) throws Exception {
                             CustomUtils.getInstance().cancelDialog();
-                            System.out.println("Code is :" + defaultResponseResponse.code());
+                            System.out.println("Code in add project is  :" + defaultResponseResponse.code());
                             System.out.println("Token is : " + token);
                             if (defaultResponseResponse.code() == ConfigurationFile.Constants.SUCCESS_CODE) {
                                 callback.updateUi(ConfigurationFile.Constants.SUCCESS_CODE);

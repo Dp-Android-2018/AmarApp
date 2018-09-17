@@ -25,6 +25,15 @@
         android:horizontalSpacing="34dp"
         android:layout_margin="11dp"
         bind:projectsinfo="@{ProjectsViewModel.projectList}"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="لا يوجد مشاريع للشركة حتى الأن"
+        android:visibility="@{ProjectsViewModel.textVisibality}"
+        android:layout_centerInParent="true"
+        android:textColor="@color/text_color_black"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp10"/>
         <!--tools:listitem="@layout/project_grid_item"-->
 </RelativeLayout>
 </layout>

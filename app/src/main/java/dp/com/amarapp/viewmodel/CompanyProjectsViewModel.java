@@ -3,26 +3,19 @@ package dp.com.amarapp.viewmodel;
 import android.app.Activity;
 import android.content.Context;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableInt;
 import android.databinding.ObservableList;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
+import android.view.View;
 
 import dp.com.amarapp.model.pojo.CompanyProject;
-import dp.com.amarapp.model.pojo.LoginResponseContent;
-import dp.com.amarapp.model.response.CompanyProjectResponse;
 import dp.com.amarapp.network.ApiClient;
 import dp.com.amarapp.network.EndPoints;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
 import dp.com.amarapp.view.callback.BaseInterface;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class CompanyProjectsViewModel {
 
@@ -30,11 +23,13 @@ public class CompanyProjectsViewModel {
     private Context context;
     private BaseInterface callback;
     private String token="Bearer ";
+    public ObservableInt textVisibality;
     private int id;
     public CompanyProjectsViewModel(Context context,BaseInterface callback) {
         this.context = context;
         this.callback=callback;
         projectList=new ObservableArrayList<>();
+        textVisibality=new ObservableInt(View.GONE);
         token +=CustomUtils.getInstance().getSaveUserObject(context).getToken();
         id=(int)((Activity)context).getIntent().getIntExtra(ConfigurationFile.IntentConstants.COMPANYID,1);
         getProjects();
@@ -53,6 +48,9 @@ public class CompanyProjectsViewModel {
                             callback.updateUi(ConfigurationFile.Constants.SUCCESS_CODE_second);
                             System.out.println("Data here :->"+companyProjectResponseResponse.body());
                             projectList.addAll(companyProjectResponseResponse.body().getResponse());
+                            if (projectList.size()<=0){
+                                textVisibality.set(View.VISIBLE);
+                            }
                             System.out.println("Company project name in view model : "+projectList.get(0).getName());
                             System.out.println("Company project address"+projectList.get(0).getAddress());
                         }else{
@@ -69,6 +67,5 @@ public class CompanyProjectsViewModel {
         }else {
             callback.updateUi(ConfigurationFile.Constants.NO_INTERNET_CONNECTION_CODE);
         }
-
     }
 }

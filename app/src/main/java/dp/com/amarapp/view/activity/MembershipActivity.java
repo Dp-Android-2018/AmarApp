@@ -62,6 +62,5 @@ public class MembershipActivity extends BaseActivity implements BaseInterface {
                 break;
             }
         }
-
     }
 }

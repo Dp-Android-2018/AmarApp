@@ -229,7 +229,6 @@ public class ClientRegisterViewModel extends Observable{
     }
 
     public void getCountries(View view){
-        cityFlag=true;
         callback.updateUi(ConfigurationFile.Constants.MOVE_TO_COUNTRY_ACT);
     }
 
@@ -243,12 +242,15 @@ public class ClientRegisterViewModel extends Observable{
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == ConfigurationFile.IntentConstants.REQUEST_CODE_COUNTRY) {
-            country = (Country) data.getSerializableExtra(ConfigurationFile.IntentConstants.COUNTRY_DATA);
-            setCountryName();
-        } else if (requestCode == ConfigurationFile.IntentConstants.REQUEST_CODE_CITY) {
-            city = (City) data.getSerializableExtra(ConfigurationFile.IntentConstants.CITY_DATA);
-            setCityName();
+        if(data!=null) {
+            if (requestCode == ConfigurationFile.IntentConstants.REQUEST_CODE_COUNTRY) {
+                cityFlag=true;
+                country = (Country) data.getSerializableExtra(ConfigurationFile.IntentConstants.COUNTRY_DATA);
+                setCountryName();
+            } else if (requestCode == ConfigurationFile.IntentConstants.REQUEST_CODE_CITY) {
+                city = (City) data.getSerializableExtra(ConfigurationFile.IntentConstants.CITY_DATA);
+                setCityName();
+            }
         }
     }
 

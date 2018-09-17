@@ -69,6 +69,8 @@ public class CompanyProfileFragment_7 extends Fragment {
             ((DefaultItemAnimator) animator).setSupportsChangeAnimations(false);
         }
         profile7Binding.recyclerView.setLayoutManager(layoutManager);
+
+        System.out.println("size of work days in fragment : "+profileViewModel_7.workDays.size());
     }
 
     public void saveData(){
@@ -85,10 +87,26 @@ public class CompanyProfileFragment_7 extends Fragment {
         for (Map.Entry<String,WorkDay> entry : map.entrySet())
         {
             System.out.println("Working Day Item :"+entry.getValue().getDay()+" "+entry.getValue().getShift()+" "+entry.getValue().getFrom()+" "+entry.getValue().getTo());
-            workingDays.add(entry.getValue());
+            if(entry.getValue()==null) {
+                //entry.getValue().getTo().equals("00:00")&&entry.getValue().getFrom().equals("00:00")||
+                System.out.println("data is zero :"+entry.getValue().getDay());
+                continue;
+               // profileViewModel_7.workDays.add(entry.getValue());
+            }else{
+                for (int i=0;i<profileViewModel_7.workDays.size();i++){
+                    if(profileViewModel_7.workDays.get(i).getDay().equals(entry.getValue().getDay())&&
+                            profileViewModel_7.workDays.get(i).getShift().equals(entry.getValue().getShift())){
+                        System.out.println("day is exist : "+profileViewModel_7.workDays.get(i).getDay());
+                        profileViewModel_7.workDays.remove(i);
+                    }
+                }
+                if(entry.getValue().getTo()!=null&&!(entry.getValue().getTo().equals("00:00")&&entry.getValue().getFrom().equals("00:00"))) {
+                    profileViewModel_7.workDays.add(entry.getValue());
+                }
+            }
         }
         System.out.println("size of work day request :"+workingDays.size());
-        request.setDays(workingDays);
+        request.setDays(profileViewModel_7.workDays);
 
         if (NetWorkConnection.isConnectingToInternet(getContext())) {
             CustomUtils.getInstance().showProgressDialog(getActivity());

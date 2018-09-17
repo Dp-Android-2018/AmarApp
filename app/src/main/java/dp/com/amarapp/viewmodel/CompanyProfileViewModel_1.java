@@ -1,16 +1,11 @@
 package dp.com.amarapp.viewmodel;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
 import android.view.View;
-import android.widget.Toast;
 
-import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.City;
-import dp.com.amarapp.model.pojo.LoginResponseContent;
 import dp.com.amarapp.model.request.UpdateMetaDataRequest;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
 import dp.com.amarapp.model.response.Country;
@@ -43,14 +38,18 @@ public class CompanyProfileViewModel_1 {
 
     public void initVariables(){
         name=new ObservableField<>();
+        cityName=new ObservableField<>();
         name.set(company.getName());
         cityFlag=false;
         countryName=new ObservableField<>();
-        countryName.set(company.getCountry()!=null?company.getCountry().getName():"");
-        //(CustomUtils.getInstance().getSaveUserObject(activity).getCountry().getName());
-        cityName=new ObservableField<>();
-        cityName.set(company.getCity()!=null?company.getCity().getName():"");
-        //(CustomUtils.getInstance().getSaveUserObject(activity).getCity().getName());
+        if(company.getCity()!=null){
+            city=company.getCity();
+        }
+        if(company.getCountry()!=null) {
+            country = company.getCountry();
+        }
+        countryName.set(company.getCountry()!=null?country.getName():"");
+        cityName.set(company.getCity()!=null?city.getName():"");
     }
 
     public String getMail(){

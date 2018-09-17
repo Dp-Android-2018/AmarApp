@@ -61,6 +61,7 @@ public class AddProjectActivity extends BaseActivity implements BaseInterface{
             }
             case ConfigurationFile.Constants.FINISH_ADD_PROJECT_ACTIVITY:
             {
+
                 finish();
                 break;
             }

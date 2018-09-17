@@ -213,18 +213,6 @@ public class CustomUtils {
     @SuppressLint("ResourceType")
     public void alertDialog(final Context context){
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-// Add the buttons
-//        builder.setPositiveButton(R.string.register,new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int id) {
-//
-//            }
-//        });
-//        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int id) {
-//                builder.setCancelable(true);
-//            }
-//        });
-// Set other dialog properties
         View v=View.inflate(context,R.layout.alert_register_dialog,null);
         Button register=v.findViewById(R.id.bt_register);
         Button cancel=v.findViewById(R.id.bt_cancel);
@@ -236,12 +224,13 @@ public class CustomUtils {
             ((Activity)context).finishAffinity();
         });
         cancel.setOnClickListener(v1 -> {
-     //       ((Dialog)v).dismiss();
             registerDialog.dismiss();
         });
 // Create the AlertDialog
         if (registerDialog==null || !registerDialog.isShowing()) {
             registerDialog = builder.create();
+            registerDialog.show();
+        }else {
             registerDialog.show();
         }
     }

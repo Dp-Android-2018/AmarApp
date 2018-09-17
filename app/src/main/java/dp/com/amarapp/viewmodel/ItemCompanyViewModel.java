@@ -1,6 +1,5 @@
 package dp.com.amarapp.viewmodel;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -68,7 +67,7 @@ public class ItemCompanyViewModel extends Observable {
             intent.putExtra(ConfigurationFile.IntentConstants.COMPANYITEMINFO, companyItem);
             context.startActivity(intent);
         }else{
-            CustomUtils.getInstance().alertDialog((Activity)context);
+            CustomUtils.getInstance().alertDialog(context);
         }
     }
 

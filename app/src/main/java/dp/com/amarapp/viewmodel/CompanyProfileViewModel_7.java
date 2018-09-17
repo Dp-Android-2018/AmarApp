@@ -26,7 +26,7 @@ import retrofit2.Response;
 
 public class CompanyProfileViewModel_7 extends Observable {
     Activity activity;
-    private ObservableList<WorkDay>workDays;
+    public ObservableList<WorkDay>workDays;
     private String token="Bearer ";
     private int id;
     SetWorkingDaysAdapter adapter;

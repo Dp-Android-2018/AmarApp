@@ -1,7 +1,6 @@
 package dp.com.amarapp.view.holder;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import dp.com.amarapp.databinding.CompanySearchListItemBinding;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
@@ -12,7 +11,6 @@ public class CompanySearchViewHolder extends RecyclerView.ViewHolder{
     public CompanySearchViewHolder(CompanySearchListItemBinding binding) {
         super(binding.rlParent);
         this.binding=binding;
-
     }
 
     public void bindItemCompany(CompanyLoginResponse companyInfo){

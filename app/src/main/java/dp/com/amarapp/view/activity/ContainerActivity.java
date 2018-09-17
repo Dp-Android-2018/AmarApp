@@ -129,13 +129,14 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
                                 setting = new ClientSettingFragment();
                                 navigationFragments(setting);
                             } else if (CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getRole().
-                                    equals(ConfigurationFile.Constants.COMPANY)) {
+                                    equals(ConfigurationFile.Constants.COMPANY)&& CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getStatus().equals("true")) {
                                 setting = new CompanyProfileFragment();
                                 navigationFragments(setting);
+                            }else {
+                                Snackbar.make(containerBinding.drawer, "حسابك غير مفعل ", Snackbar.LENGTH_LONG).show();
                             }
                         }else{
-                            Snackbar.make(containerBinding.drawer, "انت غير مسجل", Snackbar.LENGTH_LONG).show();
-
+                            Snackbar.make(containerBinding.drawer, "انت غير مسجل ", Snackbar.LENGTH_LONG).show();
                         }
                         break;
                     }

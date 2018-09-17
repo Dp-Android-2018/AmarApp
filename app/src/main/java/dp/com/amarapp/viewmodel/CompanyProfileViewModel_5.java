@@ -3,12 +3,7 @@ package dp.com.amarapp.viewmodel;
 import android.app.Activity;
 import android.databinding.ObservableField;
 import android.view.View;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.SocialNetwork;
 import dp.com.amarapp.model.request.UpdateMetaDataRequest;
 import dp.com.amarapp.model.response.CompanyLoginResponse;
@@ -34,13 +29,13 @@ public class CompanyProfileViewModel_5 {
 
     public void initVariables(){
         request=new UpdateMetaDataRequest();
-        social=company.getMetaData().getSocial();
+        social=(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial():new SocialNetwork());
         facebook=new ObservableField<>();
-        facebook.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().getFacebook():"");
         twitter=new ObservableField<>();
-        twitter.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().getTwitter():"");
         instgram=new ObservableField<>();
-        instgram.set(company.getMetaData().getSocial()!=null?company.getMetaData().getSocial().getInstagram():"");
+        facebook.set(social!=null?social.getFacebook():"");
+        twitter.set(social!=null?social.getTwitter():"");
+        instgram.set(social!=null?social.getInstagram():"");
     }
 
     public void setRequest(){
