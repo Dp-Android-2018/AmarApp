@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,8 +23,6 @@ import dp.com.amarapp.view.adapter.WorkingDayAdapter;
 
 public class ExpandableWorkingDaysActivity extends BaseActivity {
     WorkingDayAdapter adapter;
-    //private int id;
-    //private String token="Bearer ";
     List<WorkDay> workDays;
     Toolbar toolbar;
     public ExpandableWorkingDaysActivity() {
@@ -32,7 +31,6 @@ public class ExpandableWorkingDaysActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // token+= CustomUtils.getInstance().getSaveUserObject(ExpandableWorkingDaysActivity.this).getToken();
         workDays=(List<WorkDay>)getIntent().getSerializableExtra(ConfigurationFile.IntentConstants.COMPANY_WORK_DAYS);
 
         // getWorkDays();
@@ -40,6 +38,7 @@ public class ExpandableWorkingDaysActivity extends BaseActivity {
         toolbar=findViewById(R.id.toolbar);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         TextView textView=findViewById(R.id.text);
+        ImageView imageView=findViewById(R.id.image);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
         if (animator instanceof DefaultItemAnimator) {
@@ -53,6 +52,7 @@ public class ExpandableWorkingDaysActivity extends BaseActivity {
         }else{
             recyclerView.setVisibility(View.GONE);
             textView.setVisibility(View.VISIBLE);
+            imageView.setVisibility(View.VISIBLE);
         }
     }
     public void setUpActionBar(){

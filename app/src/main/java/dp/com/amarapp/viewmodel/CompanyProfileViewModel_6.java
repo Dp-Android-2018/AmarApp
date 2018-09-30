@@ -1,9 +1,8 @@
 package dp.com.amarapp.viewmodel;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableInt;
 import android.databinding.ObservableList;
 import android.view.View;
 
@@ -13,7 +12,6 @@ import dp.com.amarapp.network.EndPoints;
 import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
-import dp.com.amarapp.view.activity.AddProjectActivity;
 import dp.com.amarapp.view.callback.BaseInterface;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -23,6 +21,7 @@ public class CompanyProfileViewModel_6 {
     public ObservableList<CompanyProject> projectList;
     private BaseInterface callback;
     private String token="Bearer ";
+    public ObservableInt visibality;
     private int id;
 
     public CompanyProfileViewModel_6(Activity activity,BaseInterface callback) {
@@ -31,6 +30,7 @@ public class CompanyProfileViewModel_6 {
         projectList=new ObservableArrayList<>();
         token += CustomUtils.getInstance().getSaveUserObject(activity).getToken();
         id=CustomUtils.getInstance().getSaveUserObject(activity).getId();
+        visibality=new ObservableInt(View.GONE);
         getProjects();
     }
 
@@ -48,6 +48,9 @@ public class CompanyProfileViewModel_6 {
                             callback.updateUi(ConfigurationFile.Constants.SUCCESS_CODE_second);
                             System.out.println("Data here :->"+companyProjectResponseResponse.body());
                             projectList.addAll(companyProjectResponseResponse.body().getResponse());
+                            if(projectList.size()<=0){
+                                visibality.set(View.VISIBLE);
+                            }
                             System.out.println("Company project name in view model : "+projectList.get(0).getName());
                             System.out.println("Company project address"+projectList.get(0).getAddress());
                         }else{

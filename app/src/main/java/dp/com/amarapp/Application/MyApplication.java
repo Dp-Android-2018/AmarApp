@@ -9,6 +9,7 @@ import java.util.List;
 
 import dp.com.amarapp.R;
 import dp.com.amarapp.model.pojo.City;
+import dp.com.amarapp.model.pojo.ConnectionReceiver;
 import dp.com.amarapp.model.pojo.Specialization;
 import dp.com.amarapp.model.pojo.WorkDay;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -18,6 +19,7 @@ public class MyApplication extends Application {
     private static List<City> cities=new ArrayList<>();
     private static List<Specialization> specializations=new ArrayList<>();
     private List<WorkDay>workDayList=new ArrayList<>();
+    private static MyApplication mInstance;
     @Override
     public FileOutputStream openFileOutput(String name, int mode) throws FileNotFoundException {
         return super.openFileOutput(name, mode);
@@ -49,6 +51,7 @@ public class MyApplication extends Application {
 
     public void onCreate(){
         super.onCreate();
+        mInstance=this;
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("font/Arabic_Font.ttf")
                 .setFontAttrId(R.attr.fontPath)
@@ -56,4 +59,12 @@ public class MyApplication extends Application {
         );
 
     }
+
+    public static synchronized MyApplication getInstance() {
+        return mInstance;
+    }
+    public void setConnectionListener(ConnectionReceiver.ConnectionReceiverListener listener) {
+        ConnectionReceiver.connectionReceiverListener = listener;
+    }
+
 }

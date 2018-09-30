@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -15,7 +14,7 @@ import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.view.callback.BaseInterface;
 import dp.com.amarapp.viewmodel.PhoneViewModel;
 
-public class PhoneActivity extends AppCompatActivity implements BaseInterface {
+public class PhoneActivity extends BaseActivity implements BaseInterface {
 
     private PhoneViewModel phoneViewModel;
     private ActivityPhoneBinding phoneBinding;

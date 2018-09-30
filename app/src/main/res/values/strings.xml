@@ -2,7 +2,7 @@
 
 <resources>
 
-    <string name="app_name">AmarTest</string>
+    <string name="app_name">عمار</string>
 
     <string name="version">النسخة رقم ٠٠.١</string>
 
@@ -177,4 +177,5 @@
     <string name="can_follow">لتتمكن من المتابعه</string>
     <string name="activation_code">كود التفعيل</string>
     <string name="selected_time">حدد الوقت</string>
+    <string name="no_projects">لا يوجد مشاريع لهذه الشركه</string>
 </resources>

@@ -40,7 +40,6 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initBinding();
-        containerBinding.bottomBar.setDefaultTab(R.id.search);
         setUpActionBar();
         drawer_layout();
     }
@@ -48,7 +47,8 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
     public void setUpActionBar(){
         setSupportActionBar( containerBinding.toolbar.toolbar);
         containerBinding.toolbar.toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        containerBinding.toolbar.setViewmodel(new ToolbarViewModel(ContainerActivity.this, ConfigurationFile.Constants.BACK_IMAGE_UNVISIBILITY_CODE));}
+        containerBinding.toolbar.setViewmodel(new ToolbarViewModel(ContainerActivity.this, ConfigurationFile.Constants.BACK_IMAGE_UNVISIBILITY_CODE));
+    }
 
     @Override
     public void updateUi(int code) {
@@ -75,12 +75,8 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
         containerViewModel=new ContainerViewModel(ContainerActivity.this,this);
         containerBinding= DataBindingUtil.setContentView(ContainerActivity.this, R.layout.activity_container);
         containerBinding.setContainerViewModel(containerViewModel);
-        bottombar();
-         /*toolbar=(Toolbar) containerBinding.toolbar.toolbar;
-          toolbar.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-          setSupportActionBar(toolbar);*/
-        //containerBinding.bottomBar.setViewModel(new BottomBarViewModel(ContainerActivity.this,this));
-    }
+        containerBinding.bottomBar.setDefaultTab(R.id.search);
+        bottombar(); }
 
     public void navigationFragments(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -113,10 +109,23 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
             }
         });
         navigationView.getMenu().getItem(0).setChecked(true);
+        if(CustomUtils.getInstance().getSaveUserObject(this)==null) {
+            navigationView.getMenu().getItem(4).setTitle("تسجيل الدخول");
+        }
     }
 
 
     public void bottombar(){
+        if(CustomUtils.getInstance().getSaveUserObject(this)==null){
+            containerBinding.bottomBar.findViewById(R.id.settings).setVisibility(View.GONE);
+            containerBinding.bottomBar.findViewById(R.id.add_advert).setVisibility(View.GONE);
+
+        }else if(CustomUtils.getInstance().getSaveUserObject(this).getRole().equals(ConfigurationFile.Constants.CLIENT)||(
+                CustomUtils.getInstance().getSaveUserObject(this).getRole().equals(ConfigurationFile.Constants.COMPANY)&&
+                        CustomUtils.getInstance().getSaveUserObject(this).getStatus().equals("false"))){
+            containerBinding.bottomBar.findViewById(R.id.add_advert).setVisibility(View.GONE);
+        }
+
         containerBinding.bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(int tabId) {
@@ -145,15 +154,6 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
                         navigationFragments(companies);
                         break;
                     }
-                    case R.id.search:{
-                        navigationFragments(home);
-                        break;
-                    }
-                    case R.id.adverts:{
-                        Fragment advert=new ShowAdvertsFragment();
-                        navigationFragments(advert);
-                        break;
-                    }
                     case R.id.add_advert:{
                         if(CustomUtils.getInstance().getSaveUserObject(getApplicationContext())!=null&&
                                 CustomUtils.getInstance().getSaveUserObject(getApplicationContext()).getRole().equals(ConfigurationFile.Constants.COMPANY)&&
@@ -164,6 +164,18 @@ public class ContainerActivity extends BaseActivity implements BaseInterface{
                             Snackbar.make(containerBinding.drawer, "إضافة إعلان غير متاحه لك", Snackbar.LENGTH_LONG).show();
                         }
                         break;
+                    }
+                    case R.id.search:{
+                        navigationFragments(home);
+                        break;
+                    }
+                    case R.id.adverts:{
+                        Fragment advert=new ShowAdvertsFragment();
+                        navigationFragments(advert);
+                        break;
+                    }
+                    default:{
+                        Snackbar.make(containerBinding.drawer, "مرحبا بك فى عمار", Snackbar.LENGTH_LONG).show();
                     }
                 }
             }

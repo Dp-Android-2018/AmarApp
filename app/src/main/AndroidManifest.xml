@@ -10,7 +10,7 @@
         android:name=".Application.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/amar_icon"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -40,6 +40,9 @@
         </activity>
 
         <activity android:name=".view.activity.ClientRegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.NoInternetConnectionActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
@@ -134,6 +137,14 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
+        <receiver
+            android:name=".model.pojo.ConnectionReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

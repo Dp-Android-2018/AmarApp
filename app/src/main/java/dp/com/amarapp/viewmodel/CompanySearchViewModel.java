@@ -2,9 +2,12 @@ package dp.com.amarapp.viewmodel;
 
 import android.content.Context;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.databinding.ObservableList;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.Observable;
 
@@ -27,6 +30,8 @@ public class CompanySearchViewModel extends Observable {
     private String cityId;
     private String categoryId;
     private String specializationId;
+    public ObservableField<String>text;
+    public ObservableInt visibality;
     private String sort;
     private String next=null;
     private String pageId="0";
@@ -37,6 +42,8 @@ public class CompanySearchViewModel extends Observable {
         this.context = context;
         this.callback = callback;
         searchResponse=new ObservableArrayList<>();
+        text=new ObservableField<>();
+        visibality=new ObservableInt(View.GONE);
         search(null,pageId);
     }
 
@@ -108,10 +115,15 @@ public class CompanySearchViewModel extends Observable {
                             searchResponse.addAll(companiesSearchResponseResponse.body().getSearchResponses());
                             System.out.println("Size is : "+searchResponse.size());
                             loading=false;
+                            if(searchResponse.size()<=0){
+                                text.set("لا يوجد نتائج فى البحث");
+                                visibality.set(View.VISIBLE);
+                            }
                         }
                     }, throwable -> {
                         CustomUtils.getInstance().cancelDialog();
-                        System.out.println("ERROR 1" + throwable);
+                        text.set("حدث خطأ فى المصادفة تأكد من إتصال الانترنت");
+                        visibality.set(View.VISIBLE);
                     });
 
         } else {

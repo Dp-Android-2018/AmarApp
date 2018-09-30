@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -13,7 +12,7 @@ import dp.com.amarapp.utils.ConfigurationFile;
 import dp.com.amarapp.utils.CustomUtils;
 import dp.com.amarapp.utils.NetWorkConnection;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 Snackbar.make((findViewById(R.id.rl_parent)),R.string.no_internet_connection,Snackbar.LENGTH_LONG).show();
             }
-        },3000);
+        },4000);
 
 
         if (getIntent().getExtras()!=null) {

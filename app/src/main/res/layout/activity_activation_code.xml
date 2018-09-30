@@ -36,12 +36,12 @@
         android:textColorHint="@color/text_color"
         android:hint="@string/activation_code"
         android:gravity="end|center"
+        android:textDirection="locale"
         android:paddingEnd="7dp"
         android:paddingStart="7dp"
         android:textColor="@color/text_color"
         android:inputType="phone"
         android:text="@={CodeViewModel.code}"/>
-
     <Button
         android:layout_width="@dimen/dp149w"
         android:layout_height="@dimen/dp36h"

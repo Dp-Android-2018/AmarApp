@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@mipmap/profile"
         android:state_selected="false"/>
-    <item android:drawable="@mipmap/profile"
+    <item android:drawable="@mipmap/settings"
         android:state_selected="true"/>
-
 </selector>

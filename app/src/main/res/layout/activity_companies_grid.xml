@@ -6,7 +6,7 @@
             name="CompaniesViewModel"
             type="dp.com.amarapp.viewmodel.CompaniesGridViewModel"/>
     </data>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -23,5 +23,12 @@
             bind:gridListener="@{CompaniesViewModel.onScrollListener}"
             android:horizontalSpacing="@dimen/dp26w"
             android:verticalSpacing="@dimen/dp15h" />
-    </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/dp293w"
+            android:layout_height="@dimen/dp241h"
+            android:src="@mipmap/no_data"
+            android:layout_centerInParent="true"
+            android:visibility="@{CompaniesViewModel.visibality}"/>
+    </RelativeLayout>
 </layout>

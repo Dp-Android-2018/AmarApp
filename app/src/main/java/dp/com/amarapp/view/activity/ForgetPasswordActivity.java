@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import dp.com.amarapp.R;
@@ -19,7 +18,7 @@ import dp.com.amarapp.viewmodel.ForgetPasswordViewModel;
  * Created by DELL on 24/07/2018.
  */
 
-public class ForgetPasswordActivity extends AppCompatActivity implements BaseInterface {
+public class ForgetPasswordActivity extends BaseActivity implements BaseInterface {
 
     private ForgetPasswordViewModel passwordViewModel;
     private ActivityForgetPasswordBinding forgetPasswordBinding;

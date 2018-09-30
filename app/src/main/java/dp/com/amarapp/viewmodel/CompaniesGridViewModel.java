@@ -2,7 +2,10 @@ package dp.com.amarapp.viewmodel;
 
 import android.content.Context;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.databinding.ObservableList;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.Toast;
@@ -23,10 +26,14 @@ public class CompaniesGridViewModel {
     private String next=null;
     private String pageId="0";
     private boolean loading=false;
+    public ObservableInt visibality;
+    public ObservableField<String> text;
 
     public CompaniesGridViewModel(Context context) {
         this.context = context;
         companies=new ObservableArrayList<>();
+        text=new ObservableField<>();
+        visibality=new ObservableInt(View.GONE);
         getCompanies(pageId);
         System.out.println("Companies grid Size view model: "+companies.size());
     }
@@ -52,10 +59,16 @@ public class CompaniesGridViewModel {
                             }
                             loading=false;
                             System.out.println("Companies grid Size: "+companies.size());
+                            if(companies.size()<=0){
+                                text.set("لا يوجد شركات");
+                                visibality.set(View.VISIBLE);
+                            }
                         }
                     }, throwable -> {
                         CustomUtils.getInstance().cancelDialog();
                         System.out.println("ERROR 1" + throwable);
+                        text.set("حدث خطأ فى المصادفة تأكد من إتصال الإنترنت");
+                        visibality.set(View.VISIBLE);
 
                     });
 

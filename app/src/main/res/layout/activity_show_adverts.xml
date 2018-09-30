@@ -8,7 +8,7 @@
             name="ShowAdvertViewModel"
             type="dp.com.amarapp.viewmodel.ShowAdvertsViewModel"/>
     </data>
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ll_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,9 +16,16 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_adverts"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             tools:listitem="@layout/advert_list_item"
             bind:advertinfo="@{ShowAdvertViewModel.adverts}"/>
-    </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/dp293w"
+            android:layout_height="@dimen/dp241h"
+           android:layout_centerInParent="true"
+            android:src="@mipmap/no_data"
+            android:visibility="@{ShowAdvertViewModel.visibality}"/>
+    </RelativeLayout>
 
 </layout>
